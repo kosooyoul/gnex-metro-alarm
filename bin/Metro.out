@@ -1,0 +1,931 @@
+STATIC VAR.	swData           of SYSTEM          0       1       
+STATIC VAR.	swData2          of SYSTEM          1       1       
+STATIC VAR.	swData3          of SYSTEM          2       1       
+STATIC VAR.	swData4          of SYSTEM          3       1       
+STATIC VAR.	swWidth          of SYSTEM          4       1       
+STATIC VAR.	swHeight         of SYSTEM          5       1       
+STATIC VAR.	swFrame          of SYSTEM          6       1       
+STATIC VAR.	swFrame2         of SYSTEM          7       1       
+STATIC VAR.	swFrame3         of SYSTEM          8       1       
+STATIC VAR.	swFrame6         of SYSTEM          9       1       
+STATIC VAR.	swVMver          of SYSTEM          10      3       0       
+STATIC VAR.	swModel          of SYSTEM          11      8       0       
+STATIC VAR.	swSmsRcvBuf      of SYSTEM          12      41      0       
+STATIC VAR.	swRsRcvBuf       of SYSTEM          13      128     0       
+STATIC VAR.	swRcvBuf         of SYSTEM          14      256     0       
+STATIC VAR.	swReserved1      of SYSTEM          15      1       
+STATIC VAR.	swReserved2      of SYSTEM          16      1       
+STATIC VAR.	swReserved3      of SYSTEM          17      1       
+STATIC VAR.	swReserved4      of SYSTEM          18      1       
+STATIC VAR.	swSbuf           of SYSTEM          19      1       
+STATIC VAR.	StationA         of SYSTEM          20      20      0       
+STATIC VAR.	StationB         of SYSTEM          21      20      0       
+STATIC VAR.	StationC         of SYSTEM          22      20      0       
+STATIC VAR.	NodeA            of SYSTEM          23      27      0       
+STATIC VAR.	NodeB            of SYSTEM          24      27      0       
+STATIC VAR.	NodeC            of SYSTEM          25      27      0       
+STATIC VAR.	Joint            of SYSTEM          26      30      0       
+STATIC VAR.	stationName      of SYSTEM          27      30      
+0            1           2           3           4           5           6           7          
+ 8           9           10          11          12          13          14          15         
+ 16          17          18          19          20          21          22          23         
+ 24          25          26          27          28          29         
+STATIC VAR.	foundJoint       of SYSTEM          28      20      0       
+STATIC VAR.	foundJointCount  of SYSTEM          29      0       0       
+STATIC VAR.	id               of GetNodeStationA                 30      1       
+STATIC VAR.	id               of GetNodeStationB                 31      1       
+STATIC VAR.	id               of GetLineNumber                   32      1       
+STATIC VAR.	id               of GetLineIndex                    33      1       
+STATIC VAR.	index            of InitJoin                        34      1       
+STATIC VAR.	stationIdA       of InitJoin                        35      1       
+STATIC VAR.	stationIdB       of InitJoin                        36      1       
+STATIC VAR.	stationIdC       of InitJoin                        37      1       
+STATIC VAR.	index            of GetJointStationId               38      1       
+STATIC VAR.	station          of GetJointStationId               39      1       
+STATIC VAR.	i                of InitSubway                      40      1       
+STATIC VAR.	stationStart     of RouteStation                    41      1       
+STATIC VAR.	stationEnd       of RouteStation                    42      1       
+STATIC VAR.	jointIndex       of AddFoundJoint                   43      1       
+STATIC VAR.	index            of GetFoundJoint                   44      1       
+STATIC VAR.	currentId        of FindJoint                       45      1       
+STATIC VAR.	currentLine      of FindJoint                       46      1       
+STATIC VAR.	currentLineIndex of FindJoint                       47      1       
+STATIC VAR.	i                of FindJoint                       48      1       
+STATIC VAR.	x                of DrawInt                         49      1       
+STATIC VAR.	y                of DrawInt                         50      1       
+STATIC VAR.	value            of DrawInt                         51      1       
+STATIC VAR.	tempString       of DrawInt                         52      31      1       
+FUNCTION	GetNodeStationA  has 1     args.
+FUNCTION	GetNodeStationB  has 1     args.
+FUNCTION	GetLineNumber    has 1     args.
+FUNCTION	GetLineIndex     has 1     args.
+FUNCTION	InitJoin         has 4     args.
+FUNCTION	GetJointStationId has 2     args.
+FUNCTION	InitSubway       has 0     args.
+FUNCTION	SearchStation    has 0     args.
+FUNCTION	RouteStation     has 2     args.
+FUNCTION	InitFoundJoint   has 0     args.
+FUNCTION	AddFoundJoint    has 1     args.
+FUNCTION	GetFoundJoint    has 1     args.
+FUNCTION	FindJoint        has 1     args.
+FUNCTION	DrawInt          has 3     args.
+MEDIA		%%0     has [ 0 0 0 6 ].
+MEDIA		%%1     has [ 1 1 0 6 ].
+MEDIA		%%2     has [ 2 2 0 6 ].
+MEDIA		%%3     has [ 3 3 0 6 ].
+MEDIA		%%4     has [ 4 4 0 6 ].
+MEDIA		%%5     has [ 5 5 0 6 ].
+MEDIA		%%6     has [ 6 6 0 6 ].
+MEDIA		%%7     has [ 7 7 0 6 ].
+MEDIA		%%8     has [ 8 8 0 6 ].
+MEDIA		%%9     has [ 9 9 0 6 ].
+MEDIA		%%10    has [ 10 10 0 6 ].
+MEDIA		%%11    has [ 11 11 0 6 ].
+MEDIA		%%12    has [ 12 12 0 6 ].
+MEDIA		%%13    has [ 13 13 0 6 ].
+MEDIA		%%14    has [ 14 14 0 6 ].
+MEDIA		%%15    has [ 15 15 0 6 ].
+MEDIA		%%16    has [ 16 16 0 6 ].
+MEDIA		%%17    has [ 17 17 0 6 ].
+MEDIA		%%18    has [ 18 18 0 6 ].
+MEDIA		%%19    has [ 19 19 0 6 ].
+MEDIA		%%20    has [ 20 20 0 6 ].
+MEDIA		%%21    has [ 21 21 0 6 ].
+MEDIA		%%22    has [ 22 22 0 6 ].
+MEDIA		%%23    has [ 23 23 0 6 ].
+MEDIA		%%24    has [ 24 24 0 6 ].
+MEDIA		%%25    has [ 25 25 0 6 ].
+MEDIA		%%26    has [ 26 26 0 6 ].
+MEDIA		%%27    has [ 27 27 0 6 ].
+MEDIA		%%28    has [ 28 28 0 6 ].
+MEDIA		%%29    has [ 29 29 0 6 ].
+MEDIA		%%30    has [ 30 30 0 3 ].
+MEDIA		%%31    has [ 31 31 0 0 ].
+CODESIZE	2        Bytes in $init           
+LABEL		$$1              of GetNodeStationA 
+LABEL		$$2              of GetNodeStationA 
+LABEL		$$3              of GetNodeStationA 
+LABEL		$$4              of GetNodeStationA 
+CODESIZE	146      Bytes in GetNodeStationA 
+LABEL		$$6              of GetNodeStationB 
+LABEL		$$7              of GetNodeStationB 
+LABEL		$$8              of GetNodeStationB 
+LABEL		$$9              of GetNodeStationB 
+CODESIZE	152      Bytes in GetNodeStationB 
+CODESIZE	14       Bytes in GetLineNumber   
+CODESIZE	26       Bytes in GetLineIndex    
+CODESIZE	90       Bytes in InitJoin        
+LABEL		$$10             of GetJointStationId
+LABEL		$$12             of GetJointStationId
+LABEL		$$13             of GetJointStationId
+LABEL		$$14             of GetJointStationId
+LABEL		$$15             of GetJointStationId
+CODESIZE	148      Bytes in GetJointStationId
+LABEL		$$16             of InitSubway      
+LABEL		$$18             of InitSubway      
+LABEL		$$17             of InitSubway      
+LABEL		$$20             of InitSubway      
+LABEL		$$22             of InitSubway      
+LABEL		$$21             of InitSubway      
+LABEL		$$24             of InitSubway      
+LABEL		$$26             of InitSubway      
+LABEL		$$25             of InitSubway      
+CODESIZE	542      Bytes in InitSubway      
+CODESIZE	8        Bytes in SearchStation   
+CODESIZE	38       Bytes in RouteStation    
+CODESIZE	20       Bytes in InitFoundJoint  
+LABEL		$$28             of AddFoundJoint   
+CODESIZE	44       Bytes in AddFoundJoint   
+LABEL		$$29             of GetFoundJoint   
+CODESIZE	32       Bytes in GetFoundJoint   
+LABEL		$$30             of FindJoint       
+LABEL		$$33             of FindJoint       
+LABEL		$$35             of FindJoint       
+LABEL		$$32             of FindJoint       
+LABEL		$$31             of FindJoint       
+CODESIZE	216      Bytes in FindJoint       
+CODESIZE	260      Bytes in main            
+CODESIZE	48       Bytes in DrawInt         
+000th Func is '$init'
+001th Func is 'AddFoundJoint'
+002th Func is 'DrawInt'
+003th Func is 'FindJoint'
+004th Func is 'GetFoundJoint'
+005th Func is 'GetJointStationId'
+006th Func is 'GetLineIndex'
+007th Func is 'GetLineNumber'
+008th Func is 'GetNodeStationA'
+009th Func is 'GetNodeStationB'
+010th Func is 'InitFoundJoint'
+011th Func is 'InitJoin'
+012th Func is 'InitSubway'
+013th Func is 'RouteStation'
+014th Func is 'SearchStation'
+015th Func is 'main'
+-------------------------------------------------
+Optimize Function '$init()'
+		Code Length : 2 Byte(s).
+		Final Optimized Code Length : 2 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetNodeStationA()'
+		Code Length : 146 Byte(s).
+		Final Optimized Code Length : 146 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetNodeStationB()'
+		Code Length : 152 Byte(s).
+		Final Optimized Code Length : 152 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetLineNumber()'
+		Code Length : 14 Byte(s).
+		Final Optimized Code Length : 14 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetLineIndex()'
+		Code Length : 26 Byte(s).
+		Final Optimized Code Length : 26 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'InitJoin()'
+		Code Length : 90 Byte(s).
+		Final Optimized Code Length : 90 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetJointStationId()'
+		Code Length : 148 Byte(s).
+		Final Optimized Code Length : 148 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'InitSubway()'
+		Code Length : 542 Byte(s).
+		Final Optimized Code Length : 542 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'SearchStation()'
+		Code Length : 8 Byte(s).
+		Final Optimized Code Length : 8 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'RouteStation()'
+		Code Length : 38 Byte(s).
+		Final Optimized Code Length : 38 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'InitFoundJoint()'
+		Code Length : 20 Byte(s).
+		Final Optimized Code Length : 20 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'AddFoundJoint()'
+		Code Length : 44 Byte(s).
+		Final Optimized Code Length : 44 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'GetFoundJoint()'
+		Code Length : 32 Byte(s).
+		Final Optimized Code Length : 32 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'FindJoint()'
+		Code Length : 216 Byte(s).
+		Final Optimized Code Length : 216 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'main()'
+		Code Length : 260 Byte(s).
+		Final Optimized Code Length : 260 Byte(s).
+-------------------------------------------------
+-------------------------------------------------
+Optimize Function 'DrawInt()'
+		Code Length : 48 Byte(s).
+		Final Optimized Code Length : 48 Byte(s).
+-------------------------------------------------
+FUNC COUNT: 16
+Set FUNC ADDRESS : $init [0x00000080]
+Set FUNC ADDRESS : AddFoundJoint [0x00000082]
+Set FUNC ADDRESS : DrawInt [0x000000AE]
+Set FUNC ADDRESS : FindJoint [0x000000DE]
+Set FUNC ADDRESS : GetFoundJoint [0x000001B6]
+Set FUNC ADDRESS : GetJointStationId [0x000001D6]
+Set FUNC ADDRESS : GetLineIndex [0x0000026A]
+Set FUNC ADDRESS : GetLineNumber [0x00000284]
+Set FUNC ADDRESS : GetNodeStationA [0x00000292]
+Set FUNC ADDRESS : GetNodeStationB [0x00000324]
+Set FUNC ADDRESS : InitFoundJoint [0x000003BC]
+Set FUNC ADDRESS : InitJoin [0x000003D0]
+Set FUNC ADDRESS : InitSubway [0x0000042A]
+Set FUNC ADDRESS : RouteStation [0x00000648]
+Set FUNC ADDRESS : SearchStation [0x0000066E]
+Set FUNC ADDRESS : main [0x00000676]
+
+FUNCTION : $init()
+{
+	0x00000080 : ret	// , $init, -1 - SAL : 189
+}
+
+
+FUNCTION : AddFoundJoint()
+{
+	0x00000082 : nop	// , AddFoundJoint, -1 - SAL : 532
+	0x00000084 : popz		43 ( jointIndex of Function AddFoundJoint )	// , AddFoundJoint, -1 - SAL : 533
+	0x00000088 : pushz		29 ( foundJointCount )	// , AddFoundJoint, -1 - SAL : 534
+	0x0000008C : gejp		20		0x000000A8	// , AddFoundJoint, -1 - SAL : 535
+	0x00000094 : isetz		28 ( foundJoint )		29 ( foundJointCount )		43 ( jointIndex of Function AddFoundJoint )	// , AddFoundJoint, -1 - SAL : 536
+	0x0000009C : incz		29 ( foundJointCount )		1	// , AddFoundJoint, -1 - SAL : 537
+	0x000000A2 : pushc		1	// , AddFoundJoint, -1 - SAL : 538
+	0x000000A6 : ret	// , AddFoundJoint, -1 - SAL : 539
+	0x000000A8 : pushc		0	// , AddFoundJoint, -1 - SAL : 540
+	0x000000AC : ret	// , AddFoundJoint, -1 - SAL : 541
+}
+
+
+FUNCTION : DrawInt()
+{
+	0x000000AE : nop	// , DrawInt, -1 - SAL : 651
+	0x000000B0 : popz		51 ( value of Function DrawInt )	// , DrawInt, -1 - SAL : 652
+	0x000000B4 : popz		50 ( y of Function DrawInt )	// , DrawInt, -1 - SAL : 653
+	0x000000B8 : popz		49 ( x of Function DrawInt )	// , DrawInt, -1 - SAL : 654
+	0x000000BC : pushz		52 ( tempString of Function DrawInt )	// , DrawInt, -1 - SAL : 655
+	0x000000C0 : pushmi		%%30	// , DrawInt, -1 - SAL : 656
+	0x000000C4 : pushz		51 ( value of Function DrawInt )	// , DrawInt, -1 - SAL : 657
+	0x000000C8 : calls		MakeStr1(174)	// , DrawInt, -1 - SAL : 658
+	0x000000CC : pushz		49 ( x of Function DrawInt )	// , DrawInt, -1 - SAL : 659
+	0x000000D0 : pushz		50 ( y of Function DrawInt )	// , DrawInt, -1 - SAL : 660
+	0x000000D4 : pushz		52 ( tempString of Function DrawInt )	// , DrawInt, -1 - SAL : 661
+	0x000000D8 : calls		DrawStr(85)	// , DrawInt, -1 - SAL : 662
+	0x000000DC : ret	// , DrawInt, -1 - SAL : 663
+}
+
+
+FUNCTION : FindJoint()
+{
+	0x000000DE : nop	// , FindJoint, -1 - SAL : 551
+	0x000000E0 : stnz		45 ( currentId of Function FindJoint )	// , FindJoint, -1 - SAL : 552
+	0x000000E4 : call		0x00000284	// , FindJoint, -1 - SAL : 553
+	0x000000EA : popz		46 ( currentLine of Function FindJoint )	// , FindJoint, -1 - SAL : 554
+	0x000000EE : pushz		45 ( currentId of Function FindJoint )	// , FindJoint, -1 - SAL : 555
+	0x000000F2 : call		0x0000026A	// , FindJoint, -1 - SAL : 556
+	0x000000F8 : popz		47 ( currentLineIndex of Function FindJoint )	// , FindJoint, -1 - SAL : 557
+	0x000000FC : zsetc		48 ( i of Function FindJoint )		0	// , FindJoint, -1 - SAL : 558
+	0x00000102 : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 559
+	0x00000106 : gejp		10		0x000001B0	// , FindJoint, -1 - SAL : 560
+	0x0000010E : pushz		46 ( currentLine of Function FindJoint )	// , FindJoint, -1 - SAL : 561
+	0x00000112 : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 562
+	0x00000116 : pushc		0	// , FindJoint, -1 - SAL : 563
+	0x0000011A : call		0x000001D6	// , FindJoint, -1 - SAL : 564
+	0x00000120 : call		0x00000284	// , FindJoint, -1 - SAL : 565
+	0x00000126 : eq	// , FindJoint, -1 - SAL : 566
+	0x00000128 : fjp		0x00000142	// , FindJoint, -1 - SAL : 567
+	0x0000012E : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 568
+	0x00000132 : call		0x00000082	// , FindJoint, -1 - SAL : 569
+	0x00000138 : popz		17 ( swReserved3 )	// , FindJoint, -1 - SAL : 570
+	0x0000013C : ujp		0x000001A4	// , FindJoint, -1 - SAL : 571
+	0x00000142 : pushz		46 ( currentLine of Function FindJoint )	// , FindJoint, -1 - SAL : 572
+	0x00000146 : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 573
+	0x0000014A : pushc		1	// , FindJoint, -1 - SAL : 574
+	0x0000014E : call		0x000001D6	// , FindJoint, -1 - SAL : 575
+	0x00000154 : call		0x00000284	// , FindJoint, -1 - SAL : 576
+	0x0000015A : eq	// , FindJoint, -1 - SAL : 577
+	0x0000015C : fjp		0x00000176	// , FindJoint, -1 - SAL : 578
+	0x00000162 : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 579
+	0x00000166 : call		0x00000082	// , FindJoint, -1 - SAL : 580
+	0x0000016C : popz		17 ( swReserved3 )	// , FindJoint, -1 - SAL : 581
+	0x00000170 : ujp		0x000001A4	// , FindJoint, -1 - SAL : 582
+	0x00000176 : pushz		46 ( currentLine of Function FindJoint )	// , FindJoint, -1 - SAL : 583
+	0x0000017A : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 584
+	0x0000017E : pushc		2	// , FindJoint, -1 - SAL : 585
+	0x00000182 : call		0x000001D6	// , FindJoint, -1 - SAL : 586
+	0x00000188 : call		0x00000284	// , FindJoint, -1 - SAL : 587
+	0x0000018E : eq	// , FindJoint, -1 - SAL : 588
+	0x00000190 : fjp		0x000001A4	// , FindJoint, -1 - SAL : 589
+	0x00000196 : pushz		48 ( i of Function FindJoint )	// , FindJoint, -1 - SAL : 590
+	0x0000019A : call		0x00000082	// , FindJoint, -1 - SAL : 591
+	0x000001A0 : popz		17 ( swReserved3 )	// , FindJoint, -1 - SAL : 592
+	0x000001A4 : incz		48 ( i of Function FindJoint )		1	// , FindJoint, -1 - SAL : 593
+	0x000001AA : ujp		0x00000102	// , FindJoint, -1 - SAL : 594
+	0x000001B0 : pushc		-1	// , FindJoint, -1 - SAL : 595
+	0x000001B4 : ret	// , FindJoint, -1 - SAL : 596
+}
+
+
+FUNCTION : GetFoundJoint()
+{
+	0x000001B6 : nop	// , GetFoundJoint, -1 - SAL : 542
+	0x000001B8 : stnz		44 ( index of Function GetFoundJoint )	// , GetFoundJoint, -1 - SAL : 543
+	0x000001BC : pushz		29 ( foundJointCount )	// , GetFoundJoint, -1 - SAL : 544
+	0x000001C0 : lt	// , GetFoundJoint, -1 - SAL : 545
+	0x000001C2 : fjp		0x000001D0	// , GetFoundJoint, -1 - SAL : 546
+	0x000001C8 : pushi		28 ( foundJoint )		44 ( index of Function GetFoundJoint )	// , GetFoundJoint, -1 - SAL : 547
+	0x000001CE : ret	// , GetFoundJoint, -1 - SAL : 548
+	0x000001D0 : pushc		-1	// , GetFoundJoint, -1 - SAL : 549
+	0x000001D4 : ret	// , GetFoundJoint, -1 - SAL : 550
+}
+
+
+FUNCTION : GetJointStationId()
+{
+	0x000001D6 : nop	// , GetJointStationId, -1 - SAL : 319
+	0x000001D8 : popz		39 ( station of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 320
+	0x000001DC : stnz		38 ( index of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 321
+	0x000001E0 : nejp		-1		0x000001EE	// , GetJointStationId, -1 - SAL : 322
+	0x000001E8 : pushc		-1	// , GetJointStationId, -1 - SAL : 323
+	0x000001EC : ret	// , GetJointStationId, -1 - SAL : 324
+	0x000001EE : ssp	// , GetJointStationId, -1 - SAL : 325
+	0x000001F0 : pushz		39 ( station of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 326
+	0x000001F4 : dup	// , GetJointStationId, -1 - SAL : 327
+	0x000001F6 : eqjp		0		0x00000218	// , GetJointStationId, -1 - SAL : 328
+	0x000001FE : dup	// , GetJointStationId, -1 - SAL : 329
+	0x00000200 : eqjp		1		0x0000022E	// , GetJointStationId, -1 - SAL : 330
+	0x00000208 : dup	// , GetJointStationId, -1 - SAL : 331
+	0x0000020A : eqjp		2		0x00000246	// , GetJointStationId, -1 - SAL : 332
+	0x00000212 : ujp		0x00000262	// , GetJointStationId, -1 - SAL : 333
+	0x00000218 : rsp	// , GetJointStationId, -1 - SAL : 334
+	0x0000021A : pushz		38 ( index of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 335
+	0x0000021E : pushc		3	// , GetJointStationId, -1 - SAL : 336
+	0x00000222 : mult	// , GetJointStationId, -1 - SAL : 337
+	0x00000224 : ldrz		26 ( Joint )	// , GetJointStationId, -1 - SAL : 338
+	0x00000228 : add	// , GetJointStationId, -1 - SAL : 339
+	0x0000022A : ixa	// , GetJointStationId, -1 - SAL : 340
+	0x0000022C : ret	// , GetJointStationId, -1 - SAL : 341
+	0x0000022E : rsp	// , GetJointStationId, -1 - SAL : 342
+	0x00000230 : pushz		38 ( index of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 343
+	0x00000234 : pushc		3	// , GetJointStationId, -1 - SAL : 344
+	0x00000238 : mult	// , GetJointStationId, -1 - SAL : 345
+	0x0000023A : ldrz		26 ( Joint )	// , GetJointStationId, -1 - SAL : 346
+	0x0000023E : add	// , GetJointStationId, -1 - SAL : 347
+	0x00000240 : inc	// , GetJointStationId, -1 - SAL : 348
+	0x00000242 : ixa	// , GetJointStationId, -1 - SAL : 349
+	0x00000244 : ret	// , GetJointStationId, -1 - SAL : 350
+	0x00000246 : rsp	// , GetJointStationId, -1 - SAL : 351
+	0x00000248 : pushz		38 ( index of Function GetJointStationId )	// , GetJointStationId, -1 - SAL : 352
+	0x0000024C : pushc		3	// , GetJointStationId, -1 - SAL : 353
+	0x00000250 : mult	// , GetJointStationId, -1 - SAL : 354
+	0x00000252 : ldrz		26 ( Joint )	// , GetJointStationId, -1 - SAL : 355
+	0x00000256 : add	// , GetJointStationId, -1 - SAL : 356
+	0x00000258 : pushc		2	// , GetJointStationId, -1 - SAL : 357
+	0x0000025C : add	// , GetJointStationId, -1 - SAL : 358
+	0x0000025E : ixa	// , GetJointStationId, -1 - SAL : 359
+	0x00000260 : ret	// , GetJointStationId, -1 - SAL : 360
+	0x00000262 : rsp	// , GetJointStationId, -1 - SAL : 361
+	0x00000264 : pushc		-1	// , GetJointStationId, -1 - SAL : 362
+	0x00000268 : ret	// , GetJointStationId, -1 - SAL : 363
+}
+
+
+FUNCTION : GetLineIndex()
+{
+	0x0000026A : nop	// , GetLineIndex, -1 - SAL : 282
+	0x0000026C : stnz		33 ( id of Function GetLineIndex )	// , GetLineIndex, -1 - SAL : 283
+	0x00000270 : pushz		33 ( id of Function GetLineIndex )	// , GetLineIndex, -1 - SAL : 284
+	0x00000274 : call		0x00000284	// , GetLineIndex, -1 - SAL : 285
+	0x0000027A : pushc		100	// , GetLineIndex, -1 - SAL : 286
+	0x0000027E : mult	// , GetLineIndex, -1 - SAL : 287
+	0x00000280 : sub	// , GetLineIndex, -1 - SAL : 288
+	0x00000282 : ret	// , GetLineIndex, -1 - SAL : 289
+}
+
+
+FUNCTION : GetLineNumber()
+{
+	0x00000284 : nop	// , GetLineNumber, -1 - SAL : 277
+	0x00000286 : stnz		32 ( id of Function GetLineNumber )	// , GetLineNumber, -1 - SAL : 278
+	0x0000028A : pushc		100	// , GetLineNumber, -1 - SAL : 279
+	0x0000028E : div	// , GetLineNumber, -1 - SAL : 280
+	0x00000290 : ret	// , GetLineNumber, -1 - SAL : 281
+}
+
+
+FUNCTION : GetNodeStationA()
+{
+	0x00000292 : nop	// , GetNodeStationA, -1 - SAL : 190
+	0x00000294 : popz		30 ( id of Function GetNodeStationA )	// , GetNodeStationA, -1 - SAL : 191
+	0x00000298 : ssp	// , GetNodeStationA, -1 - SAL : 192
+	0x0000029A : pushz		30 ( id of Function GetNodeStationA )	// , GetNodeStationA, -1 - SAL : 193
+	0x0000029E : call		0x00000284	// , GetNodeStationA, -1 - SAL : 194
+	0x000002A4 : dup	// , GetNodeStationA, -1 - SAL : 195
+	0x000002A6 : eqjp		1		0x000002C8	// , GetNodeStationA, -1 - SAL : 196
+	0x000002AE : dup	// , GetNodeStationA, -1 - SAL : 197
+	0x000002B0 : eqjp		2		0x000002E4	// , GetNodeStationA, -1 - SAL : 198
+	0x000002B8 : dup	// , GetNodeStationA, -1 - SAL : 199
+	0x000002BA : eqjp		3		0x00000300	// , GetNodeStationA, -1 - SAL : 200
+	0x000002C2 : ujp		0x0000031C	// , GetNodeStationA, -1 - SAL : 201
+	0x000002C8 : rsp	// , GetNodeStationA, -1 - SAL : 202
+	0x000002CA : pushz		30 ( id of Function GetNodeStationA )	// , GetNodeStationA, -1 - SAL : 203
+	0x000002CE : call		0x0000026A	// , GetNodeStationA, -1 - SAL : 204
+	0x000002D4 : pushc		3	// , GetNodeStationA, -1 - SAL : 205
+	0x000002D8 : mult	// , GetNodeStationA, -1 - SAL : 206
+	0x000002DA : ldrz		23 ( NodeA )	// , GetNodeStationA, -1 - SAL : 207
+	0x000002DE : add	// , GetNodeStationA, -1 - SAL : 208
+	0x000002E0 : ixa	// , GetNodeStationA, -1 - SAL : 209
+	0x000002E2 : ret	// , GetNodeStationA, -1 - SAL : 210
+	0x000002E4 : rsp	// , GetNodeStationA, -1 - SAL : 211
+	0x000002E6 : pushz		30 ( id of Function GetNodeStationA )	// , GetNodeStationA, -1 - SAL : 212
+	0x000002EA : call		0x0000026A	// , GetNodeStationA, -1 - SAL : 213
+	0x000002F0 : pushc		3	// , GetNodeStationA, -1 - SAL : 214
+	0x000002F4 : mult	// , GetNodeStationA, -1 - SAL : 215
+	0x000002F6 : ldrz		24 ( NodeB )	// , GetNodeStationA, -1 - SAL : 216
+	0x000002FA : add	// , GetNodeStationA, -1 - SAL : 217
+	0x000002FC : ixa	// , GetNodeStationA, -1 - SAL : 218
+	0x000002FE : ret	// , GetNodeStationA, -1 - SAL : 219
+	0x00000300 : rsp	// , GetNodeStationA, -1 - SAL : 220
+	0x00000302 : pushz		30 ( id of Function GetNodeStationA )	// , GetNodeStationA, -1 - SAL : 221
+	0x00000306 : call		0x0000026A	// , GetNodeStationA, -1 - SAL : 222
+	0x0000030C : pushc		3	// , GetNodeStationA, -1 - SAL : 223
+	0x00000310 : mult	// , GetNodeStationA, -1 - SAL : 224
+	0x00000312 : ldrz		25 ( NodeC )	// , GetNodeStationA, -1 - SAL : 225
+	0x00000316 : add	// , GetNodeStationA, -1 - SAL : 226
+	0x00000318 : ixa	// , GetNodeStationA, -1 - SAL : 227
+	0x0000031A : ret	// , GetNodeStationA, -1 - SAL : 228
+	0x0000031C : rsp	// , GetNodeStationA, -1 - SAL : 229
+	0x0000031E : pushc		-1	// , GetNodeStationA, -1 - SAL : 230
+	0x00000322 : ret	// , GetNodeStationA, -1 - SAL : 231
+}
+
+
+FUNCTION : GetNodeStationB()
+{
+	0x00000324 : nop	// , GetNodeStationB, -1 - SAL : 232
+	0x00000326 : popz		31 ( id of Function GetNodeStationB )	// , GetNodeStationB, -1 - SAL : 233
+	0x0000032A : ssp	// , GetNodeStationB, -1 - SAL : 234
+	0x0000032C : pushz		31 ( id of Function GetNodeStationB )	// , GetNodeStationB, -1 - SAL : 235
+	0x00000330 : call		0x00000284	// , GetNodeStationB, -1 - SAL : 236
+	0x00000336 : dup	// , GetNodeStationB, -1 - SAL : 237
+	0x00000338 : eqjp		1		0x0000035A	// , GetNodeStationB, -1 - SAL : 238
+	0x00000340 : dup	// , GetNodeStationB, -1 - SAL : 239
+	0x00000342 : eqjp		2		0x00000378	// , GetNodeStationB, -1 - SAL : 240
+	0x0000034A : dup	// , GetNodeStationB, -1 - SAL : 241
+	0x0000034C : eqjp		3		0x00000396	// , GetNodeStationB, -1 - SAL : 242
+	0x00000354 : ujp		0x000003B4	// , GetNodeStationB, -1 - SAL : 243
+	0x0000035A : rsp	// , GetNodeStationB, -1 - SAL : 244
+	0x0000035C : pushz		31 ( id of Function GetNodeStationB )	// , GetNodeStationB, -1 - SAL : 245
+	0x00000360 : call		0x0000026A	// , GetNodeStationB, -1 - SAL : 246
+	0x00000366 : pushc		3	// , GetNodeStationB, -1 - SAL : 247
+	0x0000036A : mult	// , GetNodeStationB, -1 - SAL : 248
+	0x0000036C : ldrz		23 ( NodeA )	// , GetNodeStationB, -1 - SAL : 249
+	0x00000370 : add	// , GetNodeStationB, -1 - SAL : 250
+	0x00000372 : inc	// , GetNodeStationB, -1 - SAL : 251
+	0x00000374 : ixa	// , GetNodeStationB, -1 - SAL : 252
+	0x00000376 : ret	// , GetNodeStationB, -1 - SAL : 253
+	0x00000378 : rsp	// , GetNodeStationB, -1 - SAL : 254
+	0x0000037A : pushz		31 ( id of Function GetNodeStationB )	// , GetNodeStationB, -1 - SAL : 255
+	0x0000037E : call		0x0000026A	// , GetNodeStationB, -1 - SAL : 256
+	0x00000384 : pushc		3	// , GetNodeStationB, -1 - SAL : 257
+	0x00000388 : mult	// , GetNodeStationB, -1 - SAL : 258
+	0x0000038A : ldrz		24 ( NodeB )	// , GetNodeStationB, -1 - SAL : 259
+	0x0000038E : add	// , GetNodeStationB, -1 - SAL : 260
+	0x00000390 : inc	// , GetNodeStationB, -1 - SAL : 261
+	0x00000392 : ixa	// , GetNodeStationB, -1 - SAL : 262
+	0x00000394 : ret	// , GetNodeStationB, -1 - SAL : 263
+	0x00000396 : rsp	// , GetNodeStationB, -1 - SAL : 264
+	0x00000398 : pushz		31 ( id of Function GetNodeStationB )	// , GetNodeStationB, -1 - SAL : 265
+	0x0000039C : call		0x0000026A	// , GetNodeStationB, -1 - SAL : 266
+	0x000003A2 : pushc		3	// , GetNodeStationB, -1 - SAL : 267
+	0x000003A6 : mult	// , GetNodeStationB, -1 - SAL : 268
+	0x000003A8 : ldrz		25 ( NodeC )	// , GetNodeStationB, -1 - SAL : 269
+	0x000003AC : add	// , GetNodeStationB, -1 - SAL : 270
+	0x000003AE : inc	// , GetNodeStationB, -1 - SAL : 271
+	0x000003B0 : ixa	// , GetNodeStationB, -1 - SAL : 272
+	0x000003B2 : ret	// , GetNodeStationB, -1 - SAL : 273
+	0x000003B4 : rsp	// , GetNodeStationB, -1 - SAL : 274
+	0x000003B6 : pushc		-1	// , GetNodeStationB, -1 - SAL : 275
+	0x000003BA : ret	// , GetNodeStationB, -1 - SAL : 276
+}
+
+
+FUNCTION : InitFoundJoint()
+{
+	0x000003BC : nop	// , InitFoundJoint, -1 - SAL : 526
+	0x000003BE : ldrz		28 ( foundJoint )	// , InitFoundJoint, -1 - SAL : 527
+	0x000003C2 : pushc		-1	// , InitFoundJoint, -1 - SAL : 528
+	0x000003C6 : pushc		20	// , InitFoundJoint, -1 - SAL : 529
+	0x000003CA : calls		MemSetInt(197)	// , InitFoundJoint, -1 - SAL : 530
+	0x000003CE : ret	// , InitFoundJoint, -1 - SAL : 531
+}
+
+
+FUNCTION : InitJoin()
+{
+	0x000003D0 : nop	// , InitJoin, -1 - SAL : 290
+	0x000003D2 : popz		37 ( stationIdC of Function InitJoin )	// , InitJoin, -1 - SAL : 291
+	0x000003D6 : popz		36 ( stationIdB of Function InitJoin )	// , InitJoin, -1 - SAL : 292
+	0x000003DA : popz		35 ( stationIdA of Function InitJoin )	// , InitJoin, -1 - SAL : 293
+	0x000003DE : stnz		34 ( index of Function InitJoin )	// , InitJoin, -1 - SAL : 294
+	0x000003E2 : pushc		3	// , InitJoin, -1 - SAL : 295
+	0x000003E6 : mult	// , InitJoin, -1 - SAL : 296
+	0x000003E8 : ldrz		26 ( Joint )	// , InitJoin, -1 - SAL : 297
+	0x000003EC : add	// , InitJoin, -1 - SAL : 298
+	0x000003EE : pushz		35 ( stationIdA of Function InitJoin )	// , InitJoin, -1 - SAL : 299
+	0x000003F2 : sta	// , InitJoin, -1 - SAL : 300
+	0x000003F4 : pushz		34 ( index of Function InitJoin )	// , InitJoin, -1 - SAL : 301
+	0x000003F8 : pushc		3	// , InitJoin, -1 - SAL : 302
+	0x000003FC : mult	// , InitJoin, -1 - SAL : 303
+	0x000003FE : ldrz		26 ( Joint )	// , InitJoin, -1 - SAL : 304
+	0x00000402 : add	// , InitJoin, -1 - SAL : 305
+	0x00000404 : inc	// , InitJoin, -1 - SAL : 306
+	0x00000406 : pushz		36 ( stationIdB of Function InitJoin )	// , InitJoin, -1 - SAL : 307
+	0x0000040A : sta	// , InitJoin, -1 - SAL : 308
+	0x0000040C : pushz		34 ( index of Function InitJoin )	// , InitJoin, -1 - SAL : 309
+	0x00000410 : pushc		3	// , InitJoin, -1 - SAL : 310
+	0x00000414 : mult	// , InitJoin, -1 - SAL : 311
+	0x00000416 : ldrz		26 ( Joint )	// , InitJoin, -1 - SAL : 312
+	0x0000041A : add	// , InitJoin, -1 - SAL : 313
+	0x0000041C : pushc		2	// , InitJoin, -1 - SAL : 314
+	0x00000420 : add	// , InitJoin, -1 - SAL : 315
+	0x00000422 : pushz		37 ( stationIdC of Function InitJoin )	// , InitJoin, -1 - SAL : 316
+	0x00000426 : sta	// , InitJoin, -1 - SAL : 317
+	0x00000428 : ret	// , InitJoin, -1 - SAL : 318
+}
+
+
+FUNCTION : InitSubway()
+{
+	0x0000042A : nop	// , InitSubway, -1 - SAL : 364
+	0x0000042C : zsetc		40 ( i of Function InitSubway )		0	// , InitSubway, -1 - SAL : 365
+	0x00000432 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 366
+	0x00000436 : gejp		10		0x000004BA	// , InitSubway, -1 - SAL : 367
+	0x0000043E : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 368
+	0x00000442 : pushc		2	// , InitSubway, -1 - SAL : 369
+	0x00000446 : mult	// , InitSubway, -1 - SAL : 370
+	0x00000448 : ldrz		20 ( StationA )	// , InitSubway, -1 - SAL : 371
+	0x0000044C : add	// , InitSubway, -1 - SAL : 372
+	0x0000044E : pushi		27 ( stationName )		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 373
+	0x00000454 : sta	// , InitSubway, -1 - SAL : 374
+	0x00000456 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 375
+	0x0000045A : pushc		3	// , InitSubway, -1 - SAL : 376
+	0x0000045E : mult	// , InitSubway, -1 - SAL : 377
+	0x00000460 : ldrz		23 ( NodeA )	// , InitSubway, -1 - SAL : 378
+	0x00000464 : add	// , InitSubway, -1 - SAL : 379
+	0x00000466 : pushc		2	// , InitSubway, -1 - SAL : 380
+	0x0000046A : add	// , InitSubway, -1 - SAL : 381
+	0x0000046C : pushc		3	// , InitSubway, -1 - SAL : 382
+	0x00000470 : sta	// , InitSubway, -1 - SAL : 383
+	0x00000472 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 384
+	0x00000476 : gejp		9		0x000004AE	// , InitSubway, -1 - SAL : 385
+	0x0000047E : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 386
+	0x00000482 : pushc		3	// , InitSubway, -1 - SAL : 387
+	0x00000486 : mult	// , InitSubway, -1 - SAL : 388
+	0x00000488 : ldrz		23 ( NodeA )	// , InitSubway, -1 - SAL : 389
+	0x0000048C : add	// , InitSubway, -1 - SAL : 390
+	0x0000048E : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 391
+	0x00000492 : sta	// , InitSubway, -1 - SAL : 392
+	0x00000494 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 393
+	0x00000498 : pushc		3	// , InitSubway, -1 - SAL : 394
+	0x0000049C : mult	// , InitSubway, -1 - SAL : 395
+	0x0000049E : ldrz		23 ( NodeA )	// , InitSubway, -1 - SAL : 396
+	0x000004A2 : add	// , InitSubway, -1 - SAL : 397
+	0x000004A4 : inc	// , InitSubway, -1 - SAL : 398
+	0x000004A6 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 399
+	0x000004AA : inc	// , InitSubway, -1 - SAL : 400
+	0x000004AC : sta	// , InitSubway, -1 - SAL : 401
+	0x000004AE : incz		40 ( i of Function InitSubway )		1	// , InitSubway, -1 - SAL : 402
+	0x000004B4 : ujp		0x00000432	// , InitSubway, -1 - SAL : 403
+	0x000004BA : zsetc		40 ( i of Function InitSubway )		0	// , InitSubway, -1 - SAL : 404
+	0x000004C0 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 405
+	0x000004C4 : gejp		10		0x00000554	// , InitSubway, -1 - SAL : 406
+	0x000004CC : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 407
+	0x000004D0 : pushc		2	// , InitSubway, -1 - SAL : 408
+	0x000004D4 : mult	// , InitSubway, -1 - SAL : 409
+	0x000004D6 : ldrz		21 ( StationB )	// , InitSubway, -1 - SAL : 410
+	0x000004DA : add	// , InitSubway, -1 - SAL : 411
+	0x000004DC : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 412
+	0x000004E0 : pushc		10	// , InitSubway, -1 - SAL : 413
+	0x000004E4 : add	// , InitSubway, -1 - SAL : 414
+	0x000004E6 : ldrz		27 ( stationName )	// , InitSubway, -1 - SAL : 415
+	0x000004EA : add	// , InitSubway, -1 - SAL : 416
+	0x000004EC : ixa	// , InitSubway, -1 - SAL : 417
+	0x000004EE : sta	// , InitSubway, -1 - SAL : 418
+	0x000004F0 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 419
+	0x000004F4 : pushc		3	// , InitSubway, -1 - SAL : 420
+	0x000004F8 : mult	// , InitSubway, -1 - SAL : 421
+	0x000004FA : ldrz		24 ( NodeB )	// , InitSubway, -1 - SAL : 422
+	0x000004FE : add	// , InitSubway, -1 - SAL : 423
+	0x00000500 : pushc		2	// , InitSubway, -1 - SAL : 424
+	0x00000504 : add	// , InitSubway, -1 - SAL : 425
+	0x00000506 : pushc		3	// , InitSubway, -1 - SAL : 426
+	0x0000050A : sta	// , InitSubway, -1 - SAL : 427
+	0x0000050C : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 428
+	0x00000510 : gejp		9		0x00000548	// , InitSubway, -1 - SAL : 429
+	0x00000518 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 430
+	0x0000051C : pushc		3	// , InitSubway, -1 - SAL : 431
+	0x00000520 : mult	// , InitSubway, -1 - SAL : 432
+	0x00000522 : ldrz		24 ( NodeB )	// , InitSubway, -1 - SAL : 433
+	0x00000526 : add	// , InitSubway, -1 - SAL : 434
+	0x00000528 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 435
+	0x0000052C : sta	// , InitSubway, -1 - SAL : 436
+	0x0000052E : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 437
+	0x00000532 : pushc		3	// , InitSubway, -1 - SAL : 438
+	0x00000536 : mult	// , InitSubway, -1 - SAL : 439
+	0x00000538 : ldrz		24 ( NodeB )	// , InitSubway, -1 - SAL : 440
+	0x0000053C : add	// , InitSubway, -1 - SAL : 441
+	0x0000053E : inc	// , InitSubway, -1 - SAL : 442
+	0x00000540 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 443
+	0x00000544 : inc	// , InitSubway, -1 - SAL : 444
+	0x00000546 : sta	// , InitSubway, -1 - SAL : 445
+	0x00000548 : incz		40 ( i of Function InitSubway )		1	// , InitSubway, -1 - SAL : 446
+	0x0000054E : ujp		0x000004C0	// , InitSubway, -1 - SAL : 447
+	0x00000554 : zsetc		40 ( i of Function InitSubway )		0	// , InitSubway, -1 - SAL : 448
+	0x0000055A : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 449
+	0x0000055E : gejp		10		0x000005EE	// , InitSubway, -1 - SAL : 450
+	0x00000566 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 451
+	0x0000056A : pushc		2	// , InitSubway, -1 - SAL : 452
+	0x0000056E : mult	// , InitSubway, -1 - SAL : 453
+	0x00000570 : ldrz		22 ( StationC )	// , InitSubway, -1 - SAL : 454
+	0x00000574 : add	// , InitSubway, -1 - SAL : 455
+	0x00000576 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 456
+	0x0000057A : pushc		20	// , InitSubway, -1 - SAL : 457
+	0x0000057E : add	// , InitSubway, -1 - SAL : 458
+	0x00000580 : ldrz		27 ( stationName )	// , InitSubway, -1 - SAL : 459
+	0x00000584 : add	// , InitSubway, -1 - SAL : 460
+	0x00000586 : ixa	// , InitSubway, -1 - SAL : 461
+	0x00000588 : sta	// , InitSubway, -1 - SAL : 462
+	0x0000058A : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 463
+	0x0000058E : pushc		3	// , InitSubway, -1 - SAL : 464
+	0x00000592 : mult	// , InitSubway, -1 - SAL : 465
+	0x00000594 : ldrz		25 ( NodeC )	// , InitSubway, -1 - SAL : 466
+	0x00000598 : add	// , InitSubway, -1 - SAL : 467
+	0x0000059A : pushc		2	// , InitSubway, -1 - SAL : 468
+	0x0000059E : add	// , InitSubway, -1 - SAL : 469
+	0x000005A0 : pushc		3	// , InitSubway, -1 - SAL : 470
+	0x000005A4 : sta	// , InitSubway, -1 - SAL : 471
+	0x000005A6 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 472
+	0x000005AA : gejp		9		0x000005E2	// , InitSubway, -1 - SAL : 473
+	0x000005B2 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 474
+	0x000005B6 : pushc		3	// , InitSubway, -1 - SAL : 475
+	0x000005BA : mult	// , InitSubway, -1 - SAL : 476
+	0x000005BC : ldrz		25 ( NodeC )	// , InitSubway, -1 - SAL : 477
+	0x000005C0 : add	// , InitSubway, -1 - SAL : 478
+	0x000005C2 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 479
+	0x000005C6 : sta	// , InitSubway, -1 - SAL : 480
+	0x000005C8 : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 481
+	0x000005CC : pushc		3	// , InitSubway, -1 - SAL : 482
+	0x000005D0 : mult	// , InitSubway, -1 - SAL : 483
+	0x000005D2 : ldrz		25 ( NodeC )	// , InitSubway, -1 - SAL : 484
+	0x000005D6 : add	// , InitSubway, -1 - SAL : 485
+	0x000005D8 : inc	// , InitSubway, -1 - SAL : 486
+	0x000005DA : pushz		40 ( i of Function InitSubway )	// , InitSubway, -1 - SAL : 487
+	0x000005DE : inc	// , InitSubway, -1 - SAL : 488
+	0x000005E0 : sta	// , InitSubway, -1 - SAL : 489
+	0x000005E2 : incz		40 ( i of Function InitSubway )		1	// , InitSubway, -1 - SAL : 490
+	0x000005E8 : ujp		0x0000055A	// , InitSubway, -1 - SAL : 491
+	0x000005EE : pushc		0	// , InitSubway, -1 - SAL : 492
+	0x000005F2 : pushc		106	// , InitSubway, -1 - SAL : 493
+	0x000005F6 : pushc		206	// , InitSubway, -1 - SAL : 494
+	0x000005FA : pushc		-1	// , InitSubway, -1 - SAL : 495
+	0x000005FE : call		0x000003D0	// , InitSubway, -1 - SAL : 496
+	0x00000604 : pushc		1	// , InitSubway, -1 - SAL : 497
+	0x00000608 : pushc		108	// , InitSubway, -1 - SAL : 498
+	0x0000060C : pushc		308	// , InitSubway, -1 - SAL : 499
+	0x00000610 : pushc		-1	// , InitSubway, -1 - SAL : 500
+	0x00000614 : call		0x000003D0	// , InitSubway, -1 - SAL : 501
+	0x0000061A : pushc		2	// , InitSubway, -1 - SAL : 502
+	0x0000061E : pushc		203	// , InitSubway, -1 - SAL : 503
+	0x00000622 : pushc		303	// , InitSubway, -1 - SAL : 504
+	0x00000626 : pushc		-1	// , InitSubway, -1 - SAL : 505
+	0x0000062A : call		0x000003D0	// , InitSubway, -1 - SAL : 506
+	0x00000630 : pushc		3	// , InitSubway, -1 - SAL : 507
+	0x00000634 : pushc		208	// , InitSubway, -1 - SAL : 508
+	0x00000638 : pushc		306	// , InitSubway, -1 - SAL : 509
+	0x0000063C : pushc		-1	// , InitSubway, -1 - SAL : 510
+	0x00000640 : call		0x000003D0	// , InitSubway, -1 - SAL : 511
+	0x00000646 : ret	// , InitSubway, -1 - SAL : 512
+}
+
+
+FUNCTION : RouteStation()
+{
+	0x00000648 : nop	// , RouteStation, -1 - SAL : 517
+	0x0000064A : popz		42 ( stationEnd of Function RouteStation )	// , RouteStation, -1 - SAL : 518
+	0x0000064E : popz		41 ( stationStart of Function RouteStation )	// , RouteStation, -1 - SAL : 519
+	0x00000652 : zsetc		41 ( stationStart of Function RouteStation )		200	// , RouteStation, -1 - SAL : 520
+	0x00000658 : zsetc		42 ( stationEnd of Function RouteStation )		305	// , RouteStation, -1 - SAL : 521
+	0x0000065E : pushz		41 ( stationStart of Function RouteStation )	// , RouteStation, -1 - SAL : 522
+	0x00000662 : call		0x000000DE	// , RouteStation, -1 - SAL : 523
+	0x00000668 : popz		17 ( swReserved3 )	// , RouteStation, -1 - SAL : 524
+	0x0000066C : ret	// , RouteStation, -1 - SAL : 525
+}
+
+
+FUNCTION : SearchStation()
+{
+	0x0000066E : nop	// , SearchStation, -1 - SAL : 513
+	0x00000670 : ssp	// , SearchStation, -1 - SAL : 514
+	0x00000672 : rsp	// , SearchStation, -1 - SAL : 515
+	0x00000674 : ret	// , SearchStation, -1 - SAL : 516
+}
+
+
+FUNCTION : main()
+{
+	0x00000676 : nop	// , main, -1 - SAL : 597
+	0x00000678 : call		0x00000080	// , main, -1 - SAL : 598
+	0x0000067E : call		0x0000042A	// , main, -1 - SAL : 599
+	0x00000684 : call		0x000003BC	// , main, -1 - SAL : 600
+	0x0000068A : calls		ClearWhite(58)	// , main, -1 - SAL : 601
+	0x0000068E : pushc		0	// , main, -1 - SAL : 602
+	0x00000692 : pushc		305	// , main, -1 - SAL : 603
+	0x00000696 : call		0x00000648	// , main, -1 - SAL : 604
+	0x0000069C : pushc		10	// , main, -1 - SAL : 605
+	0x000006A0 : pushc		10	// , main, -1 - SAL : 606
+	0x000006A4 : pushc		0	// , main, -1 - SAL : 607
+	0x000006A8 : call		0x000001B6	// , main, -1 - SAL : 608
+	0x000006AE : pushc		0	// , main, -1 - SAL : 609
+	0x000006B2 : call		0x000001D6	// , main, -1 - SAL : 610
+	0x000006B8 : call		0x000000AE	// , main, -1 - SAL : 611
+	0x000006BE : pushc		10	// , main, -1 - SAL : 612
+	0x000006C2 : pushc		30	// , main, -1 - SAL : 613
+	0x000006C6 : pushc		1	// , main, -1 - SAL : 614
+	0x000006CA : call		0x000001B6	// , main, -1 - SAL : 615
+	0x000006D0 : pushc		0	// , main, -1 - SAL : 616
+	0x000006D4 : call		0x000001D6	// , main, -1 - SAL : 617
+	0x000006DA : call		0x000000AE	// , main, -1 - SAL : 618
+	0x000006E0 : pushc		10	// , main, -1 - SAL : 619
+	0x000006E4 : pushc		50	// , main, -1 - SAL : 620
+	0x000006E8 : pushc		2	// , main, -1 - SAL : 621
+	0x000006EC : call		0x000001B6	// , main, -1 - SAL : 622
+	0x000006F2 : pushc		0	// , main, -1 - SAL : 623
+	0x000006F6 : call		0x000001D6	// , main, -1 - SAL : 624
+	0x000006FC : call		0x000000AE	// , main, -1 - SAL : 625
+	0x00000702 : pushc		10	// , main, -1 - SAL : 626
+	0x00000706 : pushc		70	// , main, -1 - SAL : 627
+	0x0000070A : pushc		3	// , main, -1 - SAL : 628
+	0x0000070E : call		0x000001B6	// , main, -1 - SAL : 629
+	0x00000714 : pushc		0	// , main, -1 - SAL : 630
+	0x00000718 : call		0x000001D6	// , main, -1 - SAL : 631
+	0x0000071E : call		0x000000AE	// , main, -1 - SAL : 632
+	0x00000724 : pushc		50	// , main, -1 - SAL : 633
+	0x00000728 : pushc		10	// , main, -1 - SAL : 634
+	0x0000072C : pushic		28 ( foundJoint )		0	// , main, -1 - SAL : 635
+	0x00000732 : call		0x000000AE	// , main, -1 - SAL : 636
+	0x00000738 : pushc		50	// , main, -1 - SAL : 637
+	0x0000073C : pushc		30	// , main, -1 - SAL : 638
+	0x00000740 : pushic		28 ( foundJoint )		1	// , main, -1 - SAL : 639
+	0x00000746 : call		0x000000AE	// , main, -1 - SAL : 640
+	0x0000074C : pushc		50	// , main, -1 - SAL : 641
+	0x00000750 : pushc		50	// , main, -1 - SAL : 642
+	0x00000754 : pushic		28 ( foundJoint )		2	// , main, -1 - SAL : 643
+	0x0000075A : call		0x000000AE	// , main, -1 - SAL : 644
+	0x00000760 : pushc		50	// , main, -1 - SAL : 645
+	0x00000764 : pushc		70	// , main, -1 - SAL : 646
+	0x00000768 : pushic		28 ( foundJoint )		3	// , main, -1 - SAL : 647
+	0x0000076E : call		0x000000AE	// , main, -1 - SAL : 648
+	0x00000774 : calls		Flush(95)	// , main, -1 - SAL : 649
+	0x00000778 : end	// , main, -1 - SAL : 650
+}
+
+====================== SYMBOL TABLE =====================
+
+========================================================
+			SYMBOL TABLE
+
+--------------------------------------------------------
+	  VALID VAR(STATIC) : 0 - ().swData
+	  VALID VAR(STATIC) : 1 - ().swData2
+	  VALID VAR(STATIC) : 2 - ().swData3
+	  VALID VAR(STATIC) : 3 - ().swData4
+	  VALID VAR(STATIC) : 4 - ().swWidth
+	  VALID VAR(STATIC) : 5 - ().swHeight
+	  VALID VAR(STATIC) : 6 - ().swFrame
+	  VALID VAR(STATIC) : 7 - ().swFrame2
+	  VALID VAR(STATIC) : 8 - ().swFrame3
+	  VALID VAR(STATIC) : 9 - ().swFrame6
+	  VALID VAR(STATIC) : 10 - ().swVMver
+	  VALID VAR(STATIC) : 11 - ().swModel
+	  VALID VAR(STATIC) : 12 - ().swSmsRcvBuf
+	  VALID VAR(STATIC) : 13 - ().swRsRcvBuf
+	  VALID VAR(STATIC) : 14 - ().swRcvBuf
+	  VALID VAR(STATIC) : 15 - ().swReserved1
+	  VALID VAR(STATIC) : 16 - ().swReserved2
+	  VALID VAR(STATIC) : 17 - ().swReserved3
+	  VALID VAR(STATIC) : 18 - ().swReserved4
+	  VALID VAR(STATIC) : 19 - ().swSbuf
+	  VALID VAR(STATIC) : 20 - ().StationA
+	  VALID VAR(STATIC) : 21 - ().StationB
+	  VALID VAR(STATIC) : 22 - ().StationC
+	  VALID VAR(STATIC) : 23 - ().NodeA
+	  VALID VAR(STATIC) : 24 - ().NodeB
+	  VALID VAR(STATIC) : 25 - ().NodeC
+	  VALID VAR(STATIC) : 26 - ().Joint
+	  VALID VAR(STATIC) : 27 - ().stationName
+	  VALID VAR(STATIC) : 28 - ().foundJoint
+	  VALID VAR(STATIC) : 29 - ().foundJointCount
+	  VALID VAR(STATIC) : 30 - GetNodeStationA().id
+	  VALID VAR(STATIC) : 31 - GetNodeStationB().id
+	  VALID VAR(STATIC) : 32 - GetLineNumber().id
+	  VALID VAR(STATIC) : 33 - GetLineIndex().id
+	  VALID VAR(STATIC) : 34 - InitJoin().index
+	  VALID VAR(STATIC) : 35 - InitJoin().stationIdA
+	  VALID VAR(STATIC) : 36 - InitJoin().stationIdB
+	  VALID VAR(STATIC) : 37 - InitJoin().stationIdC
+	  VALID VAR(STATIC) : 38 - GetJointStationId().index
+	  VALID VAR(STATIC) : 39 - GetJointStationId().station
+	  VALID VAR(STATIC) : 40 - InitSubway().i
+	  VALID VAR(STATIC) : 41 - RouteStation().stationStart
+	  VALID VAR(STATIC) : 42 - RouteStation().stationEnd
+	  VALID VAR(STATIC) : 43 - AddFoundJoint().jointIndex
+	  VALID VAR(STATIC) : 44 - GetFoundJoint().index
+	  VALID VAR(STATIC) : 45 - FindJoint().currentId
+	  VALID VAR(STATIC) : 46 - FindJoint().currentLine
+	  VALID VAR(STATIC) : 47 - FindJoint().currentLineIndex
+	  VALID VAR(STATIC) : 48 - FindJoint().i
+	  VALID VAR(STATIC) : 49 - DrawInt().x
+	  VALID VAR(STATIC) : 50 - DrawInt().y
+	  VALID VAR(STATIC) : 51 - DrawInt().value
+	  VALID VAR(STATIC) : 52 - DrawInt().tempString
+========================================================
+
+============================== SYMBOL POOL ==============================
+0  th SYMBOL POOL[0x00000924] : Real Offset 0x00000924
+1  th SYMBOL POOL[0x00000928] : Real Offset 0x00000928
+2  th SYMBOL POOL[0x0000092C] : Real Offset 0x0000092C
+3  th SYMBOL POOL[0x00000930] : Real Offset 0x00000930
+4  th SYMBOL POOL[0x00000934] : Real Offset 0x00000934
+5  th SYMBOL POOL[0x00000938] : Real Offset 0x00000938
+6  th SYMBOL POOL[0x0000093C] : Real Offset 0x0000093C
+7  th SYMBOL POOL[0x00000940] : Real Offset 0x00000940
+8  th SYMBOL POOL[0x00000944] : Real Offset 0x00000944
+9  th SYMBOL POOL[0x00000948] : Real Offset 0x00000948
+10 th SYMBOL POOL[0x0000094C] : Real Offset 0x0000094C
+11 th SYMBOL POOL[0x00000958] : Real Offset 0x00000958
+12 th SYMBOL POOL[0x00000978] : Real Offset 0x00000978
+13 th SYMBOL POOL[0x00000A1C] : Real Offset 0x00000A1C
+14 th SYMBOL POOL[0x00000C1C] : Real Offset 0x00000C1C
+15 th SYMBOL POOL[0x0000101C] : Real Offset 0x0000101C
+16 th SYMBOL POOL[0x00001020] : Real Offset 0x00001020
+17 th SYMBOL POOL[0x00001024] : Real Offset 0x00001024
+18 th SYMBOL POOL[0x00001028] : Real Offset 0x00001028
+19 th SYMBOL POOL[0x0000102C] : Real Offset 0x0000102C
+20 th SYMBOL POOL[0x00001030] : Real Offset 0x00001030
+21 th SYMBOL POOL[0x00001080] : Real Offset 0x00001080
+22 th SYMBOL POOL[0x000010D0] : Real Offset 0x000010D0
+23 th SYMBOL POOL[0x00001120] : Real Offset 0x00001120
+24 th SYMBOL POOL[0x0000118C] : Real Offset 0x0000118C
+25 th SYMBOL POOL[0x000011F8] : Real Offset 0x000011F8
+26 th SYMBOL POOL[0x00001264] : Real Offset 0x00001264
+27 th SYMBOL POOL[0x000012DC] : Real Offset 0x000012DC
+28 th SYMBOL POOL[0x00001354] : Real Offset 0x00001354
+29 th SYMBOL POOL[0x000013A4] : Real Offset 0x000013A4
+30 th SYMBOL POOL[0x000013A8] : Real Offset 0x000013A8
+31 th SYMBOL POOL[0x000013AC] : Real Offset 0x000013AC
+32 th SYMBOL POOL[0x000013B0] : Real Offset 0x000013B0
+33 th SYMBOL POOL[0x000013B4] : Real Offset 0x000013B4
+34 th SYMBOL POOL[0x000013B8] : Real Offset 0x000013B8
+35 th SYMBOL POOL[0x000013BC] : Real Offset 0x000013BC
+36 th SYMBOL POOL[0x000013C0] : Real Offset 0x000013C0
+37 th SYMBOL POOL[0x000013C4] : Real Offset 0x000013C4
+38 th SYMBOL POOL[0x000013C8] : Real Offset 0x000013C8
+39 th SYMBOL POOL[0x000013CC] : Real Offset 0x000013CC
+40 th SYMBOL POOL[0x000013D0] : Real Offset 0x000013D0
+41 th SYMBOL POOL[0x000013D4] : Real Offset 0x000013D4
+42 th SYMBOL POOL[0x000013D8] : Real Offset 0x000013D8
+43 th SYMBOL POOL[0x000013DC] : Real Offset 0x000013DC
+44 th SYMBOL POOL[0x000013E0] : Real Offset 0x000013E0
+45 th SYMBOL POOL[0x000013E4] : Real Offset 0x000013E4
+46 th SYMBOL POOL[0x000013E8] : Real Offset 0x000013E8
+47 th SYMBOL POOL[0x000013EC] : Real Offset 0x000013EC
+48 th SYMBOL POOL[0x000013F0] : Real Offset 0x000013F0
+49 th SYMBOL POOL[0x000013F4] : Real Offset 0x000013F4
+50 th SYMBOL POOL[0x000013F8] : Real Offset 0x000013F8
+51 th SYMBOL POOL[0x000013FC] : Real Offset 0x000013FC
+52 th SYMBOL POOL[0x00001400] : Real Offset 0x00001400

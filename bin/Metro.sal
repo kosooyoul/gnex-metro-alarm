@@ -1,0 +1,663 @@
+@HEADER_SECTION
+	#DEFINE PLAYERVER	4
+	#DEFINE LCDCLASS	255
+	#DEFINE IMAGETYPE	255
+	#DEFINE AUDIOTYPE	255
+	#DEFINE APPTYPE		1
+	#DEFINE APPCPID		60000
+	#DEFINE APPID		1
+	#DEFINE APPNAME		"Metro GNEX App"
+	#DEFINE COMPTYPE	0
+	#DEFINE AGENTTYPE	0
+	#DEFINE VALIDCOUNT	255
+	#DEFINE VALIDTERM	255
+	#DEFINE DIRECTRUN	0
+	#DEFINE APPVER		1
+@DATA_SECTION
+@GLOBAL_INTSYMBOL_TABLE
+.sym 	&swData 	    0     1
+.sym 	&swData2 	    1     1
+.sym 	&swData3 	    2     1
+.sym 	&swData4 	    3     1
+.sym 	&swWidth 	    4     1
+.sym 	&swHeight 	    5     1
+.sym 	&swFrame 	    6     1
+.sym 	&swFrame2 	    7     1
+.sym 	&swFrame3 	    8     1
+.sym 	&swFrame6 	    9     1
+.syma 	&swVMver 	   10     3     0
+.syma 	&swModel 	   11     8     0
+.syma 	&swSmsRcvBuf 	   12    41     0
+.syma 	&swRsRcvBuf 	   13   128     0
+.syma 	&swRcvBuf 	   14   256     0
+.sym 	&swReserved1 	   15     1
+.sym 	&swReserved2 	   16     1
+.sym 	&swReserved3 	   17     1
+.sym 	&swReserved4 	   18     1
+.sym 	&swSbuf 	   19     1
+.syma 	&StationA 	   20    20     0
+.syma 	&StationB 	   21    20     0
+.syma 	&StationC 	   22    20     0
+.syma 	&NodeA 	   23    27     0
+.syma 	&NodeB 	   24    27     0
+.syma 	&NodeC 	   25    27     0
+.syma 	&Joint 	   26    30     0
+.equa 	&stationName 	   27    30
+ %%0 %%1 %%2 %%3 %%4 %%5 %%6 %%7 %%8 %%9
+ %%10 %%11 %%12 %%13 %%14 %%15 %%16 %%17 %%18 %%19
+ %%20 %%21 %%22 %%23 %%24 %%25 %%26 %%27 %%28 %%29
+.syma 	&foundJoint 	   28    20     0
+.equ 	&foundJointCount 	   29     0     0
+.sym 	GetNodeStationA&id 	   30     1
+.sym 	GetNodeStationB&id 	   31     1
+.sym 	GetLineNumber&id 	   32     1
+.sym 	GetLineIndex&id 	   33     1
+.sym 	InitJoin&index 	   34     1
+.sym 	InitJoin&stationIdA 	   35     1
+.sym 	InitJoin&stationIdB 	   36     1
+.sym 	InitJoin&stationIdC 	   37     1
+.sym 	GetJointStationId&index 	   38     1
+.sym 	GetJointStationId&station 	   39     1
+.sym 	InitSubway&i 	   40     1
+.sym 	RouteStation&stationStart 	   41     1
+.sym 	RouteStation&stationEnd 	   42     1
+.sym 	AddFoundJoint&jointIndex 	   43     1
+.sym 	GetFoundJoint&index 	   44     1
+.sym 	FindJoint&currentId 	   45     1
+.sym 	FindJoint&currentLine 	   46     1
+.sym 	FindJoint&currentLineIndex 	   47     1
+.sym 	FindJoint&i 	   48     1
+.sym 	DrawInt&x 	   49     1
+.sym 	DrawInt&y 	   50     1
+.sym 	DrawInt&value 	   51     1
+.equ 	DrawInt&tempString 	   52   %%31     1
+@EXTERN_INTSYMBOL_TABLE
+@STATIC_FUNC_TABLE
+.func     GetNodeStationA 	1	
+.func     GetNodeStationB 	1	
+.func     GetLineNumber 	1	
+.func     GetLineIndex 	1	
+.func     InitJoin 	4	
+.func     GetJointStationId 	2	
+.func     InitSubway 	0	
+.func     SearchStation 	0	
+.func     RouteStation 	2	
+.func     InitFoundJoint 	0	
+.func     AddFoundJoint 	1	
+.func     GetFoundJoint 	1	
+.func     FindJoint 	1	
+.func     DrawInt 	3	
+@EXTERN_FUNC_TABLE
+@IMPORT_FUNC_TABLE
+@EXPORT_FUNC_TABLE
+@MEDIA_SYMBOL_TABLE
+.equm 	%%0 	    0     0     6
+// string form = "NA100"
+    0x4e 0x41 0x31 0x30 0x30 0x00
+.equm 	%%1 	    1     0     6
+// string form = "NA101"
+    0x4e 0x41 0x31 0x30 0x31 0x00
+.equm 	%%2 	    2     0     6
+// string form = "NA102"
+    0x4e 0x41 0x31 0x30 0x32 0x00
+.equm 	%%3 	    3     0     6
+// string form = "NA103"
+    0x4e 0x41 0x31 0x30 0x33 0x00
+.equm 	%%4 	    4     0     6
+// string form = "NA104"
+    0x4e 0x41 0x31 0x30 0x34 0x00
+.equm 	%%5 	    5     0     6
+// string form = "NA105"
+    0x4e 0x41 0x31 0x30 0x35 0x00
+.equm 	%%6 	    6     0     6
+// string form = "NA106"
+    0x4e 0x41 0x31 0x30 0x36 0x00
+.equm 	%%7 	    7     0     6
+// string form = "NA107"
+    0x4e 0x41 0x31 0x30 0x37 0x00
+.equm 	%%8 	    8     0     6
+// string form = "NA108"
+    0x4e 0x41 0x31 0x30 0x38 0x00
+.equm 	%%9 	    9     0     6
+// string form = "NA109"
+    0x4e 0x41 0x31 0x30 0x39 0x00
+.equm 	%%10 	   10     0     6
+// string form = "NB200"
+    0x4e 0x42 0x32 0x30 0x30 0x00
+.equm 	%%11 	   11     0     6
+// string form = "NB201"
+    0x4e 0x42 0x32 0x30 0x31 0x00
+.equm 	%%12 	   12     0     6
+// string form = "NB202"
+    0x4e 0x42 0x32 0x30 0x32 0x00
+.equm 	%%13 	   13     0     6
+// string form = "NB203"
+    0x4e 0x42 0x32 0x30 0x33 0x00
+.equm 	%%14 	   14     0     6
+// string form = "NB204"
+    0x4e 0x42 0x32 0x30 0x34 0x00
+.equm 	%%15 	   15     0     6
+// string form = "NB205"
+    0x4e 0x42 0x32 0x30 0x35 0x00
+.equm 	%%16 	   16     0     6
+// string form = "NB206"
+    0x4e 0x42 0x32 0x30 0x36 0x00
+.equm 	%%17 	   17     0     6
+// string form = "NB207"
+    0x4e 0x42 0x32 0x30 0x37 0x00
+.equm 	%%18 	   18     0     6
+// string form = "NB208"
+    0x4e 0x42 0x32 0x30 0x38 0x00
+.equm 	%%19 	   19     0     6
+// string form = "NB209"
+    0x4e 0x42 0x32 0x30 0x39 0x00
+.equm 	%%20 	   20     0     6
+// string form = "NC300"
+    0x4e 0x43 0x33 0x30 0x30 0x00
+.equm 	%%21 	   21     0     6
+// string form = "NC301"
+    0x4e 0x43 0x33 0x30 0x31 0x00
+.equm 	%%22 	   22     0     6
+// string form = "NC302"
+    0x4e 0x43 0x33 0x30 0x32 0x00
+.equm 	%%23 	   23     0     6
+// string form = "NC303"
+    0x4e 0x43 0x33 0x30 0x33 0x00
+.equm 	%%24 	   24     0     6
+// string form = "NC304"
+    0x4e 0x43 0x33 0x30 0x34 0x00
+.equm 	%%25 	   25     0     6
+// string form = "NC305"
+    0x4e 0x43 0x33 0x30 0x35 0x00
+.equm 	%%26 	   26     0     6
+// string form = "NC306"
+    0x4e 0x43 0x33 0x30 0x36 0x00
+.equm 	%%27 	   27     0     6
+// string form = "NC307"
+    0x4e 0x43 0x33 0x30 0x37 0x00
+.equm 	%%28 	   28     0     6
+// string form = "NC308"
+    0x4e 0x43 0x33 0x30 0x38 0x00
+.equm 	%%29 	   29     0     6
+// string form = "NC309"
+    0x4e 0x43 0x33 0x30 0x39 0x00
+.equm 	%%30 	   30     0     3
+// string form = "%d"
+    0x25 0x64 0x00
+.symm 	%%31 	   31     0     0
+@CODE_SECTION
+$init:     ret      
+GetNodeStationA: nop 
+           popz     GetNodeStationA&id   
+           ssp      
+           pushz    GetNodeStationA&id   
+           call     GetLineNumber:
+           dup      
+           eqjp     1   $$1:
+           dup      
+           eqjp     2   $$2:
+           dup      
+           eqjp     3   $$3:
+           ujp      $$4:
+$$1:       rsp      
+           pushz    GetNodeStationA&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeA   
+           add      
+           ixa      
+           ret      
+$$2:       rsp      
+           pushz    GetNodeStationA&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeB   
+           add      
+           ixa      
+           ret      
+$$3:       rsp      
+           pushz    GetNodeStationA&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeC   
+           add      
+           ixa      
+           ret      
+$$4:       rsp      
+           pushc    -1   
+           ret      
+GetNodeStationB: nop 
+           popz     GetNodeStationB&id   
+           ssp      
+           pushz    GetNodeStationB&id   
+           call     GetLineNumber:
+           dup      
+           eqjp     1   $$6:
+           dup      
+           eqjp     2   $$7:
+           dup      
+           eqjp     3   $$8:
+           ujp      $$9:
+$$6:       rsp      
+           pushz    GetNodeStationB&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeA   
+           add      
+           inc      
+           ixa      
+           ret      
+$$7:       rsp      
+           pushz    GetNodeStationB&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeB   
+           add      
+           inc      
+           ixa      
+           ret      
+$$8:       rsp      
+           pushz    GetNodeStationB&id   
+           call     GetLineIndex:
+           pushc    3   
+           mult     
+           ldrz     &NodeC   
+           add      
+           inc      
+           ixa      
+           ret      
+$$9:       rsp      
+           pushc    -1   
+           ret      
+GetLineNumber: nop  
+           stnz     GetLineNumber&id   
+           pushc    100   
+           div      
+           ret      
+GetLineIndex: nop   
+           stnz     GetLineIndex&id   
+           pushz    GetLineIndex&id   
+           call     GetLineNumber:
+           pushc    100   
+           mult     
+           sub      
+           ret      
+InitJoin:  nop      
+           popz     InitJoin&stationIdC   
+           popz     InitJoin&stationIdB   
+           popz     InitJoin&stationIdA   
+           stnz     InitJoin&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           pushz    InitJoin&stationIdA   
+           sta      
+           pushz    InitJoin&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           inc      
+           pushz    InitJoin&stationIdB   
+           sta      
+           pushz    InitJoin&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           pushc    2   
+           add      
+           pushz    InitJoin&stationIdC   
+           sta      
+           ret      
+GetJointStationId: nop 
+           popz     GetJointStationId&station   
+           stnz     GetJointStationId&index   
+           nejp     -1   $$10:
+           pushc    -1   
+           ret      
+$$10:      ssp      
+           pushz    GetJointStationId&station   
+           dup      
+           eqjp     0   $$12:
+           dup      
+           eqjp     1   $$13:
+           dup      
+           eqjp     2   $$14:
+           ujp      $$15:
+$$12:      rsp      
+           pushz    GetJointStationId&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           ixa      
+           ret      
+$$13:      rsp      
+           pushz    GetJointStationId&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           inc      
+           ixa      
+           ret      
+$$14:      rsp      
+           pushz    GetJointStationId&index   
+           pushc    3   
+           mult     
+           ldrz     &Joint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           ret      
+$$15:      rsp      
+           pushc    -1   
+           ret      
+InitSubway: nop     
+           zsetc    InitSubway&i   0   
+$$16:      pushz    InitSubway&i   
+           gejp     10   $$17:
+           pushz    InitSubway&i   
+           pushc    2   
+           mult     
+           ldrz     &StationA   
+           add      
+           pushi    &stationName   InitSubway&i   
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeA   
+           add      
+           pushc    2   
+           add      
+           pushc    3   
+           sta      
+           pushz    InitSubway&i   
+           gejp     9   $$18:
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeA   
+           add      
+           pushz    InitSubway&i   
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeA   
+           add      
+           inc      
+           pushz    InitSubway&i   
+           inc      
+           sta      
+$$18:      incz     InitSubway&i   1   
+           ujp      $$16:
+$$17:      zsetc    InitSubway&i   0   
+$$20:      pushz    InitSubway&i   
+           gejp     10   $$21:
+           pushz    InitSubway&i   
+           pushc    2   
+           mult     
+           ldrz     &StationB   
+           add      
+           pushz    InitSubway&i   
+           pushc    10   
+           add      
+           ldrz     &stationName   
+           add      
+           ixa      
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeB   
+           add      
+           pushc    2   
+           add      
+           pushc    3   
+           sta      
+           pushz    InitSubway&i   
+           gejp     9   $$22:
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeB   
+           add      
+           pushz    InitSubway&i   
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeB   
+           add      
+           inc      
+           pushz    InitSubway&i   
+           inc      
+           sta      
+$$22:      incz     InitSubway&i   1   
+           ujp      $$20:
+$$21:      zsetc    InitSubway&i   0   
+$$24:      pushz    InitSubway&i   
+           gejp     10   $$25:
+           pushz    InitSubway&i   
+           pushc    2   
+           mult     
+           ldrz     &StationC   
+           add      
+           pushz    InitSubway&i   
+           pushc    20   
+           add      
+           ldrz     &stationName   
+           add      
+           ixa      
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeC   
+           add      
+           pushc    2   
+           add      
+           pushc    3   
+           sta      
+           pushz    InitSubway&i   
+           gejp     9   $$26:
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeC   
+           add      
+           pushz    InitSubway&i   
+           sta      
+           pushz    InitSubway&i   
+           pushc    3   
+           mult     
+           ldrz     &NodeC   
+           add      
+           inc      
+           pushz    InitSubway&i   
+           inc      
+           sta      
+$$26:      incz     InitSubway&i   1   
+           ujp      $$24:
+$$25:      pushc    0   
+           pushc    106   
+           pushc    206   
+           pushc    -1   
+           call     InitJoin:
+           pushc    1   
+           pushc    108   
+           pushc    308   
+           pushc    -1   
+           call     InitJoin:
+           pushc    2   
+           pushc    203   
+           pushc    303   
+           pushc    -1   
+           call     InitJoin:
+           pushc    3   
+           pushc    208   
+           pushc    306   
+           pushc    -1   
+           call     InitJoin:
+           ret      
+SearchStation: nop  
+           ssp      
+           rsp      
+           ret      
+RouteStation: nop   
+           popz     RouteStation&stationEnd   
+           popz     RouteStation&stationStart   
+           zsetc    RouteStation&stationStart   200   
+           zsetc    RouteStation&stationEnd   305   
+           pushz    RouteStation&stationStart   
+           call     FindJoint:
+           popz     &swReserved3   
+           ret      
+InitFoundJoint: nop 
+           ldrz     &foundJoint   
+           pushc    -1   
+           pushc    20   
+           calls    MemSetInt
+           ret      
+AddFoundJoint: nop  
+           popz     AddFoundJoint&jointIndex   
+           pushz    &foundJointCount   
+           gejp     20   $$28:
+           isetz    &foundJoint   &foundJointCount   AddFoundJoint&jointIndex   
+           incz     &foundJointCount   1   
+           pushc    1   
+           ret      
+$$28:      pushc    0   
+           ret      
+GetFoundJoint: nop  
+           stnz     GetFoundJoint&index   
+           pushz    &foundJointCount   
+           lt       
+           fjp      $$29:
+           pushi    &foundJoint   GetFoundJoint&index   
+           ret      
+$$29:      pushc    -1   
+           ret      
+FindJoint: nop      
+           stnz     FindJoint&currentId   
+           call     GetLineNumber:
+           popz     FindJoint&currentLine   
+           pushz    FindJoint&currentId   
+           call     GetLineIndex:
+           popz     FindJoint&currentLineIndex   
+           zsetc    FindJoint&i   0   
+$$30:      pushz    FindJoint&i   
+           gejp     10   $$31:
+           pushz    FindJoint&currentLine   
+           pushz    FindJoint&i   
+           pushc    0   
+           call     GetJointStationId:
+           call     GetLineNumber:
+           eq       
+           fjp      $$33:
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+           popz     &swReserved3   
+           ujp      $$32:
+$$33:      pushz    FindJoint&currentLine   
+           pushz    FindJoint&i   
+           pushc    1   
+           call     GetJointStationId:
+           call     GetLineNumber:
+           eq       
+           fjp      $$35:
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+           popz     &swReserved3   
+           ujp      $$32:
+$$35:      pushz    FindJoint&currentLine   
+           pushz    FindJoint&i   
+           pushc    2   
+           call     GetJointStationId:
+           call     GetLineNumber:
+           eq       
+           fjp      $$32:
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+           popz     &swReserved3   
+$$32:      incz     FindJoint&i   1   
+           ujp      $$30:
+$$31:      pushc    -1   
+           ret      
+main:      nop      
+           call     $init:
+           call     InitSubway:
+           call     InitFoundJoint:
+           calls    ClearWhite
+           pushc    0   
+           pushc    305   
+           call     RouteStation:
+           pushc    10   
+           pushc    10   
+           pushc    0   
+           call     GetFoundJoint:
+           pushc    0   
+           call     GetJointStationId:
+           call     DrawInt:
+           pushc    10   
+           pushc    30   
+           pushc    1   
+           call     GetFoundJoint:
+           pushc    0   
+           call     GetJointStationId:
+           call     DrawInt:
+           pushc    10   
+           pushc    50   
+           pushc    2   
+           call     GetFoundJoint:
+           pushc    0   
+           call     GetJointStationId:
+           call     DrawInt:
+           pushc    10   
+           pushc    70   
+           pushc    3   
+           call     GetFoundJoint:
+           pushc    0   
+           call     GetJointStationId:
+           call     DrawInt:
+           pushc    50   
+           pushc    10   
+           pushic   &foundJoint   0   
+           call     DrawInt:
+           pushc    50   
+           pushc    30   
+           pushic   &foundJoint   1   
+           call     DrawInt:
+           pushc    50   
+           pushc    50   
+           pushic   &foundJoint   2   
+           call     DrawInt:
+           pushc    50   
+           pushc    70   
+           pushic   &foundJoint   3   
+           call     DrawInt:
+           calls    Flush
+           end      
+DrawInt:   nop      
+           popz     DrawInt&value   
+           popz     DrawInt&y   
+           popz     DrawInt&x   
+           pushz    DrawInt&tempString   
+           pushmi   %%30   
+           pushz    DrawInt&value   
+           calls    MakeStr1
+           pushz    DrawInt&x   
+           pushz    DrawInt&y   
+           pushz    DrawInt&tempString   
+           calls    DrawStr
+           ret      
