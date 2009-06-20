@@ -43,36 +43,78 @@
 .syma 	&NodeC 	   25    27     0
 .syma 	&Joint 	   26    30     0
 .equa 	&stationName 	   27    30
- %%0 %%1 %%2 %%3 %%4 %%5 %%6 %%7 %%8 %%9
- %%10 %%11 %%12 %%13 %%14 %%15 %%16 %%17 %%18 %%19
- %%20 %%21 %%22 %%23 %%24 %%25 %%26 %%27 %%28 %%29
-.syma 	&foundJoint 	   28    20     0
-.equ 	&foundJointCount 	   29     0     0
-.sym 	GetNodeStationA&id 	   30     1
-.sym 	GetNodeStationB&id 	   31     1
-.sym 	GetLineNumber&id 	   32     1
-.sym 	GetLineIndex&id 	   33     1
-.sym 	InitJoin&index 	   34     1
-.sym 	InitJoin&stationIdA 	   35     1
-.sym 	InitJoin&stationIdB 	   36     1
-.sym 	InitJoin&stationIdC 	   37     1
-.sym 	GetJointStationId&index 	   38     1
-.sym 	GetJointStationId&station 	   39     1
-.sym 	InitSubway&i 	   40     1
-.sym 	RouteStation&stationStart 	   41     1
-.sym 	RouteStation&stationEnd 	   42     1
-.sym 	AddFoundJoint&jointIndex 	   43     1
-.sym 	GetFoundJoint&index 	   44     1
-.sym 	FindJoint&currentId 	   45     1
-.sym 	FindJoint&currentLine 	   46     1
-.sym 	FindJoint&currentLineIndex 	   47     1
-.sym 	FindJoint&i 	   48     1
-.sym 	DrawInt&x 	   49     1
-.sym 	DrawInt&y 	   50     1
-.sym 	DrawInt&value 	   51     1
-.equ 	DrawInt&tempString 	   52   %%31     1
+ %%1 %%2 %%3 %%4 %%5 %%6 %%7 %%8 %%9 %%10
+ %%11 %%12 %%13 %%14 %%15 %%16 %%17 %%18 %%19 %%20
+ %%21 %%22 %%23 %%24 %%25 %%26 %%27 %%28 %%29 %%30
+.syma 	&saveJointList 	   28    60     0
+.equ 	&saveJointListSize 	   29     0     0
+.syma 	&foundJoint 	   30    90     0
+.equ 	&foundJointSize 	   31     0     0
+.syma 	&resultPath 	   32    10     0
+.equ 	&resultPathSize 	   33     0     0
+.equ 	&foundJointCount 	   34     0     0
+.sym 	DrawInt&x 	   35     1
+.sym 	DrawInt&y 	   36     1
+.sym 	DrawInt&value 	   37     1
+.equ 	DrawInt&tempString 	   38   %%31     1
+.sym 	GetNodeStationA&id 	   39     1
+.sym 	GetNodeStationB&id 	   40     1
+.sym 	GetLineNumber&id 	   41     1
+.sym 	GetLineIndex&id 	   42     1
+.sym 	InitJoin&index 	   43     1
+.sym 	InitJoin&stationIdA 	   44     1
+.sym 	InitJoin&stationIdB 	   45     1
+.sym 	InitJoin&stationIdC 	   46     1
+.sym 	GetJointStationId&index 	   47     1
+.sym 	GetJointStationId&station 	   48     1
+.sym 	InitSubway&i 	   49     1
+.sym 	Sort&size 	   50     1
+.sym 	Sort&sortData 	   51     1
+.sym 	Sort&i 	   52     1
+.sym 	Sort&j 	   53     1
+.sym 	Sort&interval 	   54     1
+.sym 	IntervalSort&begin 	   55     1
+.sym 	IntervalSort&end 	   56     1
+.sym 	IntervalSort&interval 	   57     1
+.syma 	IntervalSort&joint 	   58     3     0
+.sym 	IntervalSort&i 	   59     1
+.sym 	IntervalSort&j 	   60     1
+.sym 	AddSaveJoint&id 	   61     1
+.sym 	AddSaveJoint&time 	   62     1
+.sym 	AddSaveJoint&prevId 	   63     1
+.sym 	FindSaveJointById&id 	   64     1
+.sym 	FindSaveJointById&i 	   65     1
+.sym 	AddFoundJoint&id 	   66     1
+.sym 	AddFoundJoint&time 	   67     1
+.sym 	AddFoundJoint&prevId 	   68     1
+.sym 	AddFoundJoint&duplicatedFoundJointIndex 	   69     1
+.sym 	FindFoundJointById&id 	   70     1
+.sym 	FindFoundJointById&i 	   71     1
+.sym 	DelFrontFoundJoint&i 	   72     1
+.sym 	AddResultPath&saveJointListIndex 	   73     1
+.sym 	ReverseResultPath&loopCount 	   74     1
+.sym 	ReverseResultPath&temp 	   75     1
+.sym 	ReverseResultPath&i 	   76     1
+.sym 	FindPath&startStation 	   77     1
+.sym 	FindPath&endStation 	   78     1
+.sym 	FindPath&prevJointId 	   79     1
+.sym 	FindPath&result 	   80     1
+.sym 	FindPath&i 	   81     1
+.sym 	_FindJoint&currentStation 	   82     1
+.sym 	_FindJoint&endStation 	   83     1
+.sym 	CopyToSaveJoint&index 	   84     1
+.sym 	RouteStation&stationStart 	   85     1
+.sym 	RouteStation&stationEnd 	   86     1
+.sym 	_AddFoundJoint&jointIndex 	   87     1
+.sym 	GetFoundJoint&index 	   88     1
+.sym 	FindJoint&currentId 	   89     1
+.sym 	FindJoint&currentLine 	   90     1
+.sym 	FindJoint&currentLineIndex 	   91     1
+.sym 	FindJoint&i 	   92     1
+.sym 	DrawMetro&i 	   93     1
 @EXTERN_INTSYMBOL_TABLE
 @STATIC_FUNC_TABLE
+.func     DrawInt 	3	
 .func     GetNodeStationA 	1	
 .func     GetNodeStationB 	1	
 .func     GetLineNumber 	1	
@@ -80,113 +122,143 @@
 .func     InitJoin 	4	
 .func     GetJointStationId 	2	
 .func     InitSubway 	0	
-.func     SearchStation 	0	
-.func     RouteStation 	2	
+.func     Sort 	2	
+.func     IntervalSort 	3	
+.func     AddSaveJoint 	3	
+.func     InitJointList 	0	
+.func     FindSaveJointById 	1	
+.func     AddFoundJoint 	3	
+.func     SortFoundJointByTime 	0	
 .func     InitFoundJoint 	0	
-.func     AddFoundJoint 	1	
+.func     FindFoundJointById 	1	
+.func     DelFrontFoundJoint 	0	
+.func     GetFrontFoundJointId 	0	
+.func     InitResultPath 	0	
+.func     AddResultPath 	1	
+.func     ReverseResultPath 	0	
+.func     FindPath 	2	
+.func     _FindJoint 	2	
+.func     CopyToSaveJoint 	1	
+.func     RouteStation 	2	
+.func     _InitFoundJoint 	0	
+.func     _AddFoundJoint 	1	
 .func     GetFoundJoint 	1	
 .func     FindJoint 	1	
-.func     DrawInt 	3	
+.func     DrawMetro 	0	
+.func     EVENT_TIMEOUT 	0	
 @EXTERN_FUNC_TABLE
 @IMPORT_FUNC_TABLE
 @EXPORT_FUNC_TABLE
 @MEDIA_SYMBOL_TABLE
-.equm 	%%0 	    0     0     6
-// string form = "NA100"
-    0x4e 0x41 0x31 0x30 0x30 0x00
-.equm 	%%1 	    1     0     6
-// string form = "NA101"
-    0x4e 0x41 0x31 0x30 0x31 0x00
-.equm 	%%2 	    2     0     6
-// string form = "NA102"
-    0x4e 0x41 0x31 0x30 0x32 0x00
-.equm 	%%3 	    3     0     6
-// string form = "NA103"
-    0x4e 0x41 0x31 0x30 0x33 0x00
-.equm 	%%4 	    4     0     6
-// string form = "NA104"
-    0x4e 0x41 0x31 0x30 0x34 0x00
-.equm 	%%5 	    5     0     6
-// string form = "NA105"
-    0x4e 0x41 0x31 0x30 0x35 0x00
-.equm 	%%6 	    6     0     6
-// string form = "NA106"
-    0x4e 0x41 0x31 0x30 0x36 0x00
-.equm 	%%7 	    7     0     6
-// string form = "NA107"
-    0x4e 0x41 0x31 0x30 0x37 0x00
-.equm 	%%8 	    8     0     6
-// string form = "NA108"
-    0x4e 0x41 0x31 0x30 0x38 0x00
-.equm 	%%9 	    9     0     6
-// string form = "NA109"
-    0x4e 0x41 0x31 0x30 0x39 0x00
-.equm 	%%10 	   10     0     6
-// string form = "NB200"
-    0x4e 0x42 0x32 0x30 0x30 0x00
-.equm 	%%11 	   11     0     6
-// string form = "NB201"
-    0x4e 0x42 0x32 0x30 0x31 0x00
-.equm 	%%12 	   12     0     6
-// string form = "NB202"
-    0x4e 0x42 0x32 0x30 0x32 0x00
-.equm 	%%13 	   13     0     6
-// string form = "NB203"
-    0x4e 0x42 0x32 0x30 0x33 0x00
-.equm 	%%14 	   14     0     6
-// string form = "NB204"
-    0x4e 0x42 0x32 0x30 0x34 0x00
-.equm 	%%15 	   15     0     6
-// string form = "NB205"
-    0x4e 0x42 0x32 0x30 0x35 0x00
-.equm 	%%16 	   16     0     6
-// string form = "NB206"
-    0x4e 0x42 0x32 0x30 0x36 0x00
-.equm 	%%17 	   17     0     6
-// string form = "NB207"
-    0x4e 0x42 0x32 0x30 0x37 0x00
-.equm 	%%18 	   18     0     6
-// string form = "NB208"
-    0x4e 0x42 0x32 0x30 0x38 0x00
-.equm 	%%19 	   19     0     6
-// string form = "NB209"
-    0x4e 0x42 0x32 0x30 0x39 0x00
-.equm 	%%20 	   20     0     6
-// string form = "NC300"
-    0x4e 0x43 0x33 0x30 0x30 0x00
-.equm 	%%21 	   21     0     6
-// string form = "NC301"
-    0x4e 0x43 0x33 0x30 0x31 0x00
-.equm 	%%22 	   22     0     6
-// string form = "NC302"
-    0x4e 0x43 0x33 0x30 0x32 0x00
-.equm 	%%23 	   23     0     6
-// string form = "NC303"
-    0x4e 0x43 0x33 0x30 0x33 0x00
-.equm 	%%24 	   24     0     6
-// string form = "NC304"
-    0x4e 0x43 0x33 0x30 0x34 0x00
-.equm 	%%25 	   25     0     6
-// string form = "NC305"
-    0x4e 0x43 0x33 0x30 0x35 0x00
-.equm 	%%26 	   26     0     6
-// string form = "NC306"
-    0x4e 0x43 0x33 0x30 0x36 0x00
-.equm 	%%27 	   27     0     6
-// string form = "NC307"
-    0x4e 0x43 0x33 0x30 0x37 0x00
-.equm 	%%28 	   28     0     6
-// string form = "NC308"
-    0x4e 0x43 0x33 0x30 0x38 0x00
-.equm 	%%29 	   29     0     6
-// string form = "NC309"
-    0x4e 0x43 0x33 0x30 0x39 0x00
-.equm 	%%30 	   30     0     3
+.equm 	%%0 	    0     0     3
 // string form = "%d"
     0x25 0x64 0x00
+.equm 	%%1 	    1     0     6
+// string form = "NA100"
+    0x4e 0x41 0x31 0x30 0x30 0x00
+.equm 	%%2 	    2     0     6
+// string form = "NA101"
+    0x4e 0x41 0x31 0x30 0x31 0x00
+.equm 	%%3 	    3     0     6
+// string form = "NA102"
+    0x4e 0x41 0x31 0x30 0x32 0x00
+.equm 	%%4 	    4     0     6
+// string form = "NA103"
+    0x4e 0x41 0x31 0x30 0x33 0x00
+.equm 	%%5 	    5     0     6
+// string form = "NA104"
+    0x4e 0x41 0x31 0x30 0x34 0x00
+.equm 	%%6 	    6     0     6
+// string form = "NA105"
+    0x4e 0x41 0x31 0x30 0x35 0x00
+.equm 	%%7 	    7     0     6
+// string form = "NA106"
+    0x4e 0x41 0x31 0x30 0x36 0x00
+.equm 	%%8 	    8     0     6
+// string form = "NA107"
+    0x4e 0x41 0x31 0x30 0x37 0x00
+.equm 	%%9 	    9     0     6
+// string form = "NA108"
+    0x4e 0x41 0x31 0x30 0x38 0x00
+.equm 	%%10 	   10     0     6
+// string form = "NA109"
+    0x4e 0x41 0x31 0x30 0x39 0x00
+.equm 	%%11 	   11     0     6
+// string form = "NB200"
+    0x4e 0x42 0x32 0x30 0x30 0x00
+.equm 	%%12 	   12     0     6
+// string form = "NB201"
+    0x4e 0x42 0x32 0x30 0x31 0x00
+.equm 	%%13 	   13     0     6
+// string form = "NB202"
+    0x4e 0x42 0x32 0x30 0x32 0x00
+.equm 	%%14 	   14     0     6
+// string form = "NB203"
+    0x4e 0x42 0x32 0x30 0x33 0x00
+.equm 	%%15 	   15     0     6
+// string form = "NB204"
+    0x4e 0x42 0x32 0x30 0x34 0x00
+.equm 	%%16 	   16     0     6
+// string form = "NB205"
+    0x4e 0x42 0x32 0x30 0x35 0x00
+.equm 	%%17 	   17     0     6
+// string form = "NB206"
+    0x4e 0x42 0x32 0x30 0x36 0x00
+.equm 	%%18 	   18     0     6
+// string form = "NB207"
+    0x4e 0x42 0x32 0x30 0x37 0x00
+.equm 	%%19 	   19     0     6
+// string form = "NB208"
+    0x4e 0x42 0x32 0x30 0x38 0x00
+.equm 	%%20 	   20     0     6
+// string form = "NB209"
+    0x4e 0x42 0x32 0x30 0x39 0x00
+.equm 	%%21 	   21     0     6
+// string form = "NC300"
+    0x4e 0x43 0x33 0x30 0x30 0x00
+.equm 	%%22 	   22     0     6
+// string form = "NC301"
+    0x4e 0x43 0x33 0x30 0x31 0x00
+.equm 	%%23 	   23     0     6
+// string form = "NC302"
+    0x4e 0x43 0x33 0x30 0x32 0x00
+.equm 	%%24 	   24     0     6
+// string form = "NC303"
+    0x4e 0x43 0x33 0x30 0x33 0x00
+.equm 	%%25 	   25     0     6
+// string form = "NC304"
+    0x4e 0x43 0x33 0x30 0x34 0x00
+.equm 	%%26 	   26     0     6
+// string form = "NC305"
+    0x4e 0x43 0x33 0x30 0x35 0x00
+.equm 	%%27 	   27     0     6
+// string form = "NC306"
+    0x4e 0x43 0x33 0x30 0x36 0x00
+.equm 	%%28 	   28     0     6
+// string form = "NC307"
+    0x4e 0x43 0x33 0x30 0x37 0x00
+.equm 	%%29 	   29     0     6
+// string form = "NC308"
+    0x4e 0x43 0x33 0x30 0x38 0x00
+.equm 	%%30 	   30     0     6
+// string form = "NC309"
+    0x4e 0x43 0x33 0x30 0x39 0x00
 .symm 	%%31 	   31     0     0
 @CODE_SECTION
 $init:     ret      
+DrawInt:   nop      
+           popz     DrawInt&value   
+           popz     DrawInt&y   
+           popz     DrawInt&x   
+           pushz    DrawInt&tempString   
+           pushmi   %%0   
+           pushz    DrawInt&value   
+           calls    MakeStr1
+           pushz    DrawInt&x   
+           pushz    DrawInt&y   
+           pushz    DrawInt&tempString   
+           calls    DrawStr
+           ret      
 GetNodeStationA: nop 
            popz     GetNodeStationA&id   
            ssp      
@@ -510,7 +582,528 @@ $$25:      pushc    0
            pushc    -1   
            call     InitJoin:
            ret      
-SearchStation: nop  
+Sort:      nop      
+           popz     Sort&sortData   
+           stnz     Sort&size   
+           pushc    2   
+           div      
+           popz     Sort&interval   
+$$28:      pushz    Sort&interval   
+           ltjp     1   $$29:
+           zsetc    Sort&i   0   
+$$30:      pushz    Sort&i   
+           pushz    Sort&interval   
+           lt       
+           fjp      $$31:
+           ssp      
+           pushz    Sort&sortData   
+           dup      
+           eqjp     0   $$34:
+           rsp      
+           ujp      $$32:
+$$34:      rsp      
+           pushz    Sort&i   
+           pushz    Sort&size   
+           dec      
+           pushz    Sort&interval   
+           call     IntervalSort:
+$$32:      incz     Sort&i   1   
+           ujp      $$30:
+$$31:      pushz    Sort&interval   
+           pushc    2   
+           div      
+           popz     Sort&interval   
+           ujp      $$28:
+$$29:      ret      
+IntervalSort: nop   
+           popz     IntervalSort&interval   
+           popz     IntervalSort&end   
+           stnz     IntervalSort&begin   
+           pushz    IntervalSort&interval   
+           add      
+           popz     IntervalSort&i   
+$$35:      pushz    IntervalSort&i   
+           pushz    IntervalSort&end   
+           le       
+           fjp      $$36:
+           ldrz     IntervalSort&joint   
+           pushz    IntervalSort&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
+           sta      
+           ldrz     IntervalSort&joint   
+           inc      
+           pushz    IntervalSort&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ixa      
+           sta      
+           ldrz     IntervalSort&joint   
+           pushc    2   
+           add      
+           pushz    IntervalSort&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           sta      
+           pushz    IntervalSort&i   
+           pushz    IntervalSort&interval   
+           sub      
+           popz     IntervalSort&j   
+$$38:      pushz    IntervalSort&j   
+           pushz    IntervalSort&begin   
+           ge       
+           dup      
+           fjp      $$41:
+           popz     &swReserved3   
+           ldrz     IntervalSort&joint   
+           inc      
+           ixa      
+           pushz    IntervalSort&j   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ixa      
+           lt       
+$$41:      fjp      $$39:
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushz    IntervalSort&j   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
+           sta      
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           pushz    IntervalSort&j   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ixa      
+           sta      
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           pushz    IntervalSort&j   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           sta      
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           sub      
+           popz     IntervalSort&j   
+           ujp      $$38:
+$$39:      pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ldrz     IntervalSort&joint   
+           ixa      
+           sta      
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ldrz     IntervalSort&joint   
+           inc      
+           ixa      
+           sta      
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ldrz     IntervalSort&joint   
+           pushc    2   
+           add      
+           ixa      
+           sta      
+           pushz    IntervalSort&i   
+           pushz    IntervalSort&interval   
+           add      
+           popz     IntervalSort&i   
+           ujp      $$35:
+$$36:      ret      
+AddSaveJoint: nop   
+           popz     AddSaveJoint&prevId   
+           popz     AddSaveJoint&time   
+           popz     AddSaveJoint&id   
+           pushz    &saveJointListSize   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           pushz    AddSaveJoint&id   
+           sta      
+           pushz    &saveJointListSize   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           inc      
+           pushz    AddSaveJoint&time   
+           sta      
+           pushz    &saveJointListSize   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           pushc    2   
+           add      
+           pushz    AddSaveJoint&prevId   
+           sta      
+           incz     &saveJointListSize   1   
+           ret      
+InitJointList: nop  
+           zsetc    &saveJointListSize   0   
+           ret      
+FindSaveJointById: nop 
+           popz     FindSaveJointById&id   
+           zsetc    FindSaveJointById&i   0   
+$$42:      pushz    FindSaveJointById&i   
+           pushz    &saveJointListSize   
+           lt       
+           fjp      $$43:
+           pushz    FindSaveJointById&i   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           ixa      
+           pushz    FindSaveJointById&id   
+           eq       
+           fjp      $$44:
+           pushz    FindSaveJointById&i   
+           ret      
+$$44:      incz     FindSaveJointById&i   1   
+           ujp      $$42:
+$$43:      pushc    -1   
+           ret      
+AddFoundJoint: nop  
+           popz     AddFoundJoint&prevId   
+           popz     AddFoundJoint&time   
+           stnz     AddFoundJoint&id   
+           call     FindFoundJointById:
+           popz     AddFoundJoint&duplicatedFoundJointIndex   
+           pushz    AddFoundJoint&id   
+           call     FindSaveJointById:
+           nejp     -1   $$46:
+           ret      
+$$46:      pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           nejp     -1   $$47:
+           pushz    &foundJointSize   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushz    AddFoundJoint&id   
+           sta      
+           pushz    &foundJointSize   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           pushz    AddFoundJoint&time   
+           sta      
+           pushz    &foundJointSize   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           pushz    AddFoundJoint&prevId   
+           sta      
+           incz     &foundJointSize   1   
+           ujp      $$48:
+$$47:      pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ixa      
+           pushz    AddFoundJoint&time   
+           gt       
+           fjp      $$48:
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushz    AddFoundJoint&id   
+           sta      
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           pushz    AddFoundJoint&time   
+           sta      
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           pushz    AddFoundJoint&prevId   
+           sta      
+$$48:      ret      
+SortFoundJointByTime: nop 
+           pushz    &foundJointSize   
+           pushc    0   
+           call     Sort:
+           ret      
+InitFoundJoint: nop 
+           zsetc    &foundJointSize   0   
+           ret      
+FindFoundJointById: nop 
+           popz     FindFoundJointById&id   
+           zsetc    FindFoundJointById&i   0   
+$$50:      pushz    FindFoundJointById&i   
+           pushz    &foundJointSize   
+           lt       
+           fjp      $$51:
+           pushz    FindFoundJointById&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
+           pushz    FindFoundJointById&id   
+           eq       
+           fjp      $$52:
+           pushz    FindFoundJointById&i   
+           ret      
+$$52:      incz     FindFoundJointById&i   1   
+           ujp      $$50:
+$$51:      pushc    -1   
+           ret      
+DelFrontFoundJoint: nop 
+           incz     &foundJointSize   -1   
+           zsetc    DelFrontFoundJoint&i   0   
+$$54:      pushz    DelFrontFoundJoint&i   
+           pushz    &foundJointSize   
+           lt       
+           fjp      $$55:
+           pushz    DelFrontFoundJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushz    DelFrontFoundJoint&i   
+           inc      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
+           sta      
+           pushz    DelFrontFoundJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           pushz    DelFrontFoundJoint&i   
+           inc      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           inc      
+           ixa      
+           sta      
+           pushz    DelFrontFoundJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           pushz    DelFrontFoundJoint&i   
+           inc      
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           sta      
+           incz     DelFrontFoundJoint&i   1   
+           ujp      $$54:
+$$55:      ret      
+GetFrontFoundJointId: nop 
+           pushz    &foundJointSize   
+           lejp     0   $$57:
+           pushic   &foundJoint   0   
+           ret      
+$$57:      pushc    -1   
+           ret      
+InitResultPath: nop 
+           zsetc    &resultPathSize   0   
+           ret      
+AddResultPath: nop  
+           stnz     AddResultPath&saveJointListIndex   
+           popi     &resultPath   &resultPathSize   
+           incz     &resultPathSize   1   
+           ret      
+ReverseResultPath: nop 
+           pushz    &resultPathSize   
+           pushc    2   
+           div      
+           popz     ReverseResultPath&loopCount   
+           zsetc    ReverseResultPath&i   0   
+$$58:      pushz    ReverseResultPath&i   
+           pushz    ReverseResultPath&loopCount   
+           lt       
+           fjp      $$59:
+           zseti    ReverseResultPath&temp   &resultPath   ReverseResultPath&i   
+           pushz    ReverseResultPath&i   
+           ldrz     &resultPath   
+           add      
+           pushz    &resultPathSize   
+           dec      
+           pushz    ReverseResultPath&i   
+           sub      
+           ldrz     &resultPath   
+           add      
+           ixa      
+           sta      
+           pushz    &resultPathSize   
+           dec      
+           pushz    ReverseResultPath&i   
+           sub      
+           ldrz     &resultPath   
+           add      
+           pushz    ReverseResultPath&temp   
+           sta      
+           incz     ReverseResultPath&i   1   
+           ujp      $$58:
+$$59:      ret      
+FindPath:  nop      
+           popz     FindPath&endStation   
+           popz     FindPath&startStation   
+           zsetz    FindPath&prevJointId   FindPath&endStation   
+           zsetc    FindPath&result   0   
+           call     InitJointList:
+           call     InitFoundJoint:
+           call     InitResultPath:
+           pushz    FindPath&startStation   
+           pushz    FindPath&endStation   
+           call     _FindJoint:
+           popz     FindPath&result   
+$$61:      pushz    FindPath&result   
+           eqjp     1   $$62:
+           call     SortFoundJointByTime:
+           call     GetFrontFoundJointId:
+           nejp     -1   $$63:
+           pushc    0   
+           ret      
+$$63:      call     GetFrontFoundJointId:
+           pushz    FindPath&endStation   
+           call     _FindJoint:
+           popz     FindPath&result   
+           ujp      $$61:
+$$62:      pushz    &saveJointListSize   
+           dec      
+           popz     FindPath&i   
+$$65:      pushz    FindPath&i   
+           ltjp     0   $$66:
+           pushz    FindPath&i   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           ixa      
+           pushz    FindPath&prevJointId   
+           eq       
+           fjp      $$67:
+           pushz    FindPath&i   
+           call     AddResultPath:
+           pushz    FindPath&i   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           popz     FindPath&prevJointId   
+           pushz    FindPath&i   
+           pushc    3   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           ixa      
+           pushz    FindPath&startStation   
+           eq       
+           tjp      $$66:
+$$67:      incz     FindPath&i   -1   
+           ujp      $$65:
+$$66:      call     ReverseResultPath:
+           pushc    1   
+           ret      
+_FindJoint: nop     
+           popz     _FindJoint&endStation   
+           popz     _FindJoint&currentStation   
+           pushc    0   
+           ret      
+CopyToSaveJoint: nop 
+           popz     CopyToSaveJoint&index   
            ssp      
            rsp      
            ret      
@@ -523,30 +1116,41 @@ RouteStation: nop
            call     FindJoint:
            popz     &swReserved3   
            ret      
-InitFoundJoint: nop 
+_InitFoundJoint: nop 
            ldrz     &foundJoint   
            pushc    -1   
            pushc    20   
            calls    MemSetInt
            ret      
-AddFoundJoint: nop  
-           popz     AddFoundJoint&jointIndex   
+_AddFoundJoint: nop 
+           popz     _AddFoundJoint&jointIndex   
            pushz    &foundJointCount   
-           gejp     20   $$28:
-           isetz    &foundJoint   &foundJointCount   AddFoundJoint&jointIndex   
+           gejp     20   $$70:
+           pushz    &foundJointCount   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushz    _AddFoundJoint&jointIndex   
+           sta      
            incz     &foundJointCount   1   
            pushc    1   
            ret      
-$$28:      pushc    0   
+$$70:      pushc    0   
            ret      
 GetFoundJoint: nop  
            stnz     GetFoundJoint&index   
            pushz    &foundJointCount   
            lt       
-           fjp      $$29:
-           pushi    &foundJoint   GetFoundJoint&index   
+           fjp      $$71:
+           pushz    GetFoundJoint&index   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
            ret      
-$$29:      pushc    -1   
+$$71:      pushc    -1   
            ret      
 FindJoint: nop      
            stnz     FindJoint&currentId   
@@ -556,52 +1160,45 @@ FindJoint: nop
            call     GetLineIndex:
            popz     FindJoint&currentLineIndex   
            zsetc    FindJoint&i   0   
-$$30:      pushz    FindJoint&i   
-           gejp     10   $$31:
+$$72:      pushz    FindJoint&i   
+           gejp     10   $$73:
            pushz    FindJoint&currentLine   
            pushz    FindJoint&i   
            pushc    0   
            call     GetJointStationId:
            call     GetLineNumber:
            eq       
-           fjp      $$33:
+           fjp      $$75:
            pushz    FindJoint&i   
-           call     AddFoundJoint:
+           call     _AddFoundJoint:
            popz     &swReserved3   
-           ujp      $$32:
-$$33:      pushz    FindJoint&currentLine   
+           ujp      $$74:
+$$75:      pushz    FindJoint&currentLine   
            pushz    FindJoint&i   
            pushc    1   
            call     GetJointStationId:
            call     GetLineNumber:
            eq       
-           fjp      $$35:
+           fjp      $$77:
            pushz    FindJoint&i   
-           call     AddFoundJoint:
+           call     _AddFoundJoint:
            popz     &swReserved3   
-           ujp      $$32:
-$$35:      pushz    FindJoint&currentLine   
+           ujp      $$74:
+$$77:      pushz    FindJoint&currentLine   
            pushz    FindJoint&i   
            pushc    2   
            call     GetJointStationId:
            call     GetLineNumber:
            eq       
-           fjp      $$32:
+           fjp      $$74:
            pushz    FindJoint&i   
-           call     AddFoundJoint:
+           call     _AddFoundJoint:
            popz     &swReserved3   
-$$32:      incz     FindJoint&i   1   
-           ujp      $$30:
-$$31:      pushc    -1   
+$$74:      incz     FindJoint&i   1   
+           ujp      $$72:
+$$73:      pushc    -1   
            ret      
-main:      nop      
-           call     $init:
-           call     InitSubway:
-           call     InitFoundJoint:
-           calls    ClearWhite
-           pushc    0   
-           pushc    305   
-           call     RouteStation:
+DrawMetro: nop      
            pushc    10   
            pushc    10   
            pushc    0   
@@ -636,28 +1233,50 @@ main:      nop
            call     DrawInt:
            pushc    50   
            pushc    30   
-           pushic   &foundJoint   1   
+           pushic   &foundJoint   3   
            call     DrawInt:
            pushc    50   
            pushc    50   
-           pushic   &foundJoint   2   
+           pushic   &foundJoint   6   
            call     DrawInt:
            pushc    50   
            pushc    70   
-           pushic   &foundJoint   3   
+           pushic   &foundJoint   9   
            call     DrawInt:
+           zsetc    DrawMetro&i   0   
+$$80:      pushz    DrawMetro&i   
+           pushz    &foundJointSize   
+           lt       
+           fjp      $$81:
+           pushc    100   
+           pushc    10   
+           pushc    16   
+           pushz    DrawMetro&i   
+           mult     
+           add      
+           pushz    DrawMetro&i   
+           pushc    3   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           ixa      
+           call     DrawInt:
+           incz     DrawMetro&i   1   
+           ujp      $$80:
+$$81:      ret      
+main:      nop      
+           call     $init:
+           call     InitSubway:
+           call     InitFoundJoint:
+           pushc    0   
+           pushc    305   
+           call     RouteStation:
+           pushc    50   
+           pushc    1   
+           calls    SetTimer
+           end      
+EVENT_TIMEOUT: nop  
+           calls    ClearWhite
+           call     DrawMetro:
            calls    Flush
            end      
-DrawInt:   nop      
-           popz     DrawInt&value   
-           popz     DrawInt&y   
-           popz     DrawInt&x   
-           pushz    DrawInt&tempString   
-           pushmi   %%30   
-           pushz    DrawInt&value   
-           calls    MakeStr1
-           pushz    DrawInt&x   
-           pushz    DrawInt&y   
-           pushz    DrawInt&tempString   
-           calls    DrawStr
-           ret      

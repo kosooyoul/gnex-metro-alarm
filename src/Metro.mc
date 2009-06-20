@@ -35,27 +35,25 @@
 #endif
 
 #include <SScript.h>
+#include "Ahyane.h"
 #include "Station.h"
+#include "SortStruct.h"
 #include "SearchStation.h"
+
+#include "DrawMetro.h"
+
+
 
 void main(){
 	InitSubway();
 	InitFoundJoint();
-	ClearWhite();
+	
 	RouteStation(000, 305);
-	DrawInt(10, 10, GetJointStationId(GetFoundJoint(0), 0));
-	DrawInt(10, 30, GetJointStationId(GetFoundJoint(1), 0));
-	DrawInt(10, 50, GetJointStationId(GetFoundJoint(2), 0));
-	DrawInt(10, 70, GetJointStationId(GetFoundJoint(3), 0));
-	DrawInt(50, 10, foundJoint[0]);
-	DrawInt(50, 30, foundJoint[1]);
-	DrawInt(50, 50, foundJoint[2]);
-	DrawInt(50, 70, foundJoint[3]);
-	Flush();
+	SetTimer(50, 1);
 }
 
-void DrawInt(int x, int y, int value){
-	string tempString;
-	MakeStr1(tempString, "%d", value);
-	DrawStr(x, y, tempString);
+void EVENT_TIMEOUT(){
+	ClearWhite();
+	DrawMetro();
+	Flush();
 }
