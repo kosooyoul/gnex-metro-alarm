@@ -36,6 +36,7 @@
 
 #include <SScript.h>
 #include "Ahyane.h"
+#include "StationData.h"
 #include "Station.h"
 #include "SortStruct.h"
 #include "SearchStation.h"
@@ -45,10 +46,13 @@
 
 
 void main(){
-	InitSubway();
-	InitFoundJoint();
+	InitMetro();
+	//InitSubway();
+	//InitFoundJoint();
 	
-	RouteStation(000, 305);
+	FindPath(100, 402);
+
+	//RouteStation(000, 305);
 	SetTimer(50, 1);
 }
 

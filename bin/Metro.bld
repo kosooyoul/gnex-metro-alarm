@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Documents and Settings\master\πŸ≈¡ »≠∏È\Metro\Metro.sal
+C:\Documents and Settings\master\πŸ≈¡ »≠∏È\Metro_09.06.22_1_Full\Metro.sal
 
 Generating code...
 
@@ -10,12 +10,12 @@ HEADER_COMPTYPE is 0
 
 Script profile : 
 
-	Script size       : 8640 Byte(s)
-	Code size         : 3684 Byte(s)
-	Symbol count      : 94
+	Script size       : 12036 Byte(s)
+	Code size         : 6358 Byte(s)
+	Symbol count      : 103
 	Total media count : 32
 	Total media size  : 184 Byte(s)
 		String count  : 32
 		String size   : 184 Byte(s)
 
-Metro.sgs - 0 error(s), 0 warning(s)
+Metro.dgs - 0 error(s), 0 warning(s)

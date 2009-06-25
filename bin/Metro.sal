@@ -35,117 +35,130 @@
 .sym 	&swReserved3 	   17     1
 .sym 	&swReserved4 	   18     1
 .sym 	&swSbuf 	   19     1
-.syma 	&StationA 	   20    20     0
-.syma 	&StationB 	   21    20     0
-.syma 	&StationC 	   22    20     0
-.syma 	&NodeA 	   23    27     0
-.syma 	&NodeB 	   24    27     0
-.syma 	&NodeC 	   25    27     0
-.syma 	&Joint 	   26    30     0
-.equa 	&stationName 	   27    30
+.equa 	&stationName 	   20    30
  %%1 %%2 %%3 %%4 %%5 %%6 %%7 %%8 %%9 %%10
  %%11 %%12 %%13 %%14 %%15 %%16 %%17 %%18 %%19 %%20
  %%21 %%22 %%23 %%24 %%25 %%26 %%27 %%28 %%29 %%30
-.syma 	&saveJointList 	   28    60     0
-.equ 	&saveJointListSize 	   29     0     0
-.syma 	&foundJoint 	   30    90     0
-.equ 	&foundJointSize 	   31     0     0
-.syma 	&resultPath 	   32    10     0
-.equ 	&resultPathSize 	   33     0     0
-.equ 	&foundJointCount 	   34     0     0
-.sym 	DrawInt&x 	   35     1
-.sym 	DrawInt&y 	   36     1
-.sym 	DrawInt&value 	   37     1
-.equ 	DrawInt&tempString 	   38   %%31     1
-.sym 	GetNodeStationA&id 	   39     1
-.sym 	GetNodeStationB&id 	   40     1
-.sym 	GetLineNumber&id 	   41     1
-.sym 	GetLineIndex&id 	   42     1
-.sym 	InitJoin&index 	   43     1
-.sym 	InitJoin&stationIdA 	   44     1
-.sym 	InitJoin&stationIdB 	   45     1
-.sym 	InitJoin&stationIdC 	   46     1
-.sym 	GetJointStationId&index 	   47     1
-.sym 	GetJointStationId&station 	   48     1
-.sym 	InitSubway&i 	   49     1
-.sym 	Sort&size 	   50     1
-.sym 	Sort&sortData 	   51     1
-.sym 	Sort&i 	   52     1
-.sym 	Sort&j 	   53     1
-.sym 	Sort&interval 	   54     1
-.sym 	IntervalSort&begin 	   55     1
-.sym 	IntervalSort&end 	   56     1
-.sym 	IntervalSort&interval 	   57     1
-.syma 	IntervalSort&joint 	   58     3     0
-.sym 	IntervalSort&i 	   59     1
-.sym 	IntervalSort&j 	   60     1
-.sym 	AddSaveJoint&id 	   61     1
-.sym 	AddSaveJoint&time 	   62     1
-.sym 	AddSaveJoint&prevId 	   63     1
-.sym 	FindSaveJointById&id 	   64     1
-.sym 	FindSaveJointById&i 	   65     1
-.sym 	AddFoundJoint&id 	   66     1
-.sym 	AddFoundJoint&time 	   67     1
-.sym 	AddFoundJoint&prevId 	   68     1
-.sym 	AddFoundJoint&duplicatedFoundJointIndex 	   69     1
-.sym 	FindFoundJointById&id 	   70     1
-.sym 	FindFoundJointById&i 	   71     1
-.sym 	DelFrontFoundJoint&i 	   72     1
-.sym 	AddResultPath&saveJointListIndex 	   73     1
-.sym 	ReverseResultPath&loopCount 	   74     1
-.sym 	ReverseResultPath&temp 	   75     1
-.sym 	ReverseResultPath&i 	   76     1
-.sym 	FindPath&startStation 	   77     1
-.sym 	FindPath&endStation 	   78     1
-.sym 	FindPath&prevJointId 	   79     1
-.sym 	FindPath&result 	   80     1
-.sym 	FindPath&i 	   81     1
-.sym 	_FindJoint&currentStation 	   82     1
-.sym 	_FindJoint&endStation 	   83     1
-.sym 	CopyToSaveJoint&index 	   84     1
-.sym 	RouteStation&stationStart 	   85     1
-.sym 	RouteStation&stationEnd 	   86     1
-.sym 	_AddFoundJoint&jointIndex 	   87     1
-.sym 	GetFoundJoint&index 	   88     1
-.sym 	FindJoint&currentId 	   89     1
-.sym 	FindJoint&currentLine 	   90     1
-.sym 	FindJoint&currentLineIndex 	   91     1
-.sym 	FindJoint&i 	   92     1
-.sym 	DrawMetro&i 	   93     1
+.syma 	&metroStation 	   21   150     0
+.syma 	&metroNode 	   22    50     0
+.syma 	&metroLine 	   23    40     0
+.syma 	&metroJoint 	   24    30     0
+.syma 	&saveJointList 	   25    80     0
+.equ 	&saveJointListSize 	   26     0     0
+.syma 	&foundJoint 	   27   120     0
+.equ 	&foundJointSize 	   28     0     0
+.syma 	&resultPath 	   29    10     0
+.equ 	&resultPathSize 	   30     0     0
+.sym 	DrawInt&x 	   31     1
+.sym 	DrawInt&y 	   32     1
+.sym 	DrawInt&value 	   33     1
+.equ 	DrawInt&tempString 	   34   %%31     1
+.sym 	InitMetroStation&index 	   35     1
+.sym 	InitMetroStation&id 	   36     1
+.sym 	InitMetroStation&name 	   37     1
+.sym 	InitNode&index 	   38     1
+.sym 	InitNode&time 	   39     1
+.sym 	InitLine&index 	   40     1
+.sym 	InitLine&lineNumber 	   41     1
+.sym 	InitLine&name 	   42     1
+.sym 	InitLine&startIndex 	   43     1
+.sym 	InitLine&stationCount 	   44     1
+.sym 	InitJoint&index 	   45     1
+.sym 	InitJoint&id1 	   46     1
+.sym 	InitJoint&id2 	   47     1
+.sym 	InitJoint&id3 	   48     1
+.sym 	GetLineNumber&id 	   49     1
+.sym 	GetLineIndex&id 	   50     1
+.sym 	GetMetroStation&lineNumber 	   51     1
+.sym 	GetMetroStation&stationIndex 	   52     1
+.sym 	GetMetroStationById&id 	   53     1
+.sym 	InitMetro&i 	   54     1
+.sym 	InitMetro&j 	   55     1
+.sym 	Sort&size 	   56     1
+.sym 	Sort&sortData 	   57     1
+.sym 	Sort&i 	   58     1
+.sym 	Sort&j 	   59     1
+.sym 	Sort&interval 	   60     1
+.sym 	IntervalSort&begin 	   61     1
+.sym 	IntervalSort&end 	   62     1
+.sym 	IntervalSort&interval 	   63     1
+.syma 	IntervalSort&joint 	   64     4     0
+.sym 	IntervalSort&i 	   65     1
+.sym 	IntervalSort&j 	   66     1
+.sym 	AddSaveJoint&id 	   67     1
+.sym 	AddSaveJoint&time 	   68     1
+.sym 	AddSaveJoint&prevId 	   69     1
+.sym 	AddSaveJoint&jointIndex 	   70     1
+.sym 	FindSaveJointById&id 	   71     1
+.sym 	FindSaveJointById&i 	   72     1
+.sym 	AddFoundJoint&id 	   73     1
+.sym 	AddFoundJoint&time 	   74     1
+.sym 	AddFoundJoint&prevId 	   75     1
+.sym 	AddFoundJoint&jointIndex 	   76     1
+.sym 	AddFoundJoint&duplicatedFoundJointIndex 	   77     1
+.sym 	FindFoundJointById&id 	   78     1
+.sym 	FindFoundJointById&i 	   79     1
+.sym 	_DelFrontFoundJoint&i 	   80     1
+.sym 	AddResultPath&saveJointListIndex 	   81     1
+.sym 	ReverseResultPath&loopCount 	   82     1
+.sym 	ReverseResultPath&temp 	   83     1
+.sym 	ReverseResultPath&i 	   84     1
+.sym 	FindPath&startStation 	   85     1
+.sym 	FindPath&endStation 	   86     1
+.sym 	FindPath&prevJointId 	   87     1
+.sym 	FindPath&foundCount 	   88     1
+.sym 	FindPath&startJoint 	   89     1
+.sym 	FindPath&i 	   90     1
+.sym 	FindJoint&currentStationIndex 	   91     1
+.sym 	FindJoint&currentStation 	   92     1
+.sym 	FindJoint&endStation 	   93     1
+.sym 	FindJoint&currentLine 	   94     1
+.sym 	FindJoint&endLine 	   95     1
+.sym 	FindJoint&foundJointCount 	   96     1
+.sym 	FindJoint&i 	   97     1
+.sym 	GetJointIndex&station 	   98     1
+.sym 	GetJointIndex&i 	   99     1
+.sym 	GetStationTime&stationId1 	  100     1
+.sym 	GetStationTime&stationId2 	  101     1
+.sym 	DrawMetro&i 	  102     1
 @EXTERN_INTSYMBOL_TABLE
 @STATIC_FUNC_TABLE
-.func     DrawInt 	3	
-.func     GetNodeStationA 	1	
-.func     GetNodeStationB 	1	
-.func     GetLineNumber 	1	
-.func     GetLineIndex 	1	
-.func     InitJoin 	4	
-.func     GetJointStationId 	2	
-.func     InitSubway 	0	
-.func     Sort 	2	
-.func     IntervalSort 	3	
-.func     AddSaveJoint 	3	
-.func     InitJointList 	0	
-.func     FindSaveJointById 	1	
-.func     AddFoundJoint 	3	
-.func     SortFoundJointByTime 	0	
-.func     InitFoundJoint 	0	
-.func     FindFoundJointById 	1	
-.func     DelFrontFoundJoint 	0	
-.func     GetFrontFoundJointId 	0	
-.func     InitResultPath 	0	
-.func     AddResultPath 	1	
-.func     ReverseResultPath 	0	
-.func     FindPath 	2	
-.func     _FindJoint 	2	
-.func     CopyToSaveJoint 	1	
-.func     RouteStation 	2	
-.func     _InitFoundJoint 	0	
-.func     _AddFoundJoint 	1	
-.func     GetFoundJoint 	1	
-.func     FindJoint 	1	
-.func     DrawMetro 	0	
-.func     EVENT_TIMEOUT 	0	
+.func     DrawInt 	3	// .\Metro.mc, 59
+.func     InitMetroStation 	3	// .\Metro.mc, 59
+.func     InitNode 	2	// .\Metro.mc, 59
+.func     InitLine 	5	// .\Metro.mc, 59
+.func     InitJoint 	4	// .\Metro.mc, 59
+.func     GetLineNumber 	1	// .\Metro.mc, 59
+.func     GetLineIndex 	1	// .\Metro.mc, 59
+.func     GetMetroStation 	2	// .\Metro.mc, 59
+.func     GetMetroStationById 	1	// .\Metro.mc, 59
+.func     InitMetro 	0	// .\Metro.mc, 59
+.func     Sort 	2	// .\Metro.mc, 59
+.func     IntervalSort 	3	// .\Metro.mc, 59
+.func     AddSaveJoint 	4	// .\Metro.mc, 59
+.func     InitJointList 	0	// .\Metro.mc, 59
+.func     FindSaveJointById 	1	// .\Metro.mc, 59
+.func     AddFoundJoint 	4	// .\Metro.mc, 59
+.func     SortFoundJointByTime 	0	// .\Metro.mc, 59
+.func     InitFoundJoint 	0	// .\Metro.mc, 59
+.func     FindFoundJointById 	1	// .\Metro.mc, 59
+.func     _DelFrontFoundJoint 	0	// .\Metro.mc, 59
+.func     DelLastFoundJoint 	0	// .\Metro.mc, 59
+.func     _GetFrontFoundJointId 	0	// .\Metro.mc, 59
+.func     GetLastFoundJointId 	0	// .\Metro.mc, 59
+.func     _GetFrontFoundJointIndex 	0	// .\Metro.mc, 59
+.func     GetLastFoundJointIndex 	0	// .\Metro.mc, 59
+.func     InitResultPath 	0	// .\Metro.mc, 59
+.func     AddResultPath 	1	// .\Metro.mc, 59
+.func     ReverseResultPath 	0	// .\Metro.mc, 59
+.func     FindPath 	2	// .\Metro.mc, 59
+.func     FindJoint 	3	// .\Metro.mc, 59
+.func     GetJointIndex 	1	// .\Metro.mc, 59
+.func     GetStationTime 	2	// .\Metro.mc, 59
+.func     _CopyFrontFoundJointToSaveJoint 	0	// .\Metro.mc, 59
+.func     CopyLastFoundJointToSaveJoint 	0	// .\Metro.mc, 59
+.func     DrawMetro 	0	// .\Metro.mc, 59
+.func     EVENT_TIMEOUT 	0	// .\Metro.mc, 59
 @EXTERN_FUNC_TABLE
 @IMPORT_FUNC_TABLE
 @EXPORT_FUNC_TABLE
@@ -245,410 +258,479 @@
     0x4e 0x43 0x33 0x30 0x39 0x00
 .symm 	%%31 	   31     0     0
 @CODE_SECTION
-$init:     ret      
+$init:     nop      
+           ret      
 DrawInt:   nop      
            popz     DrawInt&value   
            popz     DrawInt&y   
            popz     DrawInt&x   
+//(.\Ahyane.h,  2): void DrawInt(int x, int y, int value){
+//(.\Ahyane.h,  3): 	string tempString;
+//(.\Ahyane.h,  4): 	MakeStr1(tempString, "%d", value);
            pushz    DrawInt&tempString   
            pushmi   %%0   
            pushz    DrawInt&value   
            calls    MakeStr1
+//(.\Ahyane.h,  5): 	DrawStr(x, y, tempString);
            pushz    DrawInt&x   
            pushz    DrawInt&y   
            pushz    DrawInt&tempString   
            calls    DrawStr
+//(.\Ahyane.h,  6): }
            ret      
-GetNodeStationA: nop 
-           popz     GetNodeStationA&id   
-           ssp      
-           pushz    GetNodeStationA&id   
-           call     GetLineNumber:
-           dup      
-           eqjp     1   $$1:
-           dup      
-           eqjp     2   $$2:
-           dup      
-           eqjp     3   $$3:
-           ujp      $$4:
-$$1:       rsp      
-           pushz    GetNodeStationA&id   
-           call     GetLineIndex:
+//(.\StationData.h,  2): const string stationName[] = {
+//(.\StationData.h,  3): 	"NA100",
+//(.\StationData.h,  4): 	"NA101",
+//(.\StationData.h,  5): 	"NA102",
+//(.\StationData.h,  6): 	"NA103",
+//(.\StationData.h,  7): 	"NA104",
+//(.\StationData.h,  8): 	"NA105",
+//(.\StationData.h,  9): 	"NA106",
+//(.\StationData.h, 10): 	"NA107",
+//(.\StationData.h, 11): 	"NA108",
+//(.\StationData.h, 12): 	"NA109",
+//(.\StationData.h, 14): 	"NB200",
+//(.\StationData.h, 15): 	"NB201",
+//(.\StationData.h, 16): 	"NB202",
+//(.\StationData.h, 17): 	"NB203",
+//(.\StationData.h, 18): 	"NB204",
+//(.\StationData.h, 19): 	"NB205",
+//(.\StationData.h, 20): 	"NB206",
+//(.\StationData.h, 21): 	"NB207",
+//(.\StationData.h, 22): 	"NB208",
+//(.\StationData.h, 23): 	"NB209",
+//(.\StationData.h, 25): 	"NC300",
+//(.\StationData.h, 26): 	"NC301",
+//(.\StationData.h, 27): 	"NC302",
+//(.\StationData.h, 28): 	"NC303",
+//(.\StationData.h, 29): 	"NC304",
+InitMetroStation: nop 
+           popz     InitMetroStation&name   
+           popz     InitMetroStation&id   
+           popz     InitMetroStation&index   
+//(.\Station.h, 29): void InitMetroStation(int index, int id, int name){
+//(.\Station.h, 30): 	metroStation[index].id = id;
+           pushz    InitMetroStation&index   
            pushc    3   
            mult     
-           ldrz     &NodeA   
+           ldrz     &metroStation   
            add      
-           ixa      
-           ret      
-$$2:       rsp      
-           pushz    GetNodeStationA&id   
-           call     GetLineIndex:
+           pushc    0   
+           add      
+           pushz    InitMetroStation&id   
+           sta      
+//(.\Station.h, 31): 	metroStation[index].name = name;
+           pushz    InitMetroStation&index   
            pushc    3   
            mult     
-           ldrz     &NodeB   
+           ldrz     &metroStation   
            add      
-           ixa      
+           pushc    1   
+           add      
+           pushz    InitMetroStation&name   
+           sta      
+//(.\Station.h, 32): }
            ret      
-$$3:       rsp      
-           pushz    GetNodeStationA&id   
-           call     GetLineIndex:
+//(.\Station.h, 34): void InitNode(int index, int time){
+InitNode:  nop      
+           popz     InitNode&time   
+           popz     InitNode&index   
+//(.\Station.h, 35): 	metroNode[index].time = time;
+           pushz    InitNode&index   
+           pushc    1   
+           mult     
+           ldrz     &metroNode   
+           add      
+           pushc    0   
+           add      
+           pushz    InitNode&time   
+           sta      
+//(.\Station.h, 36): }
+           ret      
+//(.\Station.h, 38): void InitLine(int index, int lineNumber, int name, int startIndex, int stationCount){
+InitLine:  nop      
+           popz     InitLine&stationCount   
+           popz     InitLine&startIndex   
+           popz     InitLine&name   
+           popz     InitLine&lineNumber   
+           popz     InitLine&index   
+//(.\Station.h, 39): 	metroLine[index].lineNumber = lineNumber;
+           pushz    InitLine&index   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    0   
+           add      
+           pushz    InitLine&lineNumber   
+           sta      
+//(.\Station.h, 40): 	metroLine[index].name = name;
+           pushz    InitLine&index   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    1   
+           add      
+           pushz    InitLine&name   
+           sta      
+//(.\Station.h, 41): 	metroLine[index].startIndex = startIndex;
+           pushz    InitLine&index   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    2   
+           add      
+           pushz    InitLine&startIndex   
+           sta      
+//(.\Station.h, 42): 	metroLine[index].stationCount = stationCount;
+           pushz    InitLine&index   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    3   
+           add      
+           pushz    InitLine&stationCount   
+           sta      
+//(.\Station.h, 43): }
+           ret      
+//(.\Station.h, 45): void InitJoint(int index, int id1, int id2, int id3){
+InitJoint: nop      
+           popz     InitJoint&id3   
+           popz     InitJoint&id2   
+           popz     InitJoint&id1   
+           popz     InitJoint&index   
+//(.\Station.h, 46): 	metroJoint[index].id1 = id1;
+           pushz    InitJoint&index   
            pushc    3   
            mult     
-           ldrz     &NodeC   
+           ldrz     &metroJoint   
            add      
-           ixa      
-           ret      
-$$4:       rsp      
-           pushc    -1   
-           ret      
-GetNodeStationB: nop 
-           popz     GetNodeStationB&id   
-           ssp      
-           pushz    GetNodeStationB&id   
-           call     GetLineNumber:
-           dup      
-           eqjp     1   $$6:
-           dup      
-           eqjp     2   $$7:
-           dup      
-           eqjp     3   $$8:
-           ujp      $$9:
-$$6:       rsp      
-           pushz    GetNodeStationB&id   
-           call     GetLineIndex:
+           pushc    0   
+           add      
+           pushz    InitJoint&id1   
+           sta      
+//(.\Station.h, 47): 	metroJoint[index].id2 = id2;
+           pushz    InitJoint&index   
            pushc    3   
            mult     
-           ldrz     &NodeA   
+           ldrz     &metroJoint   
            add      
-           inc      
-           ixa      
-           ret      
-$$7:       rsp      
-           pushz    GetNodeStationB&id   
-           call     GetLineIndex:
+           pushc    1   
+           add      
+           pushz    InitJoint&id2   
+           sta      
+//(.\Station.h, 48): 	metroJoint[index].id3 = id3;
+           pushz    InitJoint&index   
            pushc    3   
            mult     
-           ldrz     &NodeB   
+           ldrz     &metroJoint   
            add      
-           inc      
-           ixa      
-           ret      
-$$8:       rsp      
-           pushz    GetNodeStationB&id   
-           call     GetLineIndex:
-           pushc    3   
-           mult     
-           ldrz     &NodeC   
+           pushc    2   
            add      
-           inc      
-           ixa      
+           pushz    InitJoint&id3   
+           sta      
+//(.\Station.h, 49): }
            ret      
-$$9:       rsp      
-           pushc    -1   
-           ret      
+//(.\Station.h, 52): int GetLineNumber(int id){
 GetLineNumber: nop  
-           stnz     GetLineNumber&id   
+           popz     GetLineNumber&id   
+//(.\Station.h, 53): 	return id / 100;
+           pushz    GetLineNumber&id   
            pushc    100   
            div      
            ret      
+//(.\Station.h, 54): }
+//(.\Station.h, 56): int GetLineIndex(int id){
 GetLineIndex: nop   
-           stnz     GetLineIndex&id   
+           popz     GetLineIndex&id   
+//(.\Station.h, 57): 	return id - GetLineNumber(id) * 100;
+           pushz    GetLineIndex&id   
            pushz    GetLineIndex&id   
            call     GetLineNumber:
            pushc    100   
            mult     
            sub      
            ret      
-InitJoin:  nop      
-           popz     InitJoin&stationIdC   
-           popz     InitJoin&stationIdB   
-           popz     InitJoin&stationIdA   
-           stnz     InitJoin&index   
-           pushc    3   
+//(.\Station.h, 58): }
+//(.\Station.h, 61): int GetMetroStation(int lineNumber, int stationIndex){
+GetMetroStation: nop 
+           popz     GetMetroStation&stationIndex   
+           popz     GetMetroStation&lineNumber   
+//(.\Station.h, 62): 	return metroLine[lineNumber].startIndex + stationIndex;
+           pushz    GetMetroStation&lineNumber   
+           pushc    4   
            mult     
-           ldrz     &Joint   
-           add      
-           pushz    InitJoin&stationIdA   
-           sta      
-           pushz    InitJoin&index   
-           pushc    3   
-           mult     
-           ldrz     &Joint   
-           add      
-           inc      
-           pushz    InitJoin&stationIdB   
-           sta      
-           pushz    InitJoin&index   
-           pushc    3   
-           mult     
-           ldrz     &Joint   
-           add      
-           pushc    2   
-           add      
-           pushz    InitJoin&stationIdC   
-           sta      
-           ret      
-GetJointStationId: nop 
-           popz     GetJointStationId&station   
-           stnz     GetJointStationId&index   
-           nejp     -1   $$10:
-           pushc    -1   
-           ret      
-$$10:      ssp      
-           pushz    GetJointStationId&station   
-           dup      
-           eqjp     0   $$12:
-           dup      
-           eqjp     1   $$13:
-           dup      
-           eqjp     2   $$14:
-           ujp      $$15:
-$$12:      rsp      
-           pushz    GetJointStationId&index   
-           pushc    3   
-           mult     
-           ldrz     &Joint   
-           add      
-           ixa      
-           ret      
-$$13:      rsp      
-           pushz    GetJointStationId&index   
-           pushc    3   
-           mult     
-           ldrz     &Joint   
-           add      
-           inc      
-           ixa      
-           ret      
-$$14:      rsp      
-           pushz    GetJointStationId&index   
-           pushc    3   
-           mult     
-           ldrz     &Joint   
+           ldrz     &metroLine   
            add      
            pushc    2   
            add      
            ixa      
+           pushz    GetMetroStation&stationIndex   
+           add      
            ret      
-$$15:      rsp      
-           pushc    -1   
-           ret      
-InitSubway: nop     
-           zsetc    InitSubway&i   0   
-$$16:      pushz    InitSubway&i   
-           gejp     10   $$17:
-           pushz    InitSubway&i   
-           pushc    2   
+//(.\Station.h, 63): }
+//(.\Station.h, 66): int GetMetroStationById(int id){
+GetMetroStationById: nop 
+           popz     GetMetroStationById&id   
+//(.\Station.h, 67): 	return metroLine[GetLineNumber(id)].startIndex + GetLineIndex(id);
+           pushz    GetMetroStationById&id   
+           call     GetLineNumber:
+           pushc    4   
            mult     
-           ldrz     &StationA   
-           add      
-           pushi    &stationName   InitSubway&i   
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeA   
+           ldrz     &metroLine   
            add      
            pushc    2   
-           add      
-           pushc    3   
-           sta      
-           pushz    InitSubway&i   
-           gejp     9   $$18:
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeA   
-           add      
-           pushz    InitSubway&i   
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeA   
-           add      
-           inc      
-           pushz    InitSubway&i   
-           inc      
-           sta      
-$$18:      incz     InitSubway&i   1   
-           ujp      $$16:
-$$17:      zsetc    InitSubway&i   0   
-$$20:      pushz    InitSubway&i   
-           gejp     10   $$21:
-           pushz    InitSubway&i   
-           pushc    2   
-           mult     
-           ldrz     &StationB   
-           add      
-           pushz    InitSubway&i   
-           pushc    10   
-           add      
-           ldrz     &stationName   
            add      
            ixa      
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeB   
+           pushz    GetMetroStationById&id   
+           call     GetLineIndex:
            add      
-           pushc    2   
-           add      
-           pushc    3   
-           sta      
-           pushz    InitSubway&i   
-           gejp     9   $$22:
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeB   
-           add      
-           pushz    InitSubway&i   
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeB   
-           add      
-           inc      
-           pushz    InitSubway&i   
-           inc      
-           sta      
-$$22:      incz     InitSubway&i   1   
-           ujp      $$20:
-$$21:      zsetc    InitSubway&i   0   
-$$24:      pushz    InitSubway&i   
-           gejp     10   $$25:
-           pushz    InitSubway&i   
-           pushc    2   
-           mult     
-           ldrz     &StationC   
-           add      
-           pushz    InitSubway&i   
-           pushc    20   
-           add      
-           ldrz     &stationName   
-           add      
-           ixa      
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeC   
-           add      
-           pushc    2   
-           add      
-           pushc    3   
-           sta      
-           pushz    InitSubway&i   
-           gejp     9   $$26:
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeC   
-           add      
-           pushz    InitSubway&i   
-           sta      
-           pushz    InitSubway&i   
-           pushc    3   
-           mult     
-           ldrz     &NodeC   
-           add      
-           inc      
-           pushz    InitSubway&i   
-           inc      
-           sta      
-$$26:      incz     InitSubway&i   1   
-           ujp      $$24:
-$$25:      pushc    0   
-           pushc    106   
-           pushc    206   
-           pushc    -1   
-           call     InitJoin:
+           ret      
+//(.\Station.h, 68): }
+//(.\Station.h, 71): void InitMetro(){
+InitMetro: nop      
+//(.\Station.h, 72): 	int i, j;
+//(.\Station.h, 82): 	InitLine(1, 1, 1,  0, 10);
            pushc    1   
-           pushc    108   
-           pushc    308   
-           pushc    -1   
-           call     InitJoin:
+           pushc    1   
+           pushc    1   
+           pushc    0   
+           pushc    10   
+           call     InitLine:
+//(.\Station.h, 83): 	InitLine(2, 2, 2, 10, 10);
            pushc    2   
-           pushc    203   
-           pushc    303   
-           pushc    -1   
-           call     InitJoin:
+           pushc    2   
+           pushc    2   
+           pushc    10   
+           pushc    10   
+           call     InitLine:
+//(.\Station.h, 84): 	InitLine(3, 3, 3, 20, 10);
            pushc    3   
+           pushc    3   
+           pushc    3   
+           pushc    20   
+           pushc    10   
+           call     InitLine:
+//(.\Station.h, 85): 	InitLine(4, 4, 4, 30, 10);
+           pushc    4   
+           pushc    4   
+           pushc    4   
+           pushc    30   
+           pushc    10   
+           call     InitLine:
+//(.\Station.h, 88): 	for(j = 1; j < 5; j++){
+           pushc    1   
+           popz     InitMetro&j   
+$$0:       nop      
+           pushz    InitMetro&j   
+           pushc    5   
+           lt       
+           fjp      $$1:
+//(.\Station.h, 89): 		for(i = 0; i < metroLine[j].stationCount; i++){
+           pushc    0   
+           popz     InitMetro&i   
+$$3:       nop      
+           pushz    InitMetro&i   
+           pushz    InitMetro&j   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           lt       
+           fjp      $$4:
+//(.\Station.h, 90): 			InitMetroStation(
+//(.\Station.h, 91): 				metroLine[j].startIndex + i,
+           pushz    InitMetro&j   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    InitMetro&i   
+           add      
+//(.\Station.h, 92): 				j * 100 + i,
+           pushz    InitMetro&j   
+           pushc    100   
+           mult     
+           pushz    InitMetro&i   
+           add      
+//(.\Station.h, 93): 				metroLine[j].startIndex + i
+           pushz    InitMetro&j   
+           pushc    4   
+           mult     
+           ldrz     &metroLine   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    InitMetro&i   
+           add      
+           call     InitMetroStation:
+           nop      
+           pushz    InitMetro&i   
+           inc      
+           popz     InitMetro&i   
+           ujp      $$3:
+//(.\Station.h, 94): 			);
+//(.\Station.h, 97): 		}
+$$4:       nop      
+           nop      
+           pushz    InitMetro&j   
+           inc      
+           popz     InitMetro&j   
+           ujp      $$0:
+//(.\Station.h, 98): 	}
+$$1:       nop      
+//(.\Station.h,101): 	InitJoint(0,-1,-1,-1);
+           pushc    0   
+           pushc    1   
+           neg      
+           pushc    1   
+           neg      
+           pushc    1   
+           neg      
+           call     InitJoint:
+//(.\Station.h,102): 	InitJoint(1,  309,  402,-1);
+           pushc    1   
+           pushc    309   
+           pushc    402   
+           pushc    1   
+           neg      
+           call     InitJoint:
+//(.\Station.h,103): 	InitJoint(2,  208,  307,-1);
+           pushc    2   
            pushc    208   
-           pushc    306   
-           pushc    -1   
-           call     InitJoin:
+           pushc    307   
+           pushc    1   
+           neg      
+           call     InitJoint:
+//(.\Station.h,104): 	InitJoint(3,  103,  203,-1);
+           pushc    3   
+           pushc    103   
+           pushc    203   
+           pushc    1   
+           neg      
+           call     InitJoint:
+//(.\Station.h,110): }
            ret      
 Sort:      nop      
            popz     Sort&sortData   
-           stnz     Sort&size   
+           popz     Sort&size   
+//(.\SortStruct.h,  4): void Sort(int size, int sortData){
+//(.\SortStruct.h,  5): 	int i, j;
+//(.\SortStruct.h,  6): 	int interval = size / 2;
+           pushz    Sort&size   
            pushc    2   
            div      
            popz     Sort&interval   
-$$28:      pushz    Sort&interval   
-           ltjp     1   $$29:
-           zsetc    Sort&i   0   
-$$30:      pushz    Sort&i   
+$$6:       nop      
+//(.\SortStruct.h,  7): 	while(interval >= 1){
+           pushz    Sort&interval   
+           pushc    1   
+           ge       
+           fjp      $$7:
+//(.\SortStruct.h,  8): 		for(i = 0; i < interval; i++){
+           pushc    0   
+           popz     Sort&i   
+$$8:       nop      
+           pushz    Sort&i   
            pushz    Sort&interval   
            lt       
-           fjp      $$31:
+           fjp      $$9:
+//(.\SortStruct.h,  9): 			switch(sortData){
            ssp      
            pushz    Sort&sortData   
            dup      
-           eqjp     0   $$34:
+           pushc    0   
+           eq       
+           tjp      $$12:
            rsp      
-           ujp      $$32:
-$$34:      rsp      
+           ujp      $$11:
+$$12:      nop      
+           rsp      
+//(.\SortStruct.h, 10): 				case 0 :
+//(.\SortStruct.h, 11): 					IntervalSort(i, size - 1, interval);
            pushz    Sort&i   
            pushz    Sort&size   
-           dec      
+           pushc    1   
+           sub      
            pushz    Sort&interval   
            call     IntervalSort:
-$$32:      incz     Sort&i   1   
-           ujp      $$30:
-$$31:      pushz    Sort&interval   
+$$11:      nop      
+           nop      
+           pushz    Sort&i   
+           inc      
+           popz     Sort&i   
+           ujp      $$8:
+//(.\SortStruct.h, 12): 			}
+//(.\SortStruct.h, 13): 		}interval /= 2;
+$$9:       nop      
+           pushz    Sort&interval   
            pushc    2   
            div      
            popz     Sort&interval   
-           ujp      $$28:
-$$29:      ret      
+           ujp      $$6:
+//(.\SortStruct.h, 14): 	}
+$$7:       nop      
+//(.\SortStruct.h, 15): }
+           ret      
+//(.\SortStruct.h, 19): void IntervalSort(int begin, int end, int interval){
 IntervalSort: nop   
            popz     IntervalSort&interval   
            popz     IntervalSort&end   
-           stnz     IntervalSort&begin   
+           popz     IntervalSort&begin   
+//(.\SortStruct.h, 20): 	struct FoundJoint joint;
+//(.\SortStruct.h, 21): 	int i, j;
+//(.\SortStruct.h, 23): 	for(i = begin + interval; i <= end; i += interval){
+           pushz    IntervalSort&begin   
            pushz    IntervalSort&interval   
            add      
            popz     IntervalSort&i   
-$$35:      pushz    IntervalSort&i   
+$$13:      nop      
+           pushz    IntervalSort&i   
            pushz    IntervalSort&end   
            le       
-           fjp      $$36:
+           fjp      $$14:
+//(.\SortStruct.h, 24): 		joint.id = foundJoint[i].id;
            ldrz     IntervalSort&joint   
+           pushc    0   
+           add      
            pushz    IntervalSort&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
+           pushc    0   
+           add      
            ixa      
            sta      
+//(.\SortStruct.h, 25): 		joint.time = foundJoint[i].time;
            ldrz     IntervalSort&joint   
-           inc      
+           pushc    1   
+           add      
            pushz    IntervalSort&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            ixa      
            sta      
+//(.\SortStruct.h, 26): 		joint.prevId = foundJoint[i].prevId;
            ldrz     IntervalSort&joint   
            pushc    2   
            add      
            pushz    IntervalSort&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -656,69 +738,96 @@ $$35:      pushz    IntervalSort&i
            add      
            ixa      
            sta      
+//(.\SortStruct.h, 27): 		joint.jointIndex = foundJoint[i].jointIndex;
+           ldrz     IntervalSort&joint   
+           pushc    3   
+           add      
+           pushz    IntervalSort&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           sta      
+//(.\SortStruct.h, 28): 		for(j = i - interval; j >= begin && joint.time < foundJoint[j].time; j -= interval){
            pushz    IntervalSort&i   
            pushz    IntervalSort&interval   
            sub      
            popz     IntervalSort&j   
-$$38:      pushz    IntervalSort&j   
+$$16:      nop      
+           pushz    IntervalSort&j   
            pushz    IntervalSort&begin   
            ge       
            dup      
-           fjp      $$41:
+           fjp      $$19:
            popz     &swReserved3   
            ldrz     IntervalSort&joint   
-           inc      
+           pushc    1   
+           add      
            ixa      
            pushz    IntervalSort&j   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            ixa      
            lt       
-$$41:      fjp      $$39:
+$$19:      nop      
+           fjp      $$17:
+//(.\SortStruct.h, 29): 			foundJoint[j + interval].id = foundJoint[j].id;
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            add      
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
+           pushc    0   
+           add      
            pushz    IntervalSort&j   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
+           add      
+           pushc    0   
            add      
            ixa      
            sta      
+//(.\SortStruct.h, 30): 			foundJoint[j + interval].time = foundJoint[j].time;
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            add      
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            pushz    IntervalSort&j   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            ixa      
            sta      
+//(.\SortStruct.h, 31): 			foundJoint[j + interval].prevId = foundJoint[j].prevId;
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            add      
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
            pushc    2   
            add      
            pushz    IntervalSort&j   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -726,37 +835,68 @@ $$41:      fjp      $$39:
            add      
            ixa      
            sta      
+//(.\SortStruct.h, 32): 			foundJoint[j + interval].jointIndex = foundJoint[j].jointIndex;
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           pushz    IntervalSort&j   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           sta      
+           nop      
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            sub      
            popz     IntervalSort&j   
-           ujp      $$38:
-$$39:      pushz    IntervalSort&j   
-           pushz    IntervalSort&interval   
-           add      
-           pushc    3   
-           mult     
-           ldrz     &foundJoint   
-           add      
-           ldrz     IntervalSort&joint   
-           ixa      
-           sta      
+           ujp      $$16:
+//(.\SortStruct.h, 33): 		}
+$$17:      nop      
+//(.\SortStruct.h, 34): 		foundJoint[j + interval].id = joint.id;
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            add      
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    0   
+           add      
            ldrz     IntervalSort&joint   
-           inc      
+           pushc    0   
+           add      
            ixa      
            sta      
+//(.\SortStruct.h, 35): 		foundJoint[j + interval].time = joint.time;
            pushz    IntervalSort&j   
            pushz    IntervalSort&interval   
            add      
-           pushc    3   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ldrz     IntervalSort&joint   
+           pushc    1   
+           add      
+           ixa      
+           sta      
+//(.\SortStruct.h, 36): 		foundJoint[j + interval].prevId = joint.prevId;
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -767,33 +907,60 @@ $$39:      pushz    IntervalSort&j
            add      
            ixa      
            sta      
+//(.\SortStruct.h, 37): 		foundJoint[j + interval].jointIndex = joint.jointIndex;
+           pushz    IntervalSort&j   
+           pushz    IntervalSort&interval   
+           add      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ldrz     IntervalSort&joint   
+           pushc    3   
+           add      
+           ixa      
+           sta      
+           nop      
            pushz    IntervalSort&i   
            pushz    IntervalSort&interval   
            add      
            popz     IntervalSort&i   
-           ujp      $$35:
-$$36:      ret      
+           ujp      $$13:
+//(.\SortStruct.h, 38): 	}
+$$14:      nop      
+//(.\SortStruct.h, 39): }
+           ret      
 AddSaveJoint: nop   
+           popz     AddSaveJoint&jointIndex   
            popz     AddSaveJoint&prevId   
            popz     AddSaveJoint&time   
            popz     AddSaveJoint&id   
+//(.\SearchStation.h, 33): void AddSaveJoint(int id, int time, int prevId, int jointIndex){
+//(.\SearchStation.h, 34): 	saveJointList[saveJointListSize].id = id;
            pushz    &saveJointListSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
+           add      
+           pushc    0   
            add      
            pushz    AddSaveJoint&id   
            sta      
+//(.\SearchStation.h, 35): 	saveJointList[saveJointListSize].time = time;
            pushz    &saveJointListSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
            add      
-           inc      
+           pushc    1   
+           add      
            pushz    AddSaveJoint&time   
            sta      
+//(.\SearchStation.h, 36): 	saveJointList[saveJointListSize].prevId = prevId;
            pushz    &saveJointListSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
            add      
@@ -801,62 +968,133 @@ AddSaveJoint: nop
            add      
            pushz    AddSaveJoint&prevId   
            sta      
-           incz     &saveJointListSize   1   
-           ret      
-InitJointList: nop  
-           zsetc    &saveJointListSize   0   
-           ret      
-FindSaveJointById: nop 
-           popz     FindSaveJointById&id   
-           zsetc    FindSaveJointById&i   0   
-$$42:      pushz    FindSaveJointById&i   
+//(.\SearchStation.h, 37): 	saveJointList[saveJointListSize].jointIndex = jointIndex;
            pushz    &saveJointListSize   
-           lt       
-           fjp      $$43:
-           pushz    FindSaveJointById&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
+           add      
+           pushc    3   
+           add      
+           pushz    AddSaveJoint&jointIndex   
+           sta      
+//(.\SearchStation.h, 38): 	saveJointListSize++;
+           pushz    &saveJointListSize   
+           inc      
+           popz     &saveJointListSize   
+//(.\SearchStation.h, 39): }
+           ret      
+//(.\SearchStation.h, 42): void InitJointList(){
+InitJointList: nop  
+//(.\SearchStation.h, 43): 	saveJointListSize = 0;
+           pushc    0   
+           popz     &saveJointListSize   
+//(.\SearchStation.h, 44): }
+           ret      
+//(.\SearchStation.h, 47): int FindSaveJointById(int id){
+FindSaveJointById: nop 
+           popz     FindSaveJointById&id   
+//(.\SearchStation.h, 48): 	int i;
+//(.\SearchStation.h, 49): 	for(i = 0; i < saveJointListSize; i++){
+           pushc    0   
+           popz     FindSaveJointById&i   
+$$20:      nop      
+           pushz    FindSaveJointById&i   
+           pushz    &saveJointListSize   
+           lt       
+           fjp      $$21:
+//(.\SearchStation.h, 50): 		if(saveJointList[i].id == id) return i;
+           pushz    FindSaveJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           pushc    0   
            add      
            ixa      
            pushz    FindSaveJointById&id   
            eq       
-           fjp      $$44:
+           fjp      $$23:
            pushz    FindSaveJointById&i   
            ret      
-$$44:      incz     FindSaveJointById&i   1   
-           ujp      $$42:
-$$43:      pushc    -1   
+$$23:      nop      
+//(.\SearchStation.h, 51): 		else if(saveJointList[i].prevId == id) return i;
+           pushz    FindSaveJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &saveJointList   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindSaveJointById&id   
+           eq       
+           fjp      $$25:
+           pushz    FindSaveJointById&i   
            ret      
+$$25:      nop      
+           nop      
+           nop      
+           pushz    FindSaveJointById&i   
+           inc      
+           popz     FindSaveJointById&i   
+           ujp      $$20:
+//(.\SearchStation.h, 52): 	}
+$$21:      nop      
+//(.\SearchStation.h, 53): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h, 54): }
+//(.\SearchStation.h, 58): int AddFoundJoint(int id, int time, int prevId, int jointIndex){
 AddFoundJoint: nop  
+           popz     AddFoundJoint&jointIndex   
            popz     AddFoundJoint&prevId   
            popz     AddFoundJoint&time   
-           stnz     AddFoundJoint&id   
+           popz     AddFoundJoint&id   
+//(.\SearchStation.h, 59): 	int duplicatedFoundJointIndex = FindFoundJointById(id);
+           pushz    AddFoundJoint&id   
            call     FindFoundJointById:
            popz     AddFoundJoint&duplicatedFoundJointIndex   
+//(.\SearchStation.h, 60): 	if(FindSaveJointById(id) != -1) return 0;
            pushz    AddFoundJoint&id   
            call     FindSaveJointById:
-           nejp     -1   $$46:
+           pushc    1   
+           neg      
+           ne       
+           fjp      $$26:
+           pushc    0   
            ret      
-$$46:      pushz    AddFoundJoint&duplicatedFoundJointIndex   
-           nejp     -1   $$47:
+$$26:      nop      
+//(.\SearchStation.h, 61): 	if(duplicatedFoundJointIndex == -1){
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    1   
+           neg      
+           eq       
+           fjp      $$27:
+//(.\SearchStation.h, 62): 		foundJoint[foundJointSize].id = id;
            pushz    &foundJointSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
+           add      
+           pushc    0   
            add      
            pushz    AddFoundJoint&id   
            sta      
+//(.\SearchStation.h, 63): 		foundJoint[foundJointSize].time = time;
            pushz    &foundJointSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            pushz    AddFoundJoint&time   
            sta      
+//(.\SearchStation.h, 64): 		foundJoint[foundJointSize].prevId = prevId;
            pushz    &foundJointSize   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -864,35 +1102,60 @@ $$46:      pushz    AddFoundJoint&duplicatedFoundJointIndex
            add      
            pushz    AddFoundJoint&prevId   
            sta      
-           incz     &foundJointSize   1   
-           ujp      $$48:
-$$47:      pushz    AddFoundJoint&duplicatedFoundJointIndex   
-           pushc    3   
+//(.\SearchStation.h, 65): 		foundJoint[foundJointSize].jointIndex = jointIndex;
+           pushz    &foundJointSize   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
+           pushc    3   
+           add      
+           pushz    AddFoundJoint&jointIndex   
+           sta      
+//(.\SearchStation.h, 66): 		foundJointSize++;
+           pushz    &foundJointSize   
            inc      
+           popz     &foundJointSize   
+//(.\SearchStation.h, 67): 		return 1;
+           pushc    1   
+           ret      
+$$27:      nop      
+//(.\SearchStation.h, 68): 	}else{
+//(.\SearchStation.h, 69): 		if(foundJoint[duplicatedFoundJointIndex].time > time){
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
            ixa      
            pushz    AddFoundJoint&time   
            gt       
-           fjp      $$48:
+           fjp      $$29:
+//(.\SearchStation.h, 70): 			foundJoint[duplicatedFoundJointIndex].id = id;
            pushz    AddFoundJoint&duplicatedFoundJointIndex   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
+           add      
+           pushc    0   
            add      
            pushz    AddFoundJoint&id   
            sta      
+//(.\SearchStation.h, 71): 			foundJoint[duplicatedFoundJointIndex].time = time;
            pushz    AddFoundJoint&duplicatedFoundJointIndex   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            pushz    AddFoundJoint&time   
            sta      
+//(.\SearchStation.h, 72): 			foundJoint[duplicatedFoundJointIndex].prevId = prevId;
            pushz    AddFoundJoint&duplicatedFoundJointIndex   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -900,82 +1163,230 @@ $$47:      pushz    AddFoundJoint&duplicatedFoundJointIndex
            add      
            pushz    AddFoundJoint&prevId   
            sta      
-$$48:      ret      
+//(.\SearchStation.h, 73): 			foundJoint[duplicatedFoundJointIndex].jointIndex = jointIndex;
+           pushz    AddFoundJoint&duplicatedFoundJointIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           pushz    AddFoundJoint&jointIndex   
+           sta      
+//(.\SearchStation.h, 74): 		}
+$$29:      nop      
+//(.\SearchStation.h, 75): 		return 1;
+           pushc    1   
+           ret      
+//(.\SearchStation.h, 76): 	}
+           nop      
+//(.\SearchStation.h, 77): 	return 0;
+           pushc    0   
+           ret      
+//(.\SearchStation.h, 78): }
+//(.\SearchStation.h, 81): void SortFoundJointByTime(){
 SortFoundJointByTime: nop 
+//(.\SearchStation.h, 82): 	Sort(foundJointSize,0);
            pushz    &foundJointSize   
            pushc    0   
            call     Sort:
+//(.\SearchStation.h, 83): }
            ret      
+//(.\SearchStation.h, 86): void InitFoundJoint(){
 InitFoundJoint: nop 
-           zsetc    &foundJointSize   0   
+//(.\SearchStation.h, 87): 	foundJointSize = 0;
+           pushc    0   
+           popz     &foundJointSize   
+//(.\SearchStation.h, 88): }
            ret      
+//(.\SearchStation.h, 91): int FindFoundJointById(int id){
 FindFoundJointById: nop 
            popz     FindFoundJointById&id   
-           zsetc    FindFoundJointById&i   0   
-$$50:      pushz    FindFoundJointById&i   
+//(.\SearchStation.h, 92): 	int i;
+//(.\SearchStation.h, 93): 	for(i = 0; i < foundJointSize; i++){
+           pushc    0   
+           popz     FindFoundJointById&i   
+$$30:      nop      
+           pushz    FindFoundJointById&i   
            pushz    &foundJointSize   
            lt       
-           fjp      $$51:
+           fjp      $$31:
+//(.\SearchStation.h, 94): 		if(foundJoint[i].id == id) return i;
            pushz    FindFoundJointById&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
+           add      
+           pushc    0   
            add      
            ixa      
            pushz    FindFoundJointById&id   
            eq       
-           fjp      $$52:
+           fjp      $$33:
            pushz    FindFoundJointById&i   
            ret      
-$$52:      incz     FindFoundJointById&i   1   
-           ujp      $$50:
-$$51:      pushc    -1   
+$$33:      nop      
+//(.\SearchStation.h, 95): 		else if(foundJoint[i].prevId == id) return i;
+           pushz    FindFoundJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindFoundJointById&id   
+           eq       
+           fjp      $$35:
+           pushz    FindFoundJointById&i   
            ret      
-DelFrontFoundJoint: nop 
-           incz     &foundJointSize   -1   
-           zsetc    DelFrontFoundJoint&i   0   
-$$54:      pushz    DelFrontFoundJoint&i   
+$$35:      nop      
+           nop      
+//(.\SearchStation.h, 96): 		if(metroJoint[foundJoint[i].jointIndex].id1 == id) return i;
+           pushz    FindFoundJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    FindFoundJointById&id   
+           eq       
+           fjp      $$36:
+           pushz    FindFoundJointById&i   
+           ret      
+$$36:      nop      
+//(.\SearchStation.h, 97): 		else if(metroJoint[foundJoint[i].jointIndex].id2 == id) return i;
+           pushz    FindFoundJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindFoundJointById&id   
+           eq       
+           fjp      $$38:
+           pushz    FindFoundJointById&i   
+           ret      
+$$38:      nop      
+//(.\SearchStation.h, 98): 		else if(metroJoint[foundJoint[i].jointIndex].id3 == id) return i;
+           pushz    FindFoundJointById&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindFoundJointById&id   
+           eq       
+           fjp      $$40:
+           pushz    FindFoundJointById&i   
+           ret      
+$$40:      nop      
+           nop      
+           nop      
+           nop      
+           pushz    FindFoundJointById&i   
+           inc      
+           popz     FindFoundJointById&i   
+           ujp      $$30:
+//(.\SearchStation.h, 99): 	}
+$$31:      nop      
+//(.\SearchStation.h,100): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,101): }
+//(.\SearchStation.h,104): void _DelFrontFoundJoint(){
+_DelFrontFoundJoint: nop 
+//(.\SearchStation.h,105): 	int i;
+//(.\SearchStation.h,106): 	foundJointSize--;
+           pushz    &foundJointSize   
+           dec      
+           popz     &foundJointSize   
+//(.\SearchStation.h,107): 	for(i = 0; i < foundJointSize; i++){
+           pushc    0   
+           popz     _DelFrontFoundJoint&i   
+$$41:      nop      
+           pushz    _DelFrontFoundJoint&i   
            pushz    &foundJointSize   
            lt       
-           fjp      $$55:
-           pushz    DelFrontFoundJoint&i   
-           pushc    3   
+           fjp      $$42:
+//(.\SearchStation.h,108): 		foundJoint[i].id = foundJoint[i + 1].id;
+           pushz    _DelFrontFoundJoint&i   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           pushz    DelFrontFoundJoint&i   
-           inc      
-           pushc    3   
+           pushc    0   
+           add      
+           pushz    _DelFrontFoundJoint&i   
+           pushc    1   
+           add      
+           pushc    4   
            mult     
            ldrz     &foundJoint   
+           add      
+           pushc    0   
            add      
            ixa      
            sta      
-           pushz    DelFrontFoundJoint&i   
-           pushc    3   
+//(.\SearchStation.h,109): 		foundJoint[i].time = foundJoint[i + 1].time;
+           pushz    _DelFrontFoundJoint&i   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
-           pushz    DelFrontFoundJoint&i   
-           inc      
-           pushc    3   
+           pushc    1   
+           add      
+           pushz    _DelFrontFoundJoint&i   
+           pushc    1   
+           add      
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
-           inc      
+           pushc    1   
+           add      
            ixa      
            sta      
-           pushz    DelFrontFoundJoint&i   
-           pushc    3   
+//(.\SearchStation.h,110): 		foundJoint[i].prevId = foundJoint[i + 1].prevId;
+           pushz    _DelFrontFoundJoint&i   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
            pushc    2   
            add      
-           pushz    DelFrontFoundJoint&i   
-           inc      
-           pushc    3   
+           pushz    _DelFrontFoundJoint&i   
+           pushc    1   
+           add      
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
@@ -983,99 +1394,550 @@ $$54:      pushz    DelFrontFoundJoint&i
            add      
            ixa      
            sta      
-           incz     DelFrontFoundJoint&i   1   
-           ujp      $$54:
-$$55:      ret      
-GetFrontFoundJointId: nop 
+//(.\SearchStation.h,111): 		foundJoint[i].jointIndex = foundJoint[i + 1].jointIndex;
+           pushz    _DelFrontFoundJoint&i   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           pushz    _DelFrontFoundJoint&i   
+           pushc    1   
+           add      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           sta      
+           nop      
+           pushz    _DelFrontFoundJoint&i   
+           inc      
+           popz     _DelFrontFoundJoint&i   
+           ujp      $$41:
+//(.\SearchStation.h,112): 	}
+$$42:      nop      
+//(.\SearchStation.h,113): }
+           ret      
+//(.\SearchStation.h,116): void DelLastFoundJoint(){
+DelLastFoundJoint: nop 
+//(.\SearchStation.h,117): 	foundJointSize--;
            pushz    &foundJointSize   
-           lejp     0   $$57:
-           pushic   &foundJoint   0   
+           dec      
+           popz     &foundJointSize   
+//(.\SearchStation.h,118): }
            ret      
-$$57:      pushc    -1   
+//(.\SearchStation.h,121): int _GetFrontFoundJointId(){
+_GetFrontFoundJointId: nop 
+//(.\SearchStation.h,122): 	if(foundJointSize > 0){
+           pushz    &foundJointSize   
+           pushc    0   
+           gt       
+           fjp      $$44:
+//(.\SearchStation.h,123): 		return foundJoint[0].id;
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
            ret      
+//(.\SearchStation.h,124): 	}
+$$44:      nop      
+//(.\SearchStation.h,125): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,126): }
+//(.\SearchStation.h,129): int GetLastFoundJointId(){
+GetLastFoundJointId: nop 
+//(.\SearchStation.h,130): 	if(foundJointSize > 0){
+           pushz    &foundJointSize   
+           pushc    0   
+           gt       
+           fjp      $$45:
+//(.\SearchStation.h,131): 		return foundJoint[foundJointSize - 1].id;
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           ret      
+//(.\SearchStation.h,132): 	}
+$$45:      nop      
+//(.\SearchStation.h,133): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,134): }
+//(.\SearchStation.h,137): int _GetFrontFoundJointIndex(){
+_GetFrontFoundJointIndex: nop 
+//(.\SearchStation.h,138): 	if(foundJointSize > 0){
+           pushz    &foundJointSize   
+           pushc    0   
+           gt       
+           fjp      $$46:
+//(.\SearchStation.h,139): 		return foundJoint[0].jointIndex;
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           ret      
+//(.\SearchStation.h,140): 	}
+$$46:      nop      
+//(.\SearchStation.h,141): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,142): }
+//(.\SearchStation.h,145): int GetLastFoundJointIndex(){
+GetLastFoundJointIndex: nop 
+//(.\SearchStation.h,146): 	if(foundJointSize > 0){
+           pushz    &foundJointSize   
+           pushc    0   
+           gt       
+           fjp      $$47:
+//(.\SearchStation.h,147): 		return foundJoint[foundJointSize - 1].jointIndex;
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           ret      
+//(.\SearchStation.h,148): 	}
+$$47:      nop      
+//(.\SearchStation.h,149): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,150): }
+//(.\SearchStation.h,154): void InitResultPath(){
 InitResultPath: nop 
-           zsetc    &resultPathSize   0   
+//(.\SearchStation.h,155): 	resultPathSize = 0;
+           pushc    0   
+           popz     &resultPathSize   
+//(.\SearchStation.h,156): }
            ret      
+//(.\SearchStation.h,159): void AddResultPath(int saveJointListIndex){
 AddResultPath: nop  
-           stnz     AddResultPath&saveJointListIndex   
-           popi     &resultPath   &resultPathSize   
-           incz     &resultPathSize   1   
+           popz     AddResultPath&saveJointListIndex   
+//(.\SearchStation.h,160): 	resultPath[resultPathSize] = saveJointListIndex;
+           pushz    &resultPathSize   
+           ldrz     &resultPath   
+           add      
+           pushz    AddResultPath&saveJointListIndex   
+           sta      
+//(.\SearchStation.h,161): 	resultPathSize++;
+           pushz    &resultPathSize   
+           inc      
+           popz     &resultPathSize   
+//(.\SearchStation.h,162): }
            ret      
+//(.\SearchStation.h,165): void ReverseResultPath(){
 ReverseResultPath: nop 
+//(.\SearchStation.h,166): 	int loopCount = resultPathSize / 2;
            pushz    &resultPathSize   
            pushc    2   
            div      
            popz     ReverseResultPath&loopCount   
-           zsetc    ReverseResultPath&i   0   
-$$58:      pushz    ReverseResultPath&i   
+//(.\SearchStation.h,167): 	int temp;
+//(.\SearchStation.h,168): 	int i;
+//(.\SearchStation.h,169): 	for(i = 0; i < loopCount; i++){
+           pushc    0   
+           popz     ReverseResultPath&i   
+$$48:      nop      
+           pushz    ReverseResultPath&i   
            pushz    ReverseResultPath&loopCount   
            lt       
-           fjp      $$59:
-           zseti    ReverseResultPath&temp   &resultPath   ReverseResultPath&i   
+           fjp      $$49:
+//(.\SearchStation.h,171): 		temp = resultPath[i];
+           pushz    ReverseResultPath&i   
+           ldrz     &resultPath   
+           add      
+           ixa      
+           popz     ReverseResultPath&temp   
+//(.\SearchStation.h,172): 		resultPath[i] = resultPath[resultPathSize - 1 - i];
            pushz    ReverseResultPath&i   
            ldrz     &resultPath   
            add      
            pushz    &resultPathSize   
-           dec      
+           pushc    1   
+           sub      
            pushz    ReverseResultPath&i   
            sub      
            ldrz     &resultPath   
            add      
            ixa      
            sta      
+//(.\SearchStation.h,173): 		resultPath[resultPathSize - 1 - i] = temp;
            pushz    &resultPathSize   
-           dec      
+           pushc    1   
+           sub      
            pushz    ReverseResultPath&i   
            sub      
            ldrz     &resultPath   
            add      
            pushz    ReverseResultPath&temp   
            sta      
-           incz     ReverseResultPath&i   1   
-           ujp      $$58:
-$$59:      ret      
+           nop      
+           pushz    ReverseResultPath&i   
+           inc      
+           popz     ReverseResultPath&i   
+           ujp      $$48:
+//(.\SearchStation.h,174): 	}
+$$49:      nop      
+//(.\SearchStation.h,175): }
+           ret      
+//(.\SearchStation.h,179): int FindPath(int startStation, int endStation){
 FindPath:  nop      
            popz     FindPath&endStation   
            popz     FindPath&startStation   
-           zsetz    FindPath&prevJointId   FindPath&endStation   
-           zsetc    FindPath&result   0   
-           call     InitJointList:
-           call     InitFoundJoint:
-           call     InitResultPath:
-           pushz    FindPath&startStation   
+//(.\SearchStation.h,180): 	int prevJointId = endStation;
            pushz    FindPath&endStation   
-           call     _FindJoint:
-           popz     FindPath&result   
-$$61:      pushz    FindPath&result   
-           eqjp     1   $$62:
-           call     SortFoundJointByTime:
-           call     GetFrontFoundJointId:
-           nejp     -1   $$63:
+           popz     FindPath&prevJointId   
+//(.\SearchStation.h,181): 	int foundCount = 0;
            pushc    0   
-           ret      
-$$63:      call     GetFrontFoundJointId:
-           pushz    FindPath&endStation   
-           call     _FindJoint:
-           popz     FindPath&result   
-           ujp      $$61:
-$$62:      pushz    &saveJointListSize   
-           dec      
-           popz     FindPath&i   
-$$65:      pushz    FindPath&i   
-           ltjp     0   $$66:
-           pushz    FindPath&i   
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,182): 	int startJoint = GetJointIndex(startStation);
+           pushz    FindPath&startStation   
+           call     GetJointIndex:
+           popz     FindPath&startJoint   
+//(.\SearchStation.h,183): 	int i;
+//(.\SearchStation.h,186): 	InitJointList();
+           call     InitJointList:
+//(.\SearchStation.h,187): 	InitFoundJoint();
+           call     InitFoundJoint:
+//(.\SearchStation.h,188): 	InitResultPath();
+           call     InitResultPath:
+//(.\SearchStation.h,190): 	if(startJoint != -1){
+           pushz    FindPath&startJoint   
+           pushc    1   
+           neg      
+           ne       
+           fjp      $$51:
+//(.\SearchStation.h,191): 		AddFoundJoint(startStation, 0,-1, startJoint);
+           pushz    FindPath&startStation   
+           pushc    0   
+           pushc    1   
+           neg      
+           pushz    FindPath&startJoint   
+           call     AddFoundJoint:
+           popz     &swReserved3   
+//(.\SearchStation.h,192): 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id1, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
            pushc    3   
            mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,193): 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,194): 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+           ujp      $$52:
+$$51:      nop      
+//(.\SearchStation.h,195): 	}else{
+//(.\SearchStation.h,196): 		AddFoundJoint(startStation, 0,-1, 0);
+           pushz    FindPath&startStation   
+           pushc    0   
+           pushc    1   
+           neg      
+           pushc    0   
+           call     AddFoundJoint:
+           popz     &swReserved3   
+//(.\SearchStation.h,197): 		foundCount += FindJoint(0, startStation, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           pushz    FindPath&startStation   
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,198): 	}
+$$52:      nop      
+//(.\SearchStation.h,200): 	if(foundCount > 0){
+           pushz    FindPath&foundCount   
+           pushc    0   
+           gt       
+           fjp      $$53:
+//(.\SearchStation.h,201): 		_CopyFrontFoundJointToSaveJoint();
+           call     _CopyFrontFoundJointToSaveJoint:
+//(.\SearchStation.h,202): 	}_DelFrontFoundJoint();
+$$53:      nop      
+           call     _DelFrontFoundJoint:
+//(.\SearchStation.h,203): 	SortFoundJointByTime();
+           call     SortFoundJointByTime:
+$$54:      nop      
+//(.\SearchStation.h,206): 	while(_GetFrontFoundJointId() != endStation){
+           call     _GetFrontFoundJointId:
+           pushz    FindPath&endStation   
+           ne       
+           fjp      $$55:
+//(.\SearchStation.h,207): 		foundCount = 0;
+           pushc    0   
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,209): 		if(_GetFrontFoundJointId() == -1){
+           call     _GetFrontFoundJointId:
+           pushc    1   
+           neg      
+           eq       
+           fjp      $$56:
+//(.\SearchStation.h,210): 			return 0;
+           pushc    0   
+           ret      
+$$56:      nop      
+//(.\SearchStation.h,211): 		}else{
+//(.\SearchStation.h,213): 			if(metroJoint[_GetFrontFoundJointIndex()].id1 != -1 && metroJoint[_GetFrontFoundJointIndex()].id1 != foundJoint[0].id){
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushc    1   
+           neg      
+           ne       
+           dup      
+           fjp      $$59:
+           popz     &swReserved3   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           ne       
+$$59:      nop      
+           fjp      $$58:
+//(.\SearchStation.h,214): 				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id1, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,215): 			}if(metroJoint[_GetFrontFoundJointIndex()].id2 != -1 && metroJoint[_GetFrontFoundJointIndex()].id2 != foundJoint[0].id){
+$$58:      nop      
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushc    1   
+           neg      
+           ne       
+           dup      
+           fjp      $$61:
+           popz     &swReserved3   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           ne       
+$$61:      nop      
+           fjp      $$60:
+//(.\SearchStation.h,216): 				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,217): 			}if(metroJoint[_GetFrontFoundJointIndex()].id3 != -1 && metroJoint[_GetFrontFoundJointIndex()].id3 != foundJoint[0].id){
+$$60:      nop      
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushc    1   
+           neg      
+           ne       
+           dup      
+           fjp      $$63:
+           popz     &swReserved3   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           ne       
+$$63:      nop      
+           fjp      $$62:
+//(.\SearchStation.h,218): 				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+           pushz    FindPath&foundCount   
+           pushc    0   
+           call     _GetFrontFoundJointIndex:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindPath&endStation   
+           call     FindJoint:
+           add      
+           popz     FindPath&foundCount   
+//(.\SearchStation.h,219): 			}
+$$62:      nop      
+//(.\SearchStation.h,221): 			if(foundCount > 0){
+           pushz    FindPath&foundCount   
+           pushc    0   
+           gt       
+           fjp      $$64:
+//(.\SearchStation.h,222): 				_CopyFrontFoundJointToSaveJoint();
+           call     _CopyFrontFoundJointToSaveJoint:
+//(.\SearchStation.h,223): 			}_DelFrontFoundJoint();
+$$64:      nop      
+           call     _DelFrontFoundJoint:
+//(.\SearchStation.h,224): 			SortFoundJointByTime();
+           call     SortFoundJointByTime:
+//(.\SearchStation.h,225): 		}
+           nop      
+           ujp      $$54:
+//(.\SearchStation.h,226): 	}
+$$55:      nop      
+//(.\SearchStation.h,227): 	_CopyFrontFoundJointToSaveJoint();
+           call     _CopyFrontFoundJointToSaveJoint:
+//(.\SearchStation.h,230): 	for(i = saveJointListSize - 1; i >= 0; i--){
+           pushz    &saveJointListSize   
+           pushc    1   
+           sub      
+           popz     FindPath&i   
+$$65:      nop      
+           pushz    FindPath&i   
+           pushc    0   
+           ge       
+           fjp      $$66:
+//(.\SearchStation.h,231): 		if(saveJointList[i].id == prevJointId){
+           pushz    FindPath&i   
+           pushc    4   
+           mult     
            ldrz     &saveJointList   
+           add      
+           pushc    0   
            add      
            ixa      
            pushz    FindPath&prevJointId   
            eq       
-           fjp      $$67:
+           fjp      $$68:
+//(.\SearchStation.h,232): 			AddResultPath(i);
            pushz    FindPath&i   
            call     AddResultPath:
+//(.\SearchStation.h,233): 			prevJointId = saveJointList[i].prevId;
            pushz    FindPath&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
            add      
@@ -1083,200 +1945,653 @@ $$65:      pushz    FindPath&i
            add      
            ixa      
            popz     FindPath&prevJointId   
+//(.\SearchStation.h,234): 			if(saveJointList[i].id == startStation) break;
            pushz    FindPath&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &saveJointList   
+           add      
+           pushc    0   
            add      
            ixa      
            pushz    FindPath&startStation   
            eq       
-           tjp      $$66:
-$$67:      incz     FindPath&i   -1   
+           fjp      $$69:
+           ujp      $$66:
+$$69:      nop      
+//(.\SearchStation.h,235): 		}
+$$68:      nop      
+           nop      
+           pushz    FindPath&i   
+           dec      
+           popz     FindPath&i   
            ujp      $$65:
-$$66:      call     ReverseResultPath:
+//(.\SearchStation.h,236): 	}
+$$66:      nop      
+//(.\SearchStation.h,237): 	ReverseResultPath();
+           call     ReverseResultPath:
+//(.\SearchStation.h,240): 	return 1;
            pushc    1   
            ret      
-_FindJoint: nop     
-           popz     _FindJoint&endStation   
-           popz     _FindJoint&currentStation   
-           pushc    0   
-           ret      
-CopyToSaveJoint: nop 
-           popz     CopyToSaveJoint&index   
-           ssp      
-           rsp      
-           ret      
-RouteStation: nop   
-           popz     RouteStation&stationEnd   
-           popz     RouteStation&stationStart   
-           zsetc    RouteStation&stationStart   200   
-           zsetc    RouteStation&stationEnd   305   
-           pushz    RouteStation&stationStart   
-           call     FindJoint:
-           popz     &swReserved3   
-           ret      
-_InitFoundJoint: nop 
-           ldrz     &foundJoint   
-           pushc    -1   
-           pushc    20   
-           calls    MemSetInt
-           ret      
-_AddFoundJoint: nop 
-           popz     _AddFoundJoint&jointIndex   
-           pushz    &foundJointCount   
-           gejp     20   $$70:
-           pushz    &foundJointCount   
-           pushc    3   
-           mult     
-           ldrz     &foundJoint   
-           add      
-           pushz    _AddFoundJoint&jointIndex   
-           sta      
-           incz     &foundJointCount   1   
-           pushc    1   
-           ret      
-$$70:      pushc    0   
-           ret      
-GetFoundJoint: nop  
-           stnz     GetFoundJoint&index   
-           pushz    &foundJointCount   
-           lt       
-           fjp      $$71:
-           pushz    GetFoundJoint&index   
-           pushc    3   
-           mult     
-           ldrz     &foundJoint   
-           add      
-           ixa      
-           ret      
-$$71:      pushc    -1   
-           ret      
+//(.\SearchStation.h,241): }
+//(.\SearchStation.h,254): int FindJoint(int currentStationIndex, int currentStation, int endStation){
 FindJoint: nop      
-           stnz     FindJoint&currentId   
+           popz     FindJoint&endStation   
+           popz     FindJoint&currentStation   
+           popz     FindJoint&currentStationIndex   
+//(.\SearchStation.h,255): 	int currentLine = GetLineNumber(currentStation);
+           pushz    FindJoint&currentStation   
            call     GetLineNumber:
            popz     FindJoint&currentLine   
-           pushz    FindJoint&currentId   
-           call     GetLineIndex:
-           popz     FindJoint&currentLineIndex   
-           zsetc    FindJoint&i   0   
-$$72:      pushz    FindJoint&i   
-           gejp     10   $$73:
-           pushz    FindJoint&currentLine   
-           pushz    FindJoint&i   
+//(.\SearchStation.h,256): 	int endLine = GetLineNumber(endStation);
+           pushz    FindJoint&endStation   
+           call     GetLineNumber:
+           popz     FindJoint&endLine   
+//(.\SearchStation.h,257): 	int foundJointCount = 0;
            pushc    0   
-           call     GetJointStationId:
-           call     GetLineNumber:
-           eq       
-           fjp      $$75:
-           pushz    FindJoint&i   
-           call     _AddFoundJoint:
-           popz     &swReserved3   
-           ujp      $$74:
-$$75:      pushz    FindJoint&currentLine   
-           pushz    FindJoint&i   
+           popz     FindJoint&foundJointCount   
+//(.\SearchStation.h,258): 	int i;
+//(.\SearchStation.h,260): 	if(currentStation == -1) return 0;
+           pushz    FindJoint&currentStation   
            pushc    1   
-           call     GetJointStationId:
-           call     GetLineNumber:
+           neg      
            eq       
-           fjp      $$77:
-           pushz    FindJoint&i   
-           call     _AddFoundJoint:
-           popz     &swReserved3   
-           ujp      $$74:
-$$77:      pushz    FindJoint&currentLine   
-           pushz    FindJoint&i   
-           pushc    2   
-           call     GetJointStationId:
-           call     GetLineNumber:
+           fjp      $$70:
+           pushc    0   
+           ret      
+$$70:      nop      
+//(.\SearchStation.h,263): 	if(currentLine == endLine){
+           pushz    FindJoint&currentLine   
+           pushz    FindJoint&endLine   
            eq       
+           fjp      $$71:
+//(.\SearchStation.h,264): 		if(AddFoundJoint(
+//(.\SearchStation.h,266): 			endStation,
+           pushz    FindJoint&endStation   
+//(.\SearchStation.h,268): 			foundJoint[currentStationIndex].time + GetStationTime(currentStation, endStation),
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           pushz    FindJoint&endStation   
+           call     GetStationTime:
+           add      
+//(.\SearchStation.h,270): 			foundJoint[currentStationIndex].id,
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+//(.\SearchStation.h,272): 			0
+           pushc    0   
+           call     AddFoundJoint:
+//(.\SearchStation.h,273): 		) == 1){
+           pushc    1   
+           eq       
+           fjp      $$72:
+//(.\SearchStation.h,274): 			foundJointCount++;
+           pushz    FindJoint&foundJointCount   
+           inc      
+           popz     FindJoint&foundJointCount   
+//(.\SearchStation.h,275): 		}
+$$72:      nop      
+//(.\SearchStation.h,276): 	}
+$$71:      nop      
+//(.\SearchStation.h,280): 	for(i = 0; i < 10; i++){
+           pushc    0   
+           popz     FindJoint&i   
+$$73:      nop      
+           pushz    FindJoint&i   
+           pushc    10   
+           lt       
            fjp      $$74:
+//(.\SearchStation.h,282): 		if(GetLineNumber(metroJoint[i].id1) == currentLine
            pushz    FindJoint&i   
-           call     _AddFoundJoint:
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           call     GetLineNumber:
+           pushz    FindJoint&currentLine   
+           eq       
+           dup      
+           fjp      $$78:
            popz     &swReserved3   
-$$74:      incz     FindJoint&i   1   
-           ujp      $$72:
-$$73:      pushc    -1   
+//(.\SearchStation.h,283): 		&& metroJoint[i].id1 != currentStation ){
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           ne       
+$$78:      nop      
+           fjp      $$76:
+//(.\SearchStation.h,285): 			if(AddFoundJoint(
+//(.\SearchStation.h,287): 				metroJoint[i].id1,
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+//(.\SearchStation.h,289): 				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id1),
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           call     GetStationTime:
+           add      
+//(.\SearchStation.h,291): 				foundJoint[currentStationIndex].id,
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+//(.\SearchStation.h,293): 				i
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+//(.\SearchStation.h,294): 			) == 1){
+           pushc    1   
+           eq       
+           fjp      $$79:
+//(.\SearchStation.h,295): 				foundJointCount++;
+           pushz    FindJoint&foundJointCount   
+           inc      
+           popz     FindJoint&foundJointCount   
+//(.\SearchStation.h,296): 			}
+$$79:      nop      
+           ujp      $$77:
+$$76:      nop      
+//(.\SearchStation.h,297): 		}else if(GetLineNumber(metroJoint[i].id2) == currentLine
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           call     GetLineNumber:
+           pushz    FindJoint&currentLine   
+           eq       
+           dup      
+           fjp      $$82:
+           popz     &swReserved3   
+//(.\SearchStation.h,298): 		&& metroJoint[i].id2 != currentStation){
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           ne       
+$$82:      nop      
+           fjp      $$80:
+//(.\SearchStation.h,300): 			if(AddFoundJoint(
+//(.\SearchStation.h,301): 				metroJoint[i].id2,
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+//(.\SearchStation.h,302): 				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id2),
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           call     GetStationTime:
+           add      
+//(.\SearchStation.h,303): 				foundJoint[currentStationIndex].id,
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+//(.\SearchStation.h,304): 				i
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+//(.\SearchStation.h,305): 			) == 1){
+           pushc    1   
+           eq       
+           fjp      $$83:
+//(.\SearchStation.h,306): 				foundJointCount++;
+           pushz    FindJoint&foundJointCount   
+           inc      
+           popz     FindJoint&foundJointCount   
+//(.\SearchStation.h,307): 			}
+$$83:      nop      
+           ujp      $$81:
+$$80:      nop      
+//(.\SearchStation.h,308): 		}else if(GetLineNumber(metroJoint[i].id3) == currentLine
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           call     GetLineNumber:
+           pushz    FindJoint&currentLine   
+           eq       
+           dup      
+           fjp      $$85:
+           popz     &swReserved3   
+//(.\SearchStation.h,309): 		&& metroJoint[i].id3 != currentStation){
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           ne       
+$$85:      nop      
+           fjp      $$84:
+//(.\SearchStation.h,311): 			if(AddFoundJoint(
+//(.\SearchStation.h,312): 				metroJoint[i].id3,
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+//(.\SearchStation.h,313): 				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id3),
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    FindJoint&currentStation   
+           pushz    FindJoint&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           call     GetStationTime:
+           add      
+//(.\SearchStation.h,314): 				foundJoint[currentStationIndex].id,
+           pushz    FindJoint&currentStationIndex   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+//(.\SearchStation.h,315): 				i
+           pushz    FindJoint&i   
+           call     AddFoundJoint:
+//(.\SearchStation.h,316): 			) == 1){
+           pushc    1   
+           eq       
+           fjp      $$86:
+//(.\SearchStation.h,317): 				foundJointCount++;
+           pushz    FindJoint&foundJointCount   
+           inc      
+           popz     FindJoint&foundJointCount   
+//(.\SearchStation.h,318): 			}
+$$86:      nop      
+//(.\SearchStation.h,319): 		}
+$$84:      nop      
+$$81:      nop      
+$$77:      nop      
+           nop      
+           pushz    FindJoint&i   
+           inc      
+           popz     FindJoint&i   
+           ujp      $$73:
+//(.\SearchStation.h,320): 	}
+$$74:      nop      
+//(.\SearchStation.h,322): 	return foundJointCount;
+           pushz    FindJoint&foundJointCount   
+           ret      
+//(.\SearchStation.h,323): }
+//(.\SearchStation.h,326): int GetJointIndex(int station){
+GetJointIndex: nop  
+           popz     GetJointIndex&station   
+//(.\SearchStation.h,327): 	int i;
+//(.\SearchStation.h,329): 	for(i = 0; i < 10; i++){
+           pushc    0   
+           popz     GetJointIndex&i   
+$$87:      nop      
+           pushz    GetJointIndex&i   
+           pushc    10   
+           lt       
+           fjp      $$88:
+//(.\SearchStation.h,330): 		if(metroJoint[i].id1 == station){
+           pushz    GetJointIndex&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    GetJointIndex&station   
+           eq       
+           fjp      $$90:
+//(.\SearchStation.h,331): 			return i;
+           pushz    GetJointIndex&i   
+           ret      
+$$90:      nop      
+//(.\SearchStation.h,332): 		}else if(metroJoint[i].id2 == station){
+           pushz    GetJointIndex&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    GetJointIndex&station   
+           eq       
+           fjp      $$92:
+//(.\SearchStation.h,333): 			return i;
+           pushz    GetJointIndex&i   
+           ret      
+$$92:      nop      
+//(.\SearchStation.h,334): 		}else if(metroJoint[i].id3 == station){
+           pushz    GetJointIndex&i   
+           pushc    3   
+           mult     
+           ldrz     &metroJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    GetJointIndex&station   
+           eq       
+           fjp      $$94:
+//(.\SearchStation.h,335): 			return i;
+           pushz    GetJointIndex&i   
+           ret      
+//(.\SearchStation.h,336): 		}
+$$94:      nop      
+           nop      
+           nop      
+           nop      
+           pushz    GetJointIndex&i   
+           inc      
+           popz     GetJointIndex&i   
+           ujp      $$87:
+//(.\SearchStation.h,337): 	}
+$$88:      nop      
+//(.\SearchStation.h,338): 	return -1;
+           pushc    1   
+           neg      
+           ret      
+//(.\SearchStation.h,339): }
+//(.\SearchStation.h,342): int GetStationTime(int stationId1, int stationId2){
+GetStationTime: nop 
+           popz     GetStationTime&stationId2   
+           popz     GetStationTime&stationId1   
+//(.\SearchStation.h,344): 	return Abs(stationId1 - stationId2);
+           pushz    GetStationTime&stationId1   
+           pushz    GetStationTime&stationId2   
+           sub      
+           calls    Abs
+           ret      
+//(.\SearchStation.h,345): }
+//(.\SearchStation.h,348): void _CopyFrontFoundJointToSaveJoint(){
+_CopyFrontFoundJointToSaveJoint: nop 
+//(.\SearchStation.h,349): 	AddSaveJoint(foundJoint[0].id, foundJoint[0].time, foundJoint[0].prevId, foundJoint[0].jointIndex);
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushc    0   
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           call     AddSaveJoint:
+//(.\SearchStation.h,350): }
+           ret      
+//(.\SearchStation.h,353): void CopyLastFoundJointToSaveJoint(){
+CopyLastFoundJointToSaveJoint: nop 
+//(.\SearchStation.h,354): 	AddSaveJoint(foundJoint[foundJointSize - 1].id, foundJoint[foundJointSize - 1].time, foundJoint[foundJointSize - 1].prevId, foundJoint[foundJointSize - 1].jointIndex);
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    0   
+           add      
+           ixa      
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    1   
+           add      
+           ixa      
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    2   
+           add      
+           ixa      
+           pushz    &foundJointSize   
+           pushc    1   
+           sub      
+           pushc    4   
+           mult     
+           ldrz     &foundJoint   
+           add      
+           pushc    3   
+           add      
+           ixa      
+           call     AddSaveJoint:
+//(.\SearchStation.h,355): }
            ret      
 DrawMetro: nop      
-           pushc    10   
-           pushc    10   
+//(.\DrawMetro.h,  2): void DrawMetro(){
+//(.\DrawMetro.h,  3): 	int i;
+//(.\DrawMetro.h,  5): 	for(i = 0; i < resultPathSize; i++){
            pushc    0   
-           call     GetFoundJoint:
+           popz     DrawMetro&i   
+$$95:      nop      
+           pushz    DrawMetro&i   
+           pushz    &resultPathSize   
+           lt       
+           fjp      $$96:
+//(.\DrawMetro.h,  6): 		DrawInt(50, 10 + 20 * i, saveJointList[resultPath[i]].id);
+           pushc    50   
+           pushc    10   
+           pushc    20   
+           pushz    DrawMetro&i   
+           mult     
+           add      
+           pushz    DrawMetro&i   
+           ldrz     &resultPath   
+           add      
+           ixa      
+           pushc    4   
+           mult     
+           ldrz     &saveJointList   
+           add      
            pushc    0   
-           call     GetJointStationId:
+           add      
+           ixa      
            call     DrawInt:
+//(.\DrawMetro.h,  7): 		DrawInt(80, 10 + 20 * i, saveJointList[resultPath[i]].time);
+           pushc    80   
            pushc    10   
-           pushc    30   
+           pushc    20   
+           pushz    DrawMetro&i   
+           mult     
+           add      
+           pushz    DrawMetro&i   
+           ldrz     &resultPath   
+           add      
+           ixa      
+           pushc    4   
+           mult     
+           ldrz     &saveJointList   
+           add      
            pushc    1   
-           call     GetFoundJoint:
+           add      
+           ixa      
+           call     DrawInt:
+           nop      
+           pushz    DrawMetro&i   
+           inc      
+           popz     DrawMetro&i   
+           ujp      $$95:
+//(.\DrawMetro.h,  8): 	}
+$$96:      nop      
+//(.\DrawMetro.h, 14): 	for(i = 0; i < foundJointSize; i++){
            pushc    0   
-           call     GetJointStationId:
-           call     DrawInt:
-           pushc    10   
-           pushc    50   
-           pushc    2   
-           call     GetFoundJoint:
-           pushc    0   
-           call     GetJointStationId:
-           call     DrawInt:
-           pushc    10   
-           pushc    70   
-           pushc    3   
-           call     GetFoundJoint:
-           pushc    0   
-           call     GetJointStationId:
-           call     DrawInt:
-           pushc    50   
-           pushc    10   
-           pushic   &foundJoint   0   
-           call     DrawInt:
-           pushc    50   
-           pushc    30   
-           pushic   &foundJoint   3   
-           call     DrawInt:
-           pushc    50   
-           pushc    50   
-           pushic   &foundJoint   6   
-           call     DrawInt:
-           pushc    50   
-           pushc    70   
-           pushic   &foundJoint   9   
-           call     DrawInt:
-           zsetc    DrawMetro&i   0   
-$$80:      pushz    DrawMetro&i   
+           popz     DrawMetro&i   
+$$98:      nop      
+           pushz    DrawMetro&i   
            pushz    &foundJointSize   
            lt       
-           fjp      $$81:
-           pushc    100   
+           fjp      $$99:
+//(.\DrawMetro.h, 15): 		DrawInt(160, 10 + 16 * i, foundJoint[i]);
+           pushc    160   
            pushc    10   
            pushc    16   
            pushz    DrawMetro&i   
            mult     
            add      
            pushz    DrawMetro&i   
-           pushc    3   
+           pushc    4   
            mult     
            ldrz     &foundJoint   
            add      
            ixa      
            call     DrawInt:
-           incz     DrawMetro&i   1   
-           ujp      $$80:
-$$81:      ret      
+           nop      
+           pushz    DrawMetro&i   
+           inc      
+           popz     DrawMetro&i   
+           ujp      $$98:
+//(.\DrawMetro.h, 16): 	}
+$$99:      nop      
+//(.\DrawMetro.h, 29): }
+           ret      
+//(.\Metro.mc, 48): void main(){
 main:      nop      
            call     $init:
-           call     InitSubway:
-           call     InitFoundJoint:
-           pushc    0   
-           pushc    305   
-           call     RouteStation:
+//(.\Metro.mc, 49): 	InitMetro();
+           call     InitMetro:
+//(.\Metro.mc, 53): 	FindPath(100, 402);
+           pushc    100   
+           pushc    402   
+           call     FindPath:
+           popz     &swReserved3   
+//(.\Metro.mc, 56): 	SetTimer(50, 1);
            pushc    50   
            pushc    1   
            calls    SetTimer
+//(.\Metro.mc, 57): }
            end      
+//(.\Metro.mc, 59): void EVENT_TIMEOUT(){
 EVENT_TIMEOUT: nop  
+//(.\Metro.mc, 60): 	ClearWhite();
            calls    ClearWhite
+//(.\Metro.mc, 61): 	DrawMetro();
            call     DrawMetro:
+//(.\Metro.mc, 62): 	Flush();
            calls    Flush
+//(.\Metro.mc, 63): }
            end      

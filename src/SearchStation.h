@@ -13,6 +13,7 @@ struct FoundJoint{
 	int id;
 	int time;
 	int prevId;
+	int jointIndex;
 };
 
 /* G1.검색 완료 교차점 */
@@ -29,10 +30,11 @@ int resultPathSize = 0;									//크기
 
 /* G1.검색 완료 교차점 */
 //저장(saveJointList)
-void AddSaveJoint(int id, int time, int prevId){
+void AddSaveJoint(int id, int time, int prevId, int jointIndex){
 	saveJointList[saveJointListSize].id = id;
 	saveJointList[saveJointListSize].time = time;
 	saveJointList[saveJointListSize].prevId = prevId;
+	saveJointList[saveJointListSize].jointIndex = jointIndex;
 	saveJointListSize++;
 }
 
@@ -46,30 +48,36 @@ int FindSaveJointById(int id){
 	int i;
 	for(i = 0; i < saveJointListSize; i++){
 		if(saveJointList[i].id == id) return i;
+		else if(saveJointList[i].prevId == id) return i;
 	}
 	return NULL;
 }
 
 /* G2.검색할 교차점 */
 //저장(foundJoint), 교차점이 중복 된 경로는 소요시간 짧은 것으로 저장, 이미 검색 완료된 교차점이 있으면 추가 안함
-void AddFoundJoint(int id, int time, int prevId){
+int AddFoundJoint(int id, int time, int prevId, int jointIndex){
 	int duplicatedFoundJointIndex = FindFoundJointById(id);
-	if(FindSaveJointById(id) == NULL) return;
+	if(FindSaveJointById(id) != NULL) return FAILURE;
 	if(duplicatedFoundJointIndex == NULL){
 		foundJoint[foundJointSize].id = id;
 		foundJoint[foundJointSize].time = time;
 		foundJoint[foundJointSize].prevId = prevId;
+		foundJoint[foundJointSize].jointIndex = jointIndex;
 		foundJointSize++;
+		return SUCCESS;	//추가성공
 	}else{
 		if(foundJoint[duplicatedFoundJointIndex].time > time){
 			foundJoint[duplicatedFoundJointIndex].id = id;
 			foundJoint[duplicatedFoundJointIndex].time = time;
 			foundJoint[duplicatedFoundJointIndex].prevId = prevId;
+			foundJoint[duplicatedFoundJointIndex].jointIndex = jointIndex;
 		}
+		return SUCCESS;	//수정(추가)성공
 	}
+	return FAILURE;	//추가실패
 }
 
-//소요 시간에 따라 정렬
+//소요 시간에 따라 정렬, 내림차순
 void SortFoundJointByTime(){
 	Sort(foundJointSize, FOUNDJOINT_ORDER_BY_TIME);
 }
@@ -84,24 +92,59 @@ int FindFoundJointById(int id){
 	int i;
 	for(i = 0; i < foundJointSize; i++){
 		if(foundJoint[i].id == id) return i;
+		else if(foundJoint[i].prevId == id) return i;
+		if(metroJoint[foundJoint[i].jointIndex].id1 == id) return i;
+		else if(metroJoint[foundJoint[i].jointIndex].id2 == id) return i;
+		else if(metroJoint[foundJoint[i].jointIndex].id3 == id) return i;
 	}
 	return NULL;
 }
 
 //앞 교차점 삭제(정렬 후, 검색, 그리고 삭제)
-void DelFrontFoundJoint(){
+void _DelFrontFoundJoint(){
 	int i;
 	foundJointSize--;
 	for(i = 0; i < foundJointSize; i++){
 		foundJoint[i].id = foundJoint[i + 1].id;
 		foundJoint[i].time = foundJoint[i + 1].time;
 		foundJoint[i].prevId = foundJoint[i + 1].prevId;
+		foundJoint[i].jointIndex = foundJoint[i + 1].jointIndex;
 	}
 }
 
-int GetFrontFoundJointId(){
+//마지막 교차점 삭제(정렬 후, 검색, 그리고 삭제)
+void DelLastFoundJoint(){
+	foundJointSize--;
+}
+
+//앞부분 교차점 아이디 가져옴
+int _GetFrontFoundJointId(){
 	if(foundJointSize > 0){
 		return foundJoint[0].id;
+	}
+	return NULL;
+}
+
+//검색 대기 마지막 교차점 아이디 가져옴
+int GetLastFoundJointId(){
+	if(foundJointSize > 0){
+		return foundJoint[foundJointSize - 1].id;
+	}
+	return NULL;
+}
+
+//앞부분 교차점의 인덱스를 가져옴
+int _GetFrontFoundJointIndex(){
+	if(foundJointSize > 0){
+		return foundJoint[0].jointIndex;
+	}
+	return NULL;
+}
+
+//검색 대기 마지막 교차점의 인덱스를 가져옴
+int GetLastFoundJointIndex(){
+	if(foundJointSize > 0){
+		return foundJoint[foundJointSize - 1].jointIndex;
 	}
 	return NULL;
 }
@@ -131,115 +174,183 @@ void ReverseResultPath(){
 	}
 }
 
-
 /* G4.경로 검색 */
 //경로 탐색
 int FindPath(int startStation, int endStation){
-	int prevJointId = endStation;		//이전 교차점 역(초기값 = 목적지 역)
-	int result = FAILURE;
+	int prevJointId = endStation;		//이전 교차점 역(초기값 = 목적지 역, 검색 결과 역순 탐색용)
+	int foundCount = 0;
+	int startJoint = GetJointIndex(startStation);
 	int i;
 
-	/* 초기화 */
+	/* 1.초기화 */
 	InitJointList();
 	InitFoundJoint();
 	InitResultPath();
+	
+	if(startJoint != NULL){
+		AddFoundJoint(startStation, 0, NULL, startJoint);
+		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id1, endStation);
+		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
+		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+	}else{											//자신이 교차점이 아니면 수행
+		AddFoundJoint(startStation, 0, NULL, 0);		//자기자신이 최초 기점, 4번째 인자, 자신이 교차점이라면 1이상의 값
+		foundCount += FindJoint(0, startStation, endStation);
+	}
+	
+	if(foundCount > 0){								//다음 교차점이 있으면 자신을 검색완료에 추가
+		_CopyFrontFoundJointToSaveJoint();
+	}_DelFrontFoundJoint();
+	SortFoundJointByTime();							//소요시간으로 정렬
 
-	/* 경로 검색 과정 */
-	//미구현 함수 완성시 함수명 앞 '_' 제거
-	//미구현 함수 : FindJoint(currentStation, endStation)
-	result = _FindJoint(startStation, endStation);
-													//자신을 제외하고, 같은 노선의 교점을 찾아,
-													//검색 할 교차점에 시간과 역아이디와 현재 검색한 아이디저장, 시간은 현재 검색 역의 시간 + 차이시간
-													//만약 목적지와 같은 노선이면 목적지를 검색완료된 교차점에 위와 같은 식으로 저장, 그리고 찾았으니 SUCCESS를 반환
-													//검색 결과가 없으면 자신은 지워지고(DelFrontFoundJoint)
-													//검색 결과가 있으면 검색된 교차점에 저장(AddSaveJoint -> DelFrontFoundJoint)
-													//못찾았으니 FAILURE를 반환
+	/* 2.경로 검색 과정, 교차점으로 검색 */
+	while(_GetFrontFoundJointId() != endStation){	//마지막 부분이 목적지라는 것은 더 이상 짧은게 없다는 것
+		foundCount = 0;									//찾은 갯수 0으로 초기화
 
-	while(result != SUCCESS){						//검색 결과가 성공할 때까지 반복
-		SortFoundJointByTime();							//소요시간으로 정렬
-		if(GetFrontFoundJointId() == NULL){				//앞부분이 없다는건 못찾았고, 검색이 끝났다는 것
+		if(_GetFrontFoundJointId() == NULL){			//앞부분이 없다는건 못찾았고, 검색이 끝났다는 것
 			return FAILURE;									//검색을 마침
 		}else{											//끝나지 않았다면 또 검색
-			result = _FindJoint(GetFrontFoundJointId(), endStation);
-		}//end if
-	}//end while
+														//검색하려는 역이 없음, 또는 환승전의 역이면 검색 안함
+			if(metroJoint[_GetFrontFoundJointIndex()].id1 != NULL && metroJoint[_GetFrontFoundJointIndex()].id1 != foundJoint[0].id){
+				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id1, endStation);
+			}if(metroJoint[_GetFrontFoundJointIndex()].id2 != NULL && metroJoint[_GetFrontFoundJointIndex()].id2 != foundJoint[0].id){
+				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
+			}if(metroJoint[_GetFrontFoundJointIndex()].id3 != NULL && metroJoint[_GetFrontFoundJointIndex()].id3 != foundJoint[0].id){
+				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+			}
 
-	/* 검색 결과 처리 과정 */
+			if(foundCount > 0){								//다음 교차점이 있으면 자신을 검색완료에 추가
+				_CopyFrontFoundJointToSaveJoint();
+			}_DelFrontFoundJoint();
+			SortFoundJointByTime();							//소요시간순으로 정렬
+		}
+	}
+	_CopyFrontFoundJointToSaveJoint();				//반복이 끝난 것은 앞부분이 목적지라는 뜻이므로, 앞부분을 검색완료로 이동
+
+	/* 3.검색 결과 처리 과정 */
 	for(i = saveJointListSize - 1; i >= 0; i--){	//마지막부터 최종 교차점 탐색
 		if(saveJointList[i].id == prevJointId){			//탐색 중인 역이 이전 목적지인지
 			AddResultPath(i);								//목적지 이전 교차점역이므로 결과에 저장
 			prevJointId = saveJointList[i].prevId;			//그리고 이전 교차점역의 이전 교차점을 받아옴
 			if(saveJointList[i].id == startStation) break;	//시작점과 같다는 것은 탐색이 끝났다는 것
-		}//end if
-	}//end for
+		}
+	}
 	ReverseResultPath();							//시작 역부터 볼수 있도록 결과를 반전
 
-	//검색 결과 반환, 찾았으니까 내려온 것, SUCCESS 반환
-	return SUCCESS;
+	/* 4.검색 완료 */
+	return SUCCESS;									//검색 결과 반환, 찾았으니까 내려온 것, SUCCESS 반환
 }
 
-int _FindJoint(int currentStation, int endStation){
-	//자신을 제외하고, 같은 노선의 교점을 찾아,
-	//검색 할 교차점에 시간과 역아이디와 현재 검색한 아이디저장, 시간은 현재 검색 역의 시간 + 차이시간
-	//만약 목적지와 같은 노선이면 목적지를 검색완료된 교차점에 위와 같은 식으로 저장, 그리고 찾았으니 SUCCESS를 반환
-	//검색 결과가 없으면 자신은 지워지고(DelFrontFoundJoint)
-	//검색 결과가 있으면 검색된 교차점에 저장(AddSaveJoint -> DelFrontFoundJoint)
-	//못찾았으니 FAILURE를 반환
-	return FAILURE;
-}
-
-void CopyToSaveJoint(int index){
-
-}
-
-
-
-
-////////* 수정이 필요하거나 없애야 하는 함수들 */////////
-
-void RouteStation(int stationStart, int stationEnd){
-	stationStart = 200;
-	stationEnd = 305;
-
-	FindJoint(stationStart);
-}
-
-//int foundJoint[20];
-int foundJointCount = 0;
-
-void _InitFoundJoint(){
-	MemSetInt(foundJoint, -1, 20);
-}
-
-int _AddFoundJoint(int jointIndex){
-	if(foundJointCount < 20){
-		foundJoint[foundJointCount] = jointIndex;
-		foundJointCount++;
-		return SUCCESS;
-	}
-	return FAILURE;
-}
-
-int GetFoundJoint(int index){
-	if(index < foundJointCount){
-		return foundJoint[index];
-	}
-	return NULL;
-}
-
-int FindJoint(int currentId){
-	int currentLine = GetLineNumber(currentId);
-	int currentLineIndex = GetLineIndex(currentId);
+/*
+	//(3.)에서 아이디를 저장하지 않고 교차점 인덱스를 저장해야함
+	1.초기 100번으로 검색
+	2.같은 라인의 103이 검색됨
+	3.103번이 저장됨<<<<<<<<<<<<<<<<<<<<<, 103번 뿐만 아니라 교차점 인덱스도 저장
+	4.두번째 103번으로 검색<<<<<<<<<<<<<<, 저장된 정보중 103번 외의 아이디로 검색
+	5.같은 라인의 103이 검색
+	6.자신이므로 저장안함
+	7.검색대기 목록은 없음
+	8.종료
+*/
+int FindJoint(int currentStationIndex, int currentStation, int endStation){
+	int currentLine = GetLineNumber(currentStation);
+	int endLine = GetLineNumber(endStation);
+	int foundJointCount = 0;
 	int i;
-	for(i = 0; i < 10; i++){
-		if(currentLine == GetLineNumber(GetJointStationId(i, 0))){
-			_AddFoundJoint(i);
-		}else if(currentLine == GetLineNumber(GetJointStationId(i, 1))){
-			_AddFoundJoint(i);
-		}else if(currentLine == GetLineNumber(GetJointStationId(i, 2))){
-			_AddFoundJoint(i);
+
+	if(currentStation == NULL) return 0;								//역이 없는 경우 끝
+	
+	/* <1> */
+	if(currentLine == endLine){		//같은 라인에 목적지가 있으면, 목적지를 저장
+		if(AddFoundJoint(
+			//다음 역(목적지)
+			endStation,
+			//현재 역까지 시간 + 현재역과 다음 역 사이의 시간
+			foundJoint[currentStationIndex].time + GetStationTime(currentStation, endStation),
+			//이전 역(환승이전 역)
+			foundJoint[currentStationIndex].id,
+			//교차점의 인덱스 없음
+			0
+		) == SUCCESS){
+			foundJointCount++;
+		}
+	}
+	
+	/* <2> */
+	//같은 라인의 교차점 검색, Joint 갯수 만큼 반복
+	for(i = 0; i < METRO_JOINT_SIZE; i++){
+		//같은 라인의 교차점인지 검사
+		if(GetLineNumber(metroJoint[i].id1) == currentLine
+		&& metroJoint[i].id1 != currentStation ){	//자신인 경우 안됨
+			/* <3(1)> */
+			if(AddFoundJoint(
+				//다음 역(목적지)
+				metroJoint[i].id1,
+				//현재 역까지 시간 + 현재역과 다음 역 사이의 시간
+				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id1),
+				//이전 역(환승이전 역)
+				foundJoint[currentStationIndex].id,
+				//현재 교차점의 인덱스
+				i
+			) == SUCCESS){
+				foundJointCount++;	//찾았으므로 하나 증가
+			}
+		}else if(GetLineNumber(metroJoint[i].id2) == currentLine
+		&& metroJoint[i].id2 != currentStation){
+			/* <3(2)> */
+			if(AddFoundJoint(
+				metroJoint[i].id2,
+				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id2),
+				foundJoint[currentStationIndex].id,
+				i
+			) == SUCCESS){
+				foundJointCount++;
+			}
+		}else if(GetLineNumber(metroJoint[i].id3) == currentLine
+		&& metroJoint[i].id3 != currentStation){
+			/* <3(3)> */
+			if(AddFoundJoint(
+				metroJoint[i].id3,
+				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id3),
+				foundJoint[currentStationIndex].id,
+				i
+			) == SUCCESS){
+				foundJointCount++;
+			}
+		}
+	}
+
+	return foundJointCount;
+}
+
+//다음 역이 교차점인지, 교차점이면 인덱스를 반환, 아니면 NULL(-1)을 반환
+int GetJointIndex(int station){
+	int i;
+
+	for(i = 0; i < METRO_JOINT_SIZE; i++){
+		if(metroJoint[i].id1 == station){
+			return i;
+		}else if(metroJoint[i].id2 == station){
+			return i;
+		}else if(metroJoint[i].id3 == station){
+			return i;
 		}
 	}
 	return NULL;
-
 }
+
+//두 역 사이의 시간을 구함(두 역은 같은 노선이여야 함)
+int GetStationTime(int stationId1, int stationId2){
+	//임시 아이디로 계산
+	return Abs(stationId1 - stationId2);
+}
+
+//앞부분 데이터를 검색 완료 데이터에 추가
+void _CopyFrontFoundJointToSaveJoint(){
+	AddSaveJoint(foundJoint[0].id, foundJoint[0].time, foundJoint[0].prevId, foundJoint[0].jointIndex);
+}
+
+//검색 대기목록 마지막번째 데이터를 검색 완료 데이터에 추가
+void CopyLastFoundJointToSaveJoint(){
+	AddSaveJoint(foundJoint[foundJointSize - 1].id, foundJoint[foundJointSize - 1].time, foundJoint[foundJointSize - 1].prevId, foundJoint[foundJointSize - 1].jointIndex);
+}
+
