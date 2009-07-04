@@ -22,11 +22,11 @@
 	#DEFINE IMAGETYPE	255
 	#DEFINE AUDIOTYPE	255
 	#DEFINE APPTYPE		1
-	#DEFINE APPCPID		60000
-	#DEFINE APPID		1
-	#DEFINE APPNAME		"Metro GNEX App"
+	#DEFINE APPCPID		19732
+	#DEFINE APPID		17171
+	#DEFINE APPNAME		"Metro 17171"
 	#DEFINE COMPTYPE	0
-	#DEFINE AGENTTYPE	0
+	#DEFINE AGENTTYPE	1
 	#DEFINE VALIDCOUNT	255
 	#DEFINE VALIDTERM	255
 	#DEFINE DIRECTRUN	0
@@ -35,29 +35,99 @@
 #endif
 
 #include <SScript.h>
+#include "imgStation.sbm"
+
 #include "Ahyane.h"
+#include "Colors.h"
+#include "Define.h"
 #include "StationData.h"
 #include "Station.h"
 #include "SortStruct.h"
 #include "SearchStation.h"
 
+#include "ActMetro.h"
 #include "DrawMetro.h"
+#include "ControlMetro.h"
 
 
+void TEST(){
+	//SetFont(S_FONT_MEDIUM);
+	//SetFontColor(S_RED, S_TRANSPARENT);
+	//DrawInt(0, swHeight - 50, 15004);
+	//DrawInt(0, swHeight - 60, runningType);
+
+	//DrawInt(0, swHeight - 60, metroShowX);
+	//DrawInt(0, swHeight - 50, metroShowY);
+	
+	//DrawInt(0, swHeight - 90, metroStation[5].x);
+	//DrawInt(0, swHeight - 80, metroStation[5].y);
+}
+
+int runningType;
+int refresh = TRUE;
+int refresh_partial = TRUE;
 
 void main(){
-	InitMetro();
-	//InitSubway();
-	//InitFoundJoint();
-	
-	FindPath(100, 402);
+	runningType = swData2;
+	if(runningType == 1) ChangeMode(MODE_TRACKING);
 
-	//RouteStation(000, 305);
+	InitMetro();
+
+	LoadROM();
+
 	SetTimer(50, 1);
+
+	metroShowX = 1250;
+	metroShowY = 680;
+
+	ActMetro();
+	DrawMetro();
+	Flush();
+
+	refresh = FALSE;
 }
 
 void EVENT_TIMEOUT(){
-	ClearWhite();
-	DrawMetro();
-	Flush();
+	if(refresh == TRUE){
+		ActMetro();
+		DrawMetro();
+		//TEST();
+		Flush();		
+	}	
+}
+
+void EVENT_KEYPRESS(){
+	if(swData == SWAP_KEY_RELEASE) refresh = FALSE;
+	else refresh = TRUE;
+
+	ControlMetro(swData);
+}
+
+#define	NV_SIZE				16		//세이브용 테스트
+int NVROM[NV_SIZE];
+
+void LoadROM(){
+	GetUserNV(NVROM, NV_SIZE);
+
+	if (NVROM[0] != 4096) { // 최초 실행이면...
+		ArrayToVar(NVROM, 0, 16, S_OP_SET);
+		NVROM[0] = 4096;
+		NVROM[1] = selectedStartStation;		//출발역ID
+		NVROM[2] = selectedEndStation;			//목적지ID
+		NVROM[3] = trackingCurrentStationIndex;	//현재역인덱스
+
+	}
+	
+	selectedStartStation = NVROM[1];
+	selectedEndStation = NVROM[2];
+	trackingCurrentStationIndex = NVROM[3];
+
+	PutUserNV(NVROM, NV_SIZE);
+}
+
+void SaveROM(){
+	NVROM[1] = selectedStartStation;		//출발역ID
+	NVROM[2] = selectedEndStation;			//목적지ID
+	NVROM[3] = trackingCurrentStationIndex;	//현재역인덱스
+	PutUserNV(NVROM, NV_SIZE);
 }

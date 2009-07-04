@@ -4,9 +4,14 @@
 #define FALSE 	0
 #define TRUE	1
 
-#define SAVE_FOUND_JOINT_SIZE	20
-#define FOUND_JOINT_SIZE		30
+#define SAVE_FOUND_JOINT_SIZE	200
+#define FOUND_JOINT_SIZE		100
 #define RESULT_PATH_SIZE		10
+
+//검색 옵션
+#define FIND_STATION_TIME		0
+#define FIND_STATION_COUNT		1
+int findOption = FIND_STATION_TIME;
 
 /* G1+G2.검색 교차점 */
 struct FoundJoint{
@@ -96,6 +101,7 @@ int FindFoundJointById(int id){
 		if(metroJoint[foundJoint[i].jointIndex].id1 == id) return i;
 		else if(metroJoint[foundJoint[i].jointIndex].id2 == id) return i;
 		else if(metroJoint[foundJoint[i].jointIndex].id3 == id) return i;
+		else if(metroJoint[foundJoint[i].jointIndex].id4 == id) return i;
 	}
 	return NULL;
 }
@@ -180,7 +186,9 @@ int FindPath(int startStation, int endStation){
 	int prevJointId = endStation;		//이전 교차점 역(초기값 = 목적지 역, 검색 결과 역순 탐색용)
 	int foundCount = 0;
 	int startJoint = GetJointIndex(startStation);
+	int endJoint = GetJointIndex(endStation);
 	int i;
+	int ret;
 
 	/* 1.초기화 */
 	InitJointList();
@@ -188,12 +196,14 @@ int FindPath(int startStation, int endStation){
 	InitResultPath();
 	
 	if(startJoint != NULL){
-		AddFoundJoint(startStation, 0, NULL, startJoint);
+		if(startJoint == endJoint) return FAILURE;
+		ret = AddFoundJoint(startStation, 0, NULL, startJoint);
 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id1, endStation);
 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
 		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+		foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id4, endStation);
 	}else{											//자신이 교차점이 아니면 수행
-		AddFoundJoint(startStation, 0, NULL, 0);		//자기자신이 최초 기점, 4번째 인자, 자신이 교차점이라면 1이상의 값
+		ret = AddFoundJoint(startStation, 0, NULL, 0);		//자기자신이 최초 기점, 4번째 인자, 자신이 교차점이라면 1이상의 값
 		foundCount += FindJoint(0, startStation, endStation);
 	}
 	
@@ -204,6 +214,15 @@ int FindPath(int startStation, int endStation){
 
 	/* 2.경로 검색 과정, 교차점으로 검색 */
 	while(_GetFrontFoundJointId() != endStation){	//마지막 부분이 목적지라는 것은 더 이상 짧은게 없다는 것
+		if(endJoint != NULL){
+			if(_GetFrontFoundJointId() == metroJoint[endJoint].id1
+			|| _GetFrontFoundJointId() == metroJoint[endJoint].id2
+			|| _GetFrontFoundJointId() == metroJoint[endJoint].id3
+			|| _GetFrontFoundJointId() == metroJoint[endJoint].id4){
+				break;
+			}
+		}
+
 		foundCount = 0;									//찾은 갯수 0으로 초기화
 
 		if(_GetFrontFoundJointId() == NULL){			//앞부분이 없다는건 못찾았고, 검색이 끝났다는 것
@@ -216,7 +235,11 @@ int FindPath(int startStation, int endStation){
 				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id2, endStation);
 			}if(metroJoint[_GetFrontFoundJointIndex()].id3 != NULL && metroJoint[_GetFrontFoundJointIndex()].id3 != foundJoint[0].id){
 				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id3, endStation);
+			}if(metroJoint[_GetFrontFoundJointIndex()].id4 != NULL && metroJoint[_GetFrontFoundJointIndex()].id4 != foundJoint[0].id){
+				foundCount += FindJoint(0, metroJoint[_GetFrontFoundJointIndex()].id4, endStation);
 			}
+			
+			//if(//if(stationId == 2300 || stationId == 2306) stationId = 1432;
 
 			if(foundCount > 0){								//다음 교차점이 있으면 자신을 검색완료에 추가
 				_CopyFrontFoundJointToSaveJoint();
@@ -227,6 +250,19 @@ int FindPath(int startStation, int endStation){
 	_CopyFrontFoundJointToSaveJoint();				//반복이 끝난 것은 앞부분이 목적지라는 뜻이므로, 앞부분을 검색완료로 이동
 
 	/* 3.검색 결과 처리 과정 */
+	//목적지가 교차점인 경우
+	if(endJoint != NULL){
+		if(saveJointList[saveJointListSize - 1].id == metroJoint[endJoint].id1
+		|| saveJointList[saveJointListSize - 1].id == metroJoint[endJoint].id2
+		|| saveJointList[saveJointListSize - 1].id == metroJoint[endJoint].id3
+		|| saveJointList[saveJointListSize - 1].id == metroJoint[endJoint].id4){
+			AddResultPath(saveJointListSize - 1);
+			prevJointId = saveJointList[saveJointListSize - 1].prevId;
+			saveJointListSize--;
+		}
+	}
+
+	//결과 재검색
 	for(i = saveJointListSize - 1; i >= 0; i--){	//마지막부터 최종 교차점 탐색
 		if(saveJointList[i].id == prevJointId){			//탐색 중인 역이 이전 목적지인지
 			AddResultPath(i);								//목적지 이전 교차점역이므로 결과에 저장
@@ -278,19 +314,27 @@ int FindJoint(int currentStationIndex, int currentStation, int endStation){
 	/* <2> */
 	//같은 라인의 교차점 검색, Joint 갯수 만큼 반복
 	for(i = 0; i < METRO_JOINT_SIZE; i++){
+		//교차점이 목적지인지 검사
+		if(metroJoint[i].id1 == endStation || metroJoint[i].id2 == endStation || metroJoint[i].id3 == endStation || metroJoint[i].id4 == endStation){
+			if(GetLineNumber(metroJoint[i].id1) == currentLine){
+				if(AddFoundJoint(metroJoint[i].id1, foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id1), foundJoint[currentStationIndex].id, 0) == SUCCESS) foundJointCount++;
+			}else if(GetLineNumber(metroJoint[i].id2) == currentLine){
+				if(AddFoundJoint(metroJoint[i].id2, foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id2), foundJoint[currentStationIndex].id, 0) == SUCCESS) foundJointCount++;
+			}else if(GetLineNumber(metroJoint[i].id3) == currentLine){
+				if(AddFoundJoint(metroJoint[i].id3, foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id3), foundJoint[currentStationIndex].id, 0) == SUCCESS) foundJointCount++;
+			}else if(GetLineNumber(metroJoint[i].id4) == currentLine){
+				if(AddFoundJoint(metroJoint[i].id4, foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id4), foundJoint[currentStationIndex].id, 0) == SUCCESS) foundJointCount++;
+			}			
+		}
 		//같은 라인의 교차점인지 검사
 		if(GetLineNumber(metroJoint[i].id1) == currentLine
 		&& metroJoint[i].id1 != currentStation ){	//자신인 경우 안됨
 			/* <3(1)> */
 			if(AddFoundJoint(
-				//다음 역(목적지)
-				metroJoint[i].id1,
-				//현재 역까지 시간 + 현재역과 다음 역 사이의 시간
-				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id1),
-				//이전 역(환승이전 역)
-				foundJoint[currentStationIndex].id,
-				//현재 교차점의 인덱스
-				i
+				metroJoint[i].id1,																			//다음 역(목적지)
+				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id1),	//현재 역까지 시간 + 현재역과 다음 역 사이의 시간
+				foundJoint[currentStationIndex].id,															//이전 역(환승이전 역)
+				i																							//현재 교차점의 인덱스
 			) == SUCCESS){
 				foundJointCount++;	//찾았으므로 하나 증가
 			}
@@ -316,6 +360,17 @@ int FindJoint(int currentStationIndex, int currentStation, int endStation){
 			) == SUCCESS){
 				foundJointCount++;
 			}
+		}else if(GetLineNumber(metroJoint[i].id4) == currentLine
+		&& metroJoint[i].id4 != currentStation){
+			/* <4(4)> */
+			if(AddFoundJoint(
+				metroJoint[i].id4,
+				foundJoint[currentStationIndex].time + GetStationTime(currentStation, metroJoint[i].id4),
+				foundJoint[currentStationIndex].id,
+				i
+			) == SUCCESS){
+				foundJointCount++;
+			}
 		}
 	}
 
@@ -333,6 +388,8 @@ int GetJointIndex(int station){
 			return i;
 		}else if(metroJoint[i].id3 == station){
 			return i;
+		}else if(metroJoint[i].id4 == station){
+			return i;
 		}
 	}
 	return NULL;
@@ -340,8 +397,46 @@ int GetJointIndex(int station){
 
 //두 역 사이의 시간을 구함(두 역은 같은 노선이여야 함)
 int GetStationTime(int stationId1, int stationId2){
-	//임시 아이디로 계산
-	return Abs(stationId1 - stationId2);
+	int i;
+	int totalTime = 0;
+	int currentLine	= GetLineNumber(stationId1);
+
+	//두 역 사이의 정거장 갯수를 구하고자하면..
+	if(findOption == FIND_STATION_COUNT) return Abs(stationId1 - stationId2);
+
+	if(GetLineNumber(stationId1) != GetLineNumber(stationId2)) return 10000;
+
+	//검색 결과에 코드 추가, 이름이 같다면 필요없음 :: if(stationId == 2300 || stationId == 2306) stationId = 1432;
+	if(currentLine == 23){	//예외 노선 처리 : 6호선 응암 - 330/2300(D응암) ~ 336/2306(D응암), 1432(응암)
+		if(stationId1 < stationId2){
+			for(i = 0; i < stationId2 - stationId1; i++){
+				totalTime += metroStation[metroLine[currentLine].startIndex + GetLineIndex(stationId1) + i].time;
+			}
+		}else if(stationId2 < stationId1){
+			//순환 노선이라고 치고 계산
+			for(i = 0; i < 2306 - stationId1; i++){
+				totalTime += metroStation[metroLine[currentLine].startIndex + GetLineIndex(stationId2) + i].time;
+			}for(i = 0; i < stationId2 - 2300; i++){
+				totalTime += metroStation[metroLine[currentLine].startIndex + GetLineIndex(stationId2) + i].time;
+			}
+		}
+
+	}else{
+	
+		if(stationId1 < stationId2){
+			for(i = 0; i < stationId2 - stationId1; i++){
+				totalTime += metroStation[metroLine[currentLine].startIndex + GetLineIndex(stationId1) + i].time;
+			}
+		}else if(stationId2 < stationId1){
+			for(i = 0; i < stationId1 - stationId2; i++){
+				totalTime += metroStation[metroLine[currentLine].startIndex + GetLineIndex(stationId2) + i].time;
+			}
+		}
+		//임시 아이디로 계산
+		//return Abs(stationId1 - stationId2);
+	}
+
+	return totalTime;
 }
 
 //앞부분 데이터를 검색 완료 데이터에 추가

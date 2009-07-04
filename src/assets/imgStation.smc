@@ -1,0 +1,26 @@
+/*****************************************************************************/
+/* GNEX Image Master v3.20 Map Output for Mobile C						 */
+/*                                                                           */
+/* Output file : C:\Documents and Settings\master\바탕 화면\Metro_09.07.09_1_Full\imgStation.smc					*/
+/*    IDF file  : C:\Documents and Settings\master\바탕 화면\Metro_09.07.09_1_Full\imgStation.idf					*/
+/*                                                                           */
+/* First written : Friday, July 04, 2008 13:27:22			     */
+/* Last modified : Wednesday, July 09, 2008 10:50:19			     */
+/*                                                                           */
+/* Copyright(c) 2000~2007 Sinjisoft Corporation.  All rights reserved.       */
+/*****************************************************************************/
+
+// 전체 블럭에 대해 지정한 속성 배열 저장
+binary imgStation_BlockInfo={0, 0, 0, 0, 0, 0, 0, 0};
+int imgStation_BlockName[8]; // 전체 블럭에 대한 블럭 포인터 배열 저장
+void imgStation_BlockNameInit()
+{
+	imgStation_BlockName[0]=imgStationJoint;
+	imgStation_BlockName[1]=imgStationShadow;
+	imgStation_BlockName[2]=imgCurrentStation[0];
+	imgStation_BlockName[3]=imgCurrentStation[1];
+	imgStation_BlockName[4]=imgCurrentStation[2];
+	imgStation_BlockName[5]=imgCurrentStation[3];
+	imgStation_BlockName[6]=imgStationPoint;
+	imgStation_BlockName[7]=imgStationSelected;
+}

@@ -1,5 +1,5 @@
 Loading linking files...
-C:\Documents and Settings\master\πŸ≈¡ »≠∏È\Metro_09.06.22_1_Full\Metro.sal
+F:\Gnex_Project_091108\Metro_09.07.09_1_Full\Metro.sal
 
 Generating code...
 
@@ -10,12 +10,14 @@ HEADER_COMPTYPE is 0
 
 Script profile : 
 
-	Script size       : 12036 Byte(s)
-	Code size         : 6358 Byte(s)
-	Symbol count      : 103
-	Total media count : 32
-	Total media size  : 184 Byte(s)
-		String count  : 32
-		String size   : 184 Byte(s)
+	Script size       : 68822 Byte(s)
+	Code size         : 21846 Byte(s)
+	Symbol count      : 221
+	Total media count : 599
+	Total media size  : 4982 Byte(s)
+		String count  : 591
+		String size   : 4338 Byte(s)
+		Image count   : 8
+		Image size    : 644 Byte(s)
 
-Metro.dgs - 0 error(s), 0 warning(s)
+Metro.sgs - 0 error(s), 0 warning(s)
